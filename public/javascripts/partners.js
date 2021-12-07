@@ -43,6 +43,7 @@ window.onload = function () {
                         partner_name: item.partner['name'],
                         id: item._id,
                         photo: item.photo,
+                        link: item.partner.link,
                         year: item.partner.year,
                         city: item.city
                     });

@@ -29,6 +29,7 @@ exports.searchForms = (req, res, next) => {
         'partner.name': 1,
         'city': 1,
         'partner.year': 1,
+        'partner.link': 1,
     }
 
     formModelPartner.find(params, need_fields, { skip: skip, limit: 10 })

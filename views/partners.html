@@ -68,6 +68,7 @@
                     <p v-if="graduate.year"
                         v-text="'{{#en}}Year of partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + graduate.year">
                     </p>
+                    <p v-if="graduate.link" v-text="graduate.link"></p>
                     <p v-if="graduate.city" v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + graduate.city"></p>
                 </div>
             </a>
