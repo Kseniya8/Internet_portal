@@ -38,13 +38,13 @@
                                 {{#en}}The name of the company{{/en}}
                                 {{#ru}}Название компании{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="inputData.partner.name">
+                            <input class="text-input" v-model="partner_name">
                         </div>
                         <div><b>
                                 {{#en}}Partnership start year{{/en}}
                                 {{#ru}}Год начала партнёрства{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="inputData.partner.year">
+                            <input class="text-input" v-model="partner_year">
                         </div>
                     </div>
                 </div>
@@ -60,27 +60,24 @@
             </div>
         </section>
         <section id="searchResultPartner">
-            <div v-if="inputData.length">
-                <a class="graduate" v-for="graduate in inputData" v-bind:href="'/forms/get_form/' + graduate.id"
-                    target='_blank'>
-                    <img v-bind:src="graduate.photo" class="graduatePhoto">
-                    <div class="info">
-                        <p v-text="graduate.full_name"></p>
-                        <p v-if="graduate.year_graduation"
-                            v-text="'{{#en}}Year of graduation{{/en}}{{#ru}}Год выпуска{{/ru}}: ' + graduate.year_graduation">
-                        </p>
-                        <p v-if="graduate.city" v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + graduate.city"></p>
-                    </div>
-                </a>
-            </div>
-            <p v-else>Партнеров пока нет</p>
+            <a class="graduate" v-for="graduate in inputData" v-bind:href="'/forms/get_form/' + graduate.id"
+                target='_blank'>
+                <img v-bind:src="graduate.photo" class="graduatePhoto">
+                <div class="info">
+                    <p v-text="graduate.partner_name"></p>
+                    <p v-if="graduate.year"
+                        v-text="'{{#en}}Year of partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + graduate.year">
+                    </p>
+                    <p v-if="graduate.city" v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + graduate.city"></p>
+                </div>
+            </a>
         </section>
         {{>pages}}
     </div>
     {{>base_footer}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
     <script src="/javascripts/vue-select.min.js"></script>
-    <script type="module" src="/javascripts/searchResultPartner.js"></script>
+    <script type="module" src="/javascripts/partners.js"></script>
 </body>
 
 </html>
