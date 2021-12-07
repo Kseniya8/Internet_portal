@@ -21,6 +21,7 @@ const searchFormsRouter = require('./routes/searchFormsRouter')
 const adminRouter = require('./routes/adminRouter')
 const partnerRouter = require('./routes/partnerRouter')
 const galleryRouter = require('./routes/galleryRouter')
+const newsRouter = require('./routes/newsRouter')
 
 // scripts
 const startTimerNotify = require('./other/notify')();
@@ -70,6 +71,7 @@ app.use('/forms', searchFormsRouter)
 app.use('/admin', adminRouter)
 app.use('/partners', partnerRouter)
 app.use('/gallery', galleryRouter)
+app.use('/news', newsRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

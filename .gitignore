@@ -1,0 +1,6 @@
+appConfig.js 
+access.log
+error.log
+*.log
+*.pdf
+*.png

@@ -63,16 +63,18 @@ exports.getForm = (req, res, next) => {
         need_fields = { name: 1, surname: 1, patronymic: 1, photo: 1 }
         full = false
     }
-        
+
     formModel.findById(req.params['id'], need_fields)
-    .then(form => {
-        form = form._doc
-        form.full = full
-        
-        res.render("account.html", { [req.session.lang ?? 'ru']: true,
-                                      form:  form, isAuth: Boolean(req.session.user_id),           
-                                      isAdmin: Boolean(req.session.role == "admin")})
-    })
-    .catch(err => next(err))
-    
+        .then(form => {
+            form = form._doc
+            form.full = full
+
+            res.render("account.html", {
+                [req.session.lang ?? 'ru']: true,
+                form: form, isAuth: Boolean(req.session.user_id),
+                isAdmin: Boolean(req.session.role == "admin")
+            })
+        })
+        .catch(err => next(err))
+
 }
