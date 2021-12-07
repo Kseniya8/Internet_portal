@@ -1,0 +1,41 @@
+body{
+    margin: 0;
+    font-family: 'Montserrat';
+}
+.graduate{
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(212, 179, 158, 0.16);
+    padding: 30px;
+    margin: 30px;
+    width: 400px;
+    text-decoration: none;
+}
+.graduate p {
+    color: black;
+    font-size: 13pt;
+}
+.info > p{
+    margin: 0px;
+}
+.info{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+#searchResultPartner{
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.graduatePhoto{
+    width: 100px;
+    height: 100px;
+}
+#TitleSearch{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

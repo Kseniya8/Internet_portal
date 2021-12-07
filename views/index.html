@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+    <head>
+        {{#ru}} <title>Начальная страница</title>{{/ru}}
+        {{#en}} <title>Start page</title>{{/en}}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/images/it.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/assets/owl.carousel.css'>
+        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/navigationPic.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+    <body>
+       {{>base_header}}
+       <section id="uniPic">
+        <div id="uniPicContent">
+            <img src="images/photoUni.png">
+            <div>
+                <div></div>
+                {{#ru}}<p>Ассоциация выпускников<br> кафедры систем автоматизированного проектирования и управления САПРиУ</p>{{/ru}}
+                {{#en}}<p>The CAD Department <br> Association of graduates </p>{{/en}}
+            </div>
+        </div>
+    </section>
+    <section id="aboutUs">
+        <div id="aboutUsContent">
+            <div id="aboutUsHeader">
+                <hr>
+                {{#ru}}<p>О нас</p>{{/ru}}
+                {{#en}}<p>About us</p>{{/en}}
+                <hr>
+            </div>
+            <div id="aboutUsText">
+                {{#ru}}<p> 
+                    Наша Ассоциация – это динамично развивающаяся организация, объединяющая выпускников разных поколений, окончивших наше славное учебное заведение. Для каждого из нас любимый Университет — это молодость, яркие воспоминания и лучшие годы жизни, и именно поэтому мы охотно ему помогаем. Все вместе, мы имеем прекрасную возможность эффективно использовать потенциал и возможности выпускников для решения проблем развития Alma Mater.<br><br>
+                    Одна из основных задач нашей Ассоциации – содействие поддержанию товарищеских связей, теплых отношений между людьми, учившимися когда-то вместе. Кроме того, есть ряд разной степени сложности социальных, бытовых, экономических, технических проблем Университета, заниматься решением которых мы с гордостью обязуемся.<br><br>
+                    Интернет-портал выпускников кафедры САПРиУ посвящен 50-летию кафедры.
+                </p>
+                {{/ru}}
+                {{#en}}
+                <p>
+                    Our Association is a dynamically developing organization that unites graduates of different generations who graduated from our glorious educational institution. For each of us, our favorite University is youth, bright memories and the best years of life, and that is why we are willing to help it. Together, we have a great opportunity to effectively use the potential and opportunities of graduates to solve the problems of development of the Alma Mater.<br><br>
+                    One of the main tasks of our Association is to promote the maintenance of friendly ties, warm relations between people who once studied together. In addition, there are a number of different degrees of complexity of social, domestic, economic, and technical problems of the University, which we are proud to undertake to solve.<br><br>               
+                    The Internet portal of the CAD Department graduates is dedicated to its 50th anniversary.
+                </p>
+                {{/en}}
+
+                
+            </div>
+            <a href="/account/">
+                <button id="join"> {{#ru}}Присоединиться{{/ru}}{{#en}}Join{{/en}}</button>
+            </a>
+        </div>
+    </section>
+    <div class="slider">
+        <div class="slides">
+          <!--radio buttons start-->
+          <input type="radio" name="radio-btn" id="radio1">
+          <input type="radio" name="radio-btn" id="radio2">
+          <input type="radio" name="radio-btn" id="radio3">
+          <input type="radio" name="radio-btn" id="radio4">
+          <!--radio buttons end-->
+          <!--slide images start-->
+          <div class="slide first">
+            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
+          </div>
+          <div class="slide">
+            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
+          </div>
+          <div class="slide">
+            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
+          </div>
+          <div class="slide">
+            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
+          </div>
+          <!--slide images end-->
+          <!--automatic navigation start-->
+          <div class="navigation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+          </div>
+          <!--automatic navigation end-->
+        </div>
+        <!--manual navigation start-->
+        <div class="navigation-manual-pic">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+          <label for="radio4" class="manual-btn"></label>
+        </div>
+        <!--manual navigation end-->
+      </div>
+      <!--image slider end-->
+  
+      <script type="text/javascript">
+      var counter = 1;
+      setInterval(function(){
+        document.getElementById('radio' + counter).checked = true;
+        counter++;
+        if(counter > 4){
+          counter = 1;
+        }
+      }, 5000);
+      </script>
+
+    {{#news}}
+    <section id="news">
+        <div id="newsContent">
+            <div id="newsHeader">{{#ru}}Главные новости{{/ru}}{{#en}}Main news{{/en}}</div>
+            <div id="newsList">
+                <!-- Начало шаблона -->
+                {{#news}}
+                <div class="news">
+                    <img src="{{image}}" height="171px" width="348px">
+                    <p class="newsName">{{title}}</p>
+                    <p class="newsText">{{text}}</p>
+                    <div>
+                        <p class="newsDate">{{date}}</p>
+                        <a class="newsLink" href="{{newsLink}}">{{#ru}}Узнать подробнее{{/ru}} {{#en}}learn more{{/en}}</a>
+                    </div>
+                </div>
+                {{/news}}
+                <!-- Конец шаблона -->
+            </div>
+        </div>
+    </section>
+    {{/news}}
+    <div id="NewsHeader">
+        <hr>
+        {{#ru}}<p>Главные новости</p>{{/ru}}
+        {{#en}}<p>Main news</p>{{/en}}
+        <hr></div>
+    <div class="test-page-wrapper">
+        <div class="carousel-wrapper">
+            <div class="owl-carousel news-carousel">
+                <div class="slide">
+                    <div class="thumb">
+                        <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt=""/>
+                    </div>
+                    <div class="infos">
+                        <h4><a href="#">20 ЛЕТ СОТРУДНИЧЕСТВА</a></h4>
+                        <div class="text-wrapper">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
+                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="thumb">
+                        <img src="http://technolog.edu.ru/images/thumbnails/images/163/Неделя%20науки/eh51-359x250.jpg" alt=""/>
+                    </div>
+                    <div class="infos">
+                        <h4><a href="#">ВИЗИТ А.Д. БЕГЛОВА В ТЕХНОЛОГИЧЕСКИЙ ИНСТИТУТ</a></h4>
+                        <div class="text-wrapper">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
+                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="thumb">
+                        <img src="http://technolog.edu.ru/images/thumbnails/images/163/КП_ЭЦ/5-740x339.JPG" alt=""/>
+                    </div>
+                    <div class="infos">
+                        <h4><a href="#">НАЦИОНАЛЬНАЯ СИСТЕМА КВАЛИФИКАЦИЙ ДЛЯ ПРОФЕССИЙ БУДУЩЕГО</a></h4>
+                        <div class="text-wrapper">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
+                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="thumb">
+                        <img src="http://technolog.edu.ru/images/thumbnails/images/163/Совет/EK1-730x487.jpg" alt=""/>
+                    </div>
+                    <div class="infos">
+                        <h4><a href="#">ENERGY CLUB TI. CТАРТ НОВОГО СЕЗОНА</a></h4>
+                        <div class="text-wrapper">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
+                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="thumb">
+                        <img src="http://technolog.edu.ru/images/thumbnails/images/112/АААААААА/окт/DSC_6789_-_-450x300.jpg" alt=""/>
+                    </div>
+                    <div class="infos">
+                        <h4><a href="#">К 190-ЛЕТИЮ ФУНДАМЕНТАЛЬНОЙ БИБЛИОТЕКИ</a></h4>
+                        <div class="text-wrapper">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
+                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="slide">
+                    <div class="thumb">
+                        <img src="http://technolog.edu.ru/images/thumbnails/images/163/КП_ЭЦ/1if-750x494.JPG" alt=""/>
+                    </div>
+                    <div class="infos">
+                        <h4><a href="#">В ФОКУСЕ ВНИМАНИЯ - ПОДГОТОВКА КАДРОВ</a></h4>
+                        <div class="text-wrapper">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
+                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{#en}}
+    <style>
+         #aboutUsHeader{
+             width: 520px;
+         }
+         #uniPicContent > div {
+             height: auto;
+         }
+         @media (max-width: 1170px){
+             #aboutUsHeader {
+                 width: 315px;
+             }
+         }
+    </style>
+    {{/en}}
+    {{>base_footer}}
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js'></script><script  src="/javascripts/news.js"></script>
+    </body>
+</html>

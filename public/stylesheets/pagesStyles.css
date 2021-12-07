@@ -1,0 +1,29 @@
+#pages-section{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+#pages-block{
+    display: flex;
+    width: 200px;
+    justify-content: space-evenly;
+}
+#pages-block p{
+    margin: 0;
+}
+#corrent-page{
+    cursor: default;
+    background-color: rgb(231, 212, 188);
+}
+.pages{
+    font-size: 16pt;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.ellipsis{
+    display: flex;
+}
