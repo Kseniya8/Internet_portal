@@ -64,6 +64,7 @@
                 target='_blank'>
                 <img v-bind:src="graduate.photo" class="graduatePhoto">
                 <div class="info">
+                    <p v-text="graduate.full_name"></p>
                     <p v-text="graduate.partner_name"></p>
                     <p v-if="graduate.year"
                         v-text="'{{#en}}Year of partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + graduate.year">

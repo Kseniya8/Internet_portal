@@ -40,6 +40,7 @@ window.onload = function () {
                 this.inputData = [];
                 answer.forEach(item => {
                     this.inputData.push({
+                        full_name: item.surname + ' ' + item.name + ' ' + item.patronymic,
                         partner_name: item.partner['name'],
                         id: item._id,
                         photo: item.photo,

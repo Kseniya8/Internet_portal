@@ -24,8 +24,12 @@ exports.searchForms = (req, res, next) => {
             skip = parseInt(req.query[key], 10) * 10
     }
     need_fields = {
+
         '_id': 1,
         'photo': 1,
+        'name': 1,
+        'surname': 1,
+        'patronymic': 1,
         'partner.name': 1,
         'city': 1,
         'partner.year': 1,
