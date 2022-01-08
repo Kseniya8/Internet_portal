@@ -9,10 +9,27 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="/images/it.png">
+    <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/formStyles.css">
+    <link rel="stylesheet" href="/stylesheets/cropper.min.css">
+    <link rel="stylesheet" href="/stylesheets/edit_main_page.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+    <link rel="stylesheet" href="/stylesheets/preloaderStyles.css">
 </head>
-
 <body>
-    <h1>news</h1>
+    {{>base_header}}
+    <h1 class="text-main">
+        {{#en}}News{{/en}}
+        {{#ru}}Новости{{/ru}}</h1>
+    <h2>
+        {{#en}}Page in development{{/en}}
+        {{#ru}}Страница в разработке{{/ru}}</h2>
+    {{>base_footer}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+    <script src="/javascripts/vue-select.min.js"></script>
 </body>
 
 </html>

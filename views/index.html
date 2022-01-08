@@ -7,8 +7,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="/images/it.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/assets/owl.carousel.css'>
+        <link rel="stylesheet" href="/stylesheets/normalize.css">
         <link rel="stylesheet" href="/stylesheets/headerStyles.css">
         <link rel="stylesheet" href="/stylesheets/navigationPic.css">
         <link rel="stylesheet" href="/stylesheets/main.css">
@@ -17,16 +19,28 @@
     </head>
     <body>
        {{>base_header}}
-       <section id="uniPic">
-        <div id="uniPicContent">
-            <img src="images/photoUni.png">
-            <div>
-                <div></div>
-                {{#ru}}<p>Ассоциация выпускников<br> кафедры систем автоматизированного проектирования и управления САПРиУ</p>{{/ru}}
-                {{#en}}<p>The CAD Department <br> Association of graduates </p>{{/en}}
-            </div>
-        </div>
-    </section>
+       <div class="banner">
+       <!-- Slider main container -->
+    <div class="swiper_banner">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide"><div><img src="images/photoUni.png"></div></div>
+      <div class="swiper-slide"><div><img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt=""></div></div>
+      <div class="swiper-slide"><div><img src="http://science.spb.ru/images/news/csrnews/2017/03/4.jpg" alt=""></div></div>
+    </div>
+    <div class="banner_text">
+        <div></div>
+        {{#ru}}<p>Ассоциация выпускников<br> кафедры систем автоматизированного проектирования и управления САПРиУ</p>{{/ru}}
+        {{#en}}<p>The CAD Department <br> Association of graduates </p>{{/en}}
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    </div>
+</div>
     <section id="aboutUs">
         <div id="aboutUsContent">
             <div id="aboutUsHeader">
@@ -57,58 +71,6 @@
             </a>
         </div>
     </section>
-    <div class="slider">
-        <div class="slides">
-          <!--radio buttons start-->
-          <input type="radio" name="radio-btn" id="radio1">
-          <input type="radio" name="radio-btn" id="radio2">
-          <input type="radio" name="radio-btn" id="radio3">
-          <input type="radio" name="radio-btn" id="radio4">
-          <!--radio buttons end-->
-          <!--slide images start-->
-          <div class="slide first">
-            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
-          </div>
-          <div class="slide">
-            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
-          </div>
-          <div class="slide">
-            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
-          </div>
-          <div class="slide">
-            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg" alt="">
-          </div>
-          <!--slide images end-->
-          <!--automatic navigation start-->
-          <div class="navigation-auto">
-            <div class="auto-btn1"></div>
-            <div class="auto-btn2"></div>
-            <div class="auto-btn3"></div>
-            <div class="auto-btn4"></div>
-          </div>
-          <!--automatic navigation end-->
-        </div>
-        <!--manual navigation start-->
-        <div class="navigation-manual-pic">
-          <label for="radio1" class="manual-btn"></label>
-          <label for="radio2" class="manual-btn"></label>
-          <label for="radio3" class="manual-btn"></label>
-          <label for="radio4" class="manual-btn"></label>
-        </div>
-        <!--manual navigation end-->
-      </div>
-      <!--image slider end-->
-  
-      <script type="text/javascript">
-      var counter = 1;
-      setInterval(function(){
-        document.getElementById('radio' + counter).checked = true;
-        counter++;
-        if(counter > 4){
-          counter = 1;
-        }
-      }, 5000);
-      </script>
 
     {{#news}}
     <section id="news">
@@ -147,8 +109,8 @@
                     <div class="infos">
                         <h4><a href="#">20 ЛЕТ СОТРУДНИЧЕСТВА</a></h4>
                         <div class="text-wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
-                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            <p>Более 20 лет продолжается взаимовыгодное научно-инновационное партнерство между СПбГТИ(ТУ) и предприятиями промышленности пластмасс Германии. Доброй традицией стали рабочие визиты...</p>
+                            <a href="http://technolog.edu.ru/component/k2/item/4343-20-let-sotrudnichestva.html" target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
                         </div>
                     </div>
                 </div>
@@ -159,8 +121,8 @@
                     <div class="infos">
                         <h4><a href="#">ВИЗИТ А.Д. БЕГЛОВА В ТЕХНОЛОГИЧЕСКИЙ ИНСТИТУТ</a></h4>
                         <div class="text-wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
-                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            <p>28 октября Технологический институт принимал резидентов технологической долины «Энерготехнохаб», были представлены новые проекты – «Центр инжиниринга» и «Мультикорпоративный акселератор»...</p>
+                            <a href="http://technolog.edu.ru/news/news/item/4340-energotekhnokhab-v-spbgti.html" target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
                         </div>
                     </div>
                 </div>
@@ -171,8 +133,8 @@
                     <div class="infos">
                         <h4><a href="#">НАЦИОНАЛЬНАЯ СИСТЕМА КВАЛИФИКАЦИЙ ДЛЯ ПРОФЕССИЙ БУДУЩЕГО</a></h4>
                         <div class="text-wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
-                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            <p>21 октября на площадке СПбГЭТУ «ЛЭТИ» прошел Форум «Национальная система квалификаций для профессий будущего»...</p>
+                            <a href="http://technolog.edu.ru/component/k2/item/4333-natsionalnaya-sistema-kvalifikatsij-dlya-professij-budushchego.html" target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
                         </div>
                     </div>
                 </div>
@@ -183,8 +145,8 @@
                     <div class="infos">
                         <h4><a href="#">ENERGY CLUB TI. CТАРТ НОВОГО СЕЗОНА</a></h4>
                         <div class="text-wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
-                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            <p>Энергетический клуб СПбГТИ провёл ярмарку проектов EnergyNight– мероприятие, помогающее студентам начать карьеру в энергетике...</p>
+                            <a href="http://technolog.edu.ru/component/k2/item/4331-energy-club-ti-ctart-novogo-sezona.html" target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
                         </div>
                     </div>
                 </div>
@@ -195,8 +157,8 @@
                     <div class="infos">
                         <h4><a href="#">К 190-ЛЕТИЮ ФУНДАМЕНТАЛЬНОЙ БИБЛИОТЕКИ</a></h4>
                         <div class="text-wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
-                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            <p>11 октября 2021 исполнилось 190 лет со дня открытия Фундаментальной библиотеки Технологического института. Она была создана заботами министра финансов графа Е.Ф. Канкрина...</p>
+                            <a href="http://technolog.edu.ru/component/k2/item/4316-k-190-letiyu-fundamentalnoj-biblioteki.html" target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
                         </div>
                     </div>
                 </div>
@@ -207,8 +169,8 @@
                     <div class="infos">
                         <h4><a href="#">В ФОКУСЕ ВНИМАНИЯ - ПОДГОТОВКА КАДРОВ</a></h4>
                         <div class="text-wrapper">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec finibus eget est vel elementum. Nullam non dui eget libero convallis condimentum...</p>
-                            <a href="#" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            <p>16 сентября в Интерфаксе состоялся круглый стол по теме «Новые инструменты профессионального развития и подготовки кадров»...</p>
+                            <a href="http://technolog.edu.ru/component/k2/item/4289-v-fokuse-vnimaniya-podgotovka-kadrov.html" target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
                         </div>
                     </div>
                 </div>
@@ -234,5 +196,23 @@
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js'></script><script  src="/javascripts/news.js"></script>
+    <script> 
+        const swiper = new Swiper('.swiper_banner', {
+        loop: true,
+        slidesPerView: 1,
+        spaceBetween: 150,
+        autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+        },
+        pagination: {
+        el: '.swiper-pagination',
+        },
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
+      });
+    </script>
     </body>
 </html>

@@ -18,6 +18,7 @@ h1,h2{
     text-align: center;
 }
 
+
 #inputDataContent{
     display: flex;
     flex-direction: column;
@@ -99,6 +100,7 @@ h1,h2{
     margin-top: 25px;
     margin-bottom: 45px;
     transition-duration: 0.1s;
+    cursor: pointer;
 }
 #buttonSearch:active{
     background: black;

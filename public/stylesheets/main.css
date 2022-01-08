@@ -5,6 +5,103 @@ body{
 header{
     z-index: 6;
 }
+
+.banner{
+    background-color: rgba(212, 179, 158, 0.16);
+}
+/* Swiper banner*/
+.swiper_banner{
+    position: relative;
+    height: 605px;
+    width: 1470px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    padding: 0 150px;
+}
+
+.banner_text {
+    position: absolute;
+    left: -15px;
+    bottom: 45px;
+}
+
+.swiper-slide img{
+    display: block;
+    max-width: 100%;
+    z-index: 1;
+    object-fit: cover;
+    height: 605px;
+    width: 100%;
+}
+
+.banner_text {
+    z-index: 2;
+    height: 223px;
+    width: 730px;
+    background: rgba(8, 8, 8, 0.65);
+    border-radius: 5px;
+    position: relative;
+    top: -317px;
+    left: -31px;
+    color: white;
+    font-size: 32px;
+}
+
+.banner_text > div{
+    z-index: 3;
+    width: 565px;
+    height: 52px;
+    background: #A0866E;
+    border-radius: 0px 5px 5px 0px;
+    position: relative;
+    top: 39px;
+    display: flex;
+    justify-content: center;
+}
+.banner_text > p{
+    z-index: 4;
+    margin-left: 66px;
+    position: relative;
+    top: -39px;
+    font-weight: 550;
+    font-size: 32px;
+}
+
+.swiper-button-next, .swiper-button-prev
+{
+    border-radius: 100%;
+    background-color: #968c8c;
+    ;
+    height: 70px;
+    width: 70px;
+}
+
+.swiper-button-next{
+    right: 0px;
+}
+
+.swiper-button-prev{
+    left: 0px;
+}
+
+.swiper-button-prev:after,
+.swiper-button-next:after {
+    color: #ffffff;
+    font-size: 25px;
+}
+
+.swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background-color: #A0866E;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #ffffff;
+}
+
 /* Фото универа */
 #uniPic{
     width: 100%;
@@ -94,6 +191,7 @@ hr{
     transition-duration: 0.1s;
     margin-top: 30px;
     margin-bottom: 10px;
+    cursor: pointer;
 }
 #join:active{
     background: black;
@@ -123,6 +221,12 @@ a{
 .btn-red { 
     background-color: #6d6456; 
     border-color: #6d6456; 
+    color: #ffffff; 
+}
+
+.btn-red:hover { 
+    background-color: #c4baaa; 
+    border-color: #c4baaa; 
     color: #ffffff; 
 }
 

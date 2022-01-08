@@ -2,27 +2,36 @@ body{
     margin: 0;
     font-family: 'Montserrat';
 }
-.graduate{
+.searchResultPartner{
     display: flex;
-    flex-direction: row;
+    justify-content: space-around;
+}
+.searchResultPartner .graduate{
     background-color: rgba(212, 179, 158, 0.16);
     padding: 30px;
     margin: 30px;
     width: 400px;
+    text-decoration: none;
+    display: block;
+}
+.graduate_col{
+    display: flex;
     text-decoration: none;
 }
 .graduate p {
     color: black;
     font-size: 13pt;
 }
-.info > p{
-    margin: 0px;
+.infoLink{
+    margin-top: 5px;
 }
-.info{
-    margin-left: 10px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+.infoLink a{
+    color: black;
+    text-decoration: underline;
+}
+.infoLink a:hover{
+    color: black;
+    text-decoration: none;
 }
 #searchResultPartner{
     padding-bottom: 20px;

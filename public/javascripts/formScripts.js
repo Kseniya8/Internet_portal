@@ -188,6 +188,8 @@ window.onload = function () {
                 }
             }
         });
+
+
         $('#back').css('display', 'none');
     }
     
@@ -251,6 +253,34 @@ window.onload = function () {
 
         request.send(JSON.stringify(data));
     }
+
+    function SendForm_Homepage() {
+        const TitleHomepage = document.forms.FormHomepage.title.value;
+        const AboutHomepage = document.forms.FormHomepage.about.value;
+        console.log(TitleHomepage);
+        console.log(AboutHomepage);
+        let request = new XMLHttpRequest();
+        request.open('POST', '/account/form/1', true);
+        request.setRequestHeader("Content-Type", "application/json");
+        request.onreadystatechange = function () {
+            if (request.readyState == 4) {
+                if (request.status === 200) {
+                    $('#back').css('display', 'none');
+                    ShowMsg(vue.lang == 'ru' ? 'Ваша анкета отправлена на рассмотрение администратору. После одобрения она появится в общем списке.'
+                        : 'Your application form has been sent to the administrator for review. After approval, it will appear in the general list.');
+                } else {
+                    ShowMsg(errorMsg);
+                    $('#back').css('display', 'none');
+                }
+            }
+        }
+
+        request.send(/*JSON.stringify(data)*/);
+    }
+
+    const button_update_homepage = document.querySelector(".button_update_homepage");
+    button_update_homepage.addEventListener('click', SendForm_Homepage());
+
 
     function ChangePhoto() {
         document.querySelector("#error-message").classList.add('closed');

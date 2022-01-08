@@ -10,6 +10,9 @@ exports.index = (req, res) => res.render("partners.html", {
 exports.searchForms = (req, res, next) => {
 
     name_fields = [
+        'surname',
+        'name',
+        'patronymic',
         'partner.name',
         'partner.year',
         'city',
@@ -27,6 +30,7 @@ exports.searchForms = (req, res, next) => {
 
         '_id': 1,
         'photo': 1,
+        'partner.logo': 1,
         'name': 1,
         'surname': 1,
         'patronymic': 1,

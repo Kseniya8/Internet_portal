@@ -6,7 +6,7 @@ window.onload = function () {
     vueInput = new Vue({
         el: '#mainBlock',
         data: {
-            partner_name: '', partner_year: '',
+            surname: '', name: '', patronymic: '', partner_name: '', partner_year: '',
             lastPage: 0,
             correntPage: 0,
             inputData: []
@@ -19,8 +19,11 @@ window.onload = function () {
         methods: {
             searchButtonClick: function () {
                 this.address = '/partners/search?partner.name=' + this.partner_name +
-                    '&partner.year=' + this.partner_year;
-                this.MoveOnPage(1);
+                    '&partner.year=' + this.partner_year +
+                    '&surname=' + this.surname +
+                    '&name=' + this.name +
+                    '&patronymic=' + this.patronymic;
+                    this.MoveOnPage(1);
             },
             MoveOnPage: function (page) {
                 var request = new XMLHttpRequest();
@@ -43,6 +46,7 @@ window.onload = function () {
                         full_name: item.surname + ' ' + item.name + ' ' + item.patronymic,
                         partner_name: item.partner['name'],
                         id: item._id,
+                        logo: item.partner.logo,
                         photo: item.photo,
                         link: item.partner.link,
                         year: item.partner.year,
@@ -55,6 +59,6 @@ window.onload = function () {
             }
         }
     });
-
     vueInput.searchButtonClick();
 }
+
