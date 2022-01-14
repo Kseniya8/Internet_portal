@@ -1,6 +1,4 @@
-const appConfig = require("../appConfig");
 const homeModel = require("../models/homeModel.js")
-const mustache = require("mustache")
 
 exports.index = (req, res, next) => {
   homeModel.find({})

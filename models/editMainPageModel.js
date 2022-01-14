@@ -14,4 +14,4 @@ const editMainPageScheme = new Schema(
     { versionKey: false }
 );
 
-module.exports = mongoose.model("editMain", editMainPageScheme);
+module.exports = mongoose.model("editMainPage", editMainPageScheme);

@@ -1,19 +1,12 @@
-const galleryModel = require("../models/galleryModel.js")
+const editMainPageModel = require("../models/editMainPageModel.js")
 const base64 = require("../other/workWithBS64")
 const appConfig = require("../appConfig")
 
-exports.index = (req, res, next) => res.render("gallery.html", {
+exports.admin = (req, res, next) => res.render("edit_main_page.html", {
     [req.session.lang ?? 'ru']: true,
     isAuth: Boolean(req.session.user_id),
     isAdmin: Boolean(req.session.role == 'admin')
-})
-
-exports.admin = (req, res, next) => res.render("gallery_admin.html", {
-    [req.session.lang ?? 'ru']: true,
-    isAuth: Boolean(req.session.user_id),
-    isAdmin: Boolean(req.session.role == 'admin')
-})
-
+});
 
 exports.getTruePhotos = (req, res, next) => {
 
