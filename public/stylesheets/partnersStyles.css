@@ -1,0 +1,50 @@
+body{
+    margin: 0;
+    font-family: 'Montserrat';
+}
+.searchResultPartner{
+    display: flex;
+    justify-content: space-around;
+}
+.searchResultPartner .graduate{
+    background-color: rgba(212, 179, 158, 0.16);
+    padding: 30px;
+    margin: 30px;
+    width: 400px;
+    text-decoration: none;
+    display: block;
+}
+.graduate_col{
+    display: flex;
+    text-decoration: none;
+}
+.graduate p {
+    color: black;
+    font-size: 13pt;
+}
+.infoLink{
+    margin-top: 5px;
+}
+.infoLink a{
+    color: black;
+    text-decoration: underline;
+}
+.infoLink a:hover{
+    color: black;
+    text-decoration: none;
+}
+#searchResultPartner{
+    padding-bottom: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.graduatePhoto{
+    width: 100px;
+    height: 100px;
+}
+#TitleSearch{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+
+<head>
+    <title>
+        {{#en}}Partners{{/en}}
+        {{#ru}}Партнёры{{/ru}}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/images/it.png">
+    <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/searchStyles.css">
+    <link rel="stylesheet" href="/stylesheets/partnersStyles.css">
+    <link rel="stylesheet" href="/stylesheets/pagesStyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+</head>
+
+<body>
+    {{>base_header}}
+    <div id="head_text">
+        <h1>
+            {{#ru}}Партнёры кафедры{{/ru}}
+            {{#en}}Partners of the Department{{/en}}
+        </h1>
+    </div>
+    <div id="mainBlock">
+        <section id="inputData">
+            <div id="inputDataContent">
+                {{#ru}}<h1>Введите данные для поиска</h1>{{/ru}}
+                {{#en}}<h1>Enter the search data</h1>{{/en}}
+                <div id="inputs">
+                    <div id="inputs-block">
+                        <div><b>
+                            {{#en}}Last name{{/en}}
+                            {{#ru}}Фамилия{{/ru}}
+                        </b><br>
+                        <input class="text-input" v-model="surname">
+                    </div>
+                    <div><b>
+                            {{#en}}First name{{/en}}
+                            {{#ru}}Имя{{/ru}}
+                        </b><br>
+                        <input class="text-input" v-model="name">
+                    </div>
+                    <div><b>
+                            {{#en}}Patronymic{{/en}}
+                            {{#ru}}Отчество{{/ru}}
+                        </b><br>
+                        <input class="text-input" v-model="patronymic">
+                    </div>
+                        <div><b>
+                                {{#en}}The name of the company{{/en}}
+                                {{#ru}}Название компании{{/ru}}
+                            </b><br>
+                            <input class="text-input" v-model="partner_name">
+                        </div>
+                        <div><b>
+                                {{#en}}Partnership start year{{/en}}
+                                {{#ru}}Год начала партнёрства{{/ru}}
+                            </b><br>
+                            <input class="text-input" v-model="partner_year">
+                        </div>
+                    </div>
+                </div>
+                <button id="buttonSearch" v-on:click="searchButtonClick()">
+                    {{#en}}Search{{/en}}
+                    {{#ru}}Поиск{{/ru}}
+                </button>
+            </div>
+            <div id="no-result" v-show="visibleNoResult">
+                <h2>
+                    {{#en}}Nothing was found for your request{{/en}}
+                    {{#ru}}По вашему запросу ничего не нашлось{{/ru}}</h2>
+            </div>
+        </section>
+        <section id="searchResultPartner" class="searchResultPartner"> 
+            <div class="graduate" v-for="graduate in inputData">
+                <a class="graduate_col" v-bind:href="'/forms/get_form/' + graduate.id"
+                target='_blank'>
+                <img v-if="graduate.logo" v-bind:src="graduate.logo" class="graduatePhoto">
+                <img v-bind:src="graduate.photo" class="graduatePhoto">
+                <div class="info">
+                    <p v-text="graduate.full_name"></p>
+                    <p v-text="graduate.partner_name"></p>
+                    <p v-if="graduate.year"
+                        v-text="'{{#en}}Year of partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + graduate.year">
+                    </p>
+                    <p v-if="graduate.city" v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + graduate.city"></p>
+                </div>
+                </a>
+                <div v-if="graduate.logo" style="margin-left: 212px;" class="infoLink">
+                <a v-if="graduate.link" v-bind:href="graduate.link" v-text="graduate.link" target="_blank"></a>
+                </div>
+                <div v-else="graduate.logo" style="margin-left: 112px;" class="infoLink">
+                <a v-if="graduate.link" v-bind:href="graduate.link" v-text="graduate.link" target="_blank"></a>
+                </div>
+        </div>
+        </section>
+        {{>pages}}
+    </div>
+    {{>base_footer}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+    <script src="/javascripts/vue-select.min.js"></script>
+    <script type="module" src="/javascripts/partners.js"></script>
+</body>
+
+</html>

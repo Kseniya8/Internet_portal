@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+    <head>
+        <title>
+            {{#ru}}Войти{{/ru}}
+            {{#en}}Log in{{/en}}
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/images/it.png">
+        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/authStyles.css">
+        <link rel="stylesheet" href="/stylesheets/buttonStyle.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+
+        <style>
+        [v-cloak]{
+            display: none;
+        }
+        </style>
+    </head>
+<body>
+{{>base_header}}
+<section id="auth-section" v-cloak>
+    <div class="mainContent">
+        <div class="headingText">
+            <p class="header"> {% header %} </p>
+        </div>
+        <p class="email" v-if='email_visible' ><b>Email</b><br>
+            <input type="email" placeholder="{{#ru}}Введите свой{{/ru}}{{#en}}Enter your{{/en}} email" v-model='inputEmail'  @keypress.enter='emailKeyPressHandler'>
+        </p>
+        <p class="password"  v-if='password_visible' ><b>{{#ru}}Пароль{{/ru}}{{#en}}Password{{/en}}</b><br>
+            <input type="password" id="password" placeholder="{{#ru}}Введите свой пароль{{/ru}}{{#en}}Enter your password{{/en}}" v-model='inputPassword' @keypress.enter='loginKeyPressHandler' >
+        </p>
+        <div style="margin-top: 10px;">
+            <button class="LoginButton" 
+                    v-if='login_button_visible' 
+                    :disabled='login_button_disabled' 
+                    @click='LoginButtonClick'>
+                    {{#ru}}Войти{{/ru}}
+                    {{#en}}Enter{{/en}}
+                </button>
+
+            <button class="RegButton" 
+                    v-if='reg_button_visible' 
+                    :disabled='reg_button_disabled' 
+                    @click='RegButtonClick'>
+                    {{#ru}}Зарегистрироваться{{/ru}}
+                    {{#en}}Register{{/en}}
+                </button>
+
+            <button class="ResetPassButton"  
+                    v-if='reset_button_visible' 
+                    :disabled='reset_button_disabled' 
+                    @click='ResetPassClick'>
+                    {{#ru}}Сбросить пароль{{/ru}}
+                    {{#en}}Reset your password{{/en}}
+            </button>
+        </div>
+        
+        <div style="margin-top: 20px;" class="switchButtonsBlock">
+            <button class="SwitchToLoginButton" v-if='switch_login_button_visible' @click='SwitchToLogin'> {{#ru}}Вход{{/ru}}{{#en}}Log in{{/en}}</button>
+            <button class="SwitchToRegButton" v-if='switch_reg_button_visible' @click='SwitchToReg'> {{#ru}}Регистрация{{/ru}}{{#en}}Registration{{/en}}</button>
+            <button class="SwitchToResetPassButton" v-if='switch_reset_button_visible' @click='SwitchToResetPass'> {{#ru}}Сброс пароля{{/ru}}{{#en}}Password reset{{/en}}</button>
+        </div>
+
+        <div class="modal" style="display: none;">
+            <p style="margin-top: 16px; margin-bottom: 16px;"></p>
+        </div>
+
+    </div>
+</section>
+{{>base_footer}}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<script src="https://unpkg.com/vue@next"></script>
+<script type="module" src="/javascripts/authScripts.js"></script>
+</body>
+</html>

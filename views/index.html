@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+
+    <head>
+        {{#ru}} <title>Начальная страница</title>{{/ru}}
+        {{#en}} <title>Start page</title>{{/en}}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/images/it.png">
+        <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css">
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
+        <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/assets/owl.carousel.css'>
+        <link rel="stylesheet" href="/stylesheets/normalize.css">
+        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/navigationPic.css">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        {{>base_header}}
+        <div class="banner">
+            <!-- Slider main container -->
+            <div class="swiper_banner">
+                <!-- Additional required wrapper -->
+                <div id='swiper-wrapper' class="swiper-wrapper">
+                    <!-- Slides -->
+                </div>
+                <div class="banner_text">
+                    <div></div>
+                    {{#ru}}<p id="titleru"></p>{{/ru}}
+                    {{#en}}<p id="title"></p>{{/en}}
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </div>
+        <section id="aboutUs">
+            <div id="aboutUsContent">
+                <div id="aboutUsHeader">
+                    <hr>
+                    {{#ru}}<p>О нас</p>{{/ru}}
+                    {{#en}}<p>About us</p>{{/en}}
+                    <hr>
+                </div>
+                <div id="aboutUsText">
+                    {{#ru}}<p id="aboutru"></p>
+                    {{/ru}}
+                    {{#en}}
+                    <p id="about"></p>
+                    {{/en}}
+                </div>
+                <a href="/account/">
+                    <button id="join"> {{#ru}}Присоединиться{{/ru}}{{#en}}Join{{/en}}</button>
+                </a>
+            </div>
+        </section>
+
+        {{#news}}
+        <section id="news">
+            <div id="newsContent">
+                <div id="newsHeader">{{#ru}}Главные новости{{/ru}}{{#en}}Main news{{/en}}</div>
+                <div id="newsList">
+                    <!-- Начало шаблона -->
+                    {{#news}}
+                    <div class="news">
+                        <img src="{{image}}" height="171px" width="348px">
+                        <p class="newsName">{{title}}</p>
+                        <p class="newsText">{{text}}</p>
+                        <div>
+                            <p class="newsDate">{{date}}</p>
+                            <a class="newsLink" href="{{newsLink}}">{{#ru}}Узнать подробнее{{/ru}} {{#en}}learn
+                                more{{/en}}</a>
+                        </div>
+                    </div>
+                    {{/news}}
+                    <!-- Конец шаблона -->
+                </div>
+            </div>
+        </section>
+        {{/news}}
+        <div id="NewsHeader">
+            <hr>
+            {{#ru}}<p>Главные новости</p>{{/ru}}
+            {{#en}}<p>Main news</p>{{/en}}
+            <hr>
+        </div>
+        <div class="test-page-wrapper">
+            <div class="carousel-wrapper">
+                <div class="owl-carousel news-carousel">
+                    <div class="slide">
+                        <div class="thumb">
+                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg"
+                                alt="" />
+                        </div>
+                        <div class="infos">
+                            <h4><a href="#">20 ЛЕТ СОТРУДНИЧЕСТВА</a></h4>
+                            <div class="text-wrapper">
+                                <p>Более 20 лет продолжается взаимовыгодное научно-инновационное партнерство между
+                                    СПбГТИ(ТУ) и предприятиями промышленности пластмасс Германии. Доброй традицией стали
+                                    рабочие визиты...</p>
+                                <a href="http://technolog.edu.ru/component/k2/item/4343-20-let-sotrudnichestva.html"
+                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="thumb">
+                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Неделя%20науки/eh51-359x250.jpg"
+                                alt="" />
+                        </div>
+                        <div class="infos">
+                            <h4><a href="#">ВИЗИТ А.Д. БЕГЛОВА В ТЕХНОЛОГИЧЕСКИЙ ИНСТИТУТ</a></h4>
+                            <div class="text-wrapper">
+                                <p>28 октября Технологический институт принимал резидентов технологической долины
+                                    «Энерготехнохаб», были представлены новые проекты – «Центр инжиниринга» и
+                                    «Мультикорпоративный акселератор»...</p>
+                                <a href="http://technolog.edu.ru/news/news/item/4340-energotekhnokhab-v-spbgti.html"
+                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="thumb">
+                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/КП_ЭЦ/5-740x339.JPG"
+                                alt="" />
+                        </div>
+                        <div class="infos">
+                            <h4><a href="#">НАЦИОНАЛЬНАЯ СИСТЕМА КВАЛИФИКАЦИЙ ДЛЯ ПРОФЕССИЙ БУДУЩЕГО</a></h4>
+                            <div class="text-wrapper">
+                                <p>21 октября на площадке СПбГЭТУ «ЛЭТИ» прошел Форум «Национальная система квалификаций
+                                    для профессий будущего»...</p>
+                                <a href="http://technolog.edu.ru/component/k2/item/4333-natsionalnaya-sistema-kvalifikatsij-dlya-professij-budushchego.html"
+                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="thumb">
+                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Совет/EK1-730x487.jpg"
+                                alt="" />
+                        </div>
+                        <div class="infos">
+                            <h4><a href="#">ENERGY CLUB TI. CТАРТ НОВОГО СЕЗОНА</a></h4>
+                            <div class="text-wrapper">
+                                <p>Энергетический клуб СПбГТИ провёл ярмарку проектов EnergyNight– мероприятие,
+                                    помогающее студентам начать карьеру в энергетике...</p>
+                                <a href="http://technolog.edu.ru/component/k2/item/4331-energy-club-ti-ctart-novogo-sezona.html"
+                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="thumb">
+                            <img src="http://technolog.edu.ru/images/thumbnails/images/112/АААААААА/окт/DSC_6789_-_-450x300.jpg"
+                                alt="" />
+                        </div>
+                        <div class="infos">
+                            <h4><a href="#">К 190-ЛЕТИЮ ФУНДАМЕНТАЛЬНОЙ БИБЛИОТЕКИ</a></h4>
+                            <div class="text-wrapper">
+                                <p>11 октября 2021 исполнилось 190 лет со дня открытия Фундаментальной библиотеки
+                                    Технологического института. Она была создана заботами министра финансов графа Е.Ф.
+                                    Канкрина...</p>
+                                <a href="http://technolog.edu.ru/component/k2/item/4316-k-190-letiyu-fundamentalnoj-biblioteki.html"
+                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slide">
+                        <div class="thumb">
+                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/КП_ЭЦ/1if-750x494.JPG"
+                                alt="" />
+                        </div>
+                        <div class="infos">
+                            <h4><a href="#">В ФОКУСЕ ВНИМАНИЯ - ПОДГОТОВКА КАДРОВ</a></h4>
+                            <div class="text-wrapper">
+                                <p>16 сентября в Интерфаксе состоялся круглый стол по теме «Новые инструменты
+                                    профессионального развития и подготовки кадров»...</p>
+                                <a href="http://technolog.edu.ru/component/k2/item/4289-v-fokuse-vnimaniya-podgotovka-kadrov.html"
+                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#en}}
+        <style>
+            #aboutUsHeader {
+                width: 520px;
+            }
+
+            #uniPicContent>div {
+                height: auto;
+            }
+
+            @media (max-width: 1170px) {
+                #aboutUsHeader {
+                    width: 315px;
+                }
+            }
+        </style>
+        {{/en}}
+        {{>base_footer}}
+        <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.js'></script>
+        <script
+            src='https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js'></script>
+        <script src="/javascripts/home.js"></script>
+        <script src="/javascripts/news.js"></script>
+        <script>
+            setTimeout(() => {
+                const swiper = new Swiper('.swiper_banner', {
+                    loop: true,
+                    spaceBetween: 150,
+                    effect: 'fade',
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                    },
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                });
+                document.getElementById('img2').classList.remove('hidden')
+            }, 5000);
+        </script>
+    </body>
+
+</html>

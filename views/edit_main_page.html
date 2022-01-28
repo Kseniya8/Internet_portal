@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+
+    <head>
+        {{#ru}} <title>Редактирование главной страницы</title>{{/ru}}
+        {{#en}} <title>Edit main page</title>{{/en}}
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/images/it.png">
+        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/formStyles.css">
+        <link rel="stylesheet" href="/stylesheets/edit_main_page.css">
+        <link rel="stylesheet" href="/stylesheets/cropper.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+        <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+        <link rel="stylesheet" href="/stylesheets/preloaderStyles.css">
+    </head>
+
+    <body>
+        {{>base_header}}
+        <h1 class="text-main">
+            {{#en}}Edit main page{{/en}}
+            {{#ru}}Редактирование главной страницы{{/ru}}</h1>
+        <form name="FormHomepage" enctype="multipart/form-data">
+            <label class="text">
+                {{#en}}Edit text on slider{{/en}}
+                {{#ru}}Редактирование текста, наxодящийся на слайдере{{/ru}}
+            </label>
+            <div class="edit_space">
+                <textarea name="titleru" placeholder="Заголовок"></textarea>
+            </div>
+            <div class="edit_space">
+                <textarea name="title" placeholder="Heading"></textarea>
+            </div>
+            <label class="text">
+                {{#en}}Pictures on slider{{/en}}
+                {{#ru}}Изображения для слайдера{{/ru}}
+            </label>
+            <div id="slidersImages" class="edit_space">
+            </div>
+            <div class="edit_space">
+                <input class="imgfile" type="file" name="photos" accept=".png, .jpg, .jpeg" multiple>
+            </div>
+            <label class="text">
+                {{#en}}Edit text "About us"{{/en}}
+                {{#ru}}Редактирование текста "О нас"{{/ru}}
+            </label>
+            <div class="edit_space">
+                <textarea name="aboutru" placeholder="О нас"></textarea>
+            </div>
+            <div class="edit_space">
+                <textarea name="about" placeholder="About us"></textarea>
+            </div>
+            <div class="edit_space">
+                <button class="button_update_homepage">
+                    {{#en}}Reload{{/en}}
+                    {{#ru}}Обновить{{/ru}}
+                </button>
+            </div>
+        </form>
+        {{>base_footer}}
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+        <script src="/javascripts/vue-select.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <script type="module" src="/javascripts/edit_main_page.js"></script>
+        <script src="/javascripts/cropper.min.js"></script>
+    </body>
+
+</html>

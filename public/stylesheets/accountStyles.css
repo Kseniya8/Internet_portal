@@ -1,0 +1,162 @@
+body{
+    margin:0px;
+    font-family: 'Montserrat';
+}
+
+/* Основная секция */
+#user-info{
+    display: flex;
+    justify-content: center;
+}
+#user-info-content{
+    width: 1170px;
+    padding-top: 20px;
+    max-width: 100%;
+    background-color: rgba(212, 179, 158, 0.16);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+#user-info a{
+    color: black;
+}
+h1{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+/*Блок с личной информацией */
+#personal-info,
+#education-info{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    max-width: 90%;
+    background-color: rgb(236, 180, 145);
+    margin: 16px;
+    width: 500px;
+    padding: 10px;
+    border-radius: 5px;
+}
+#avatar-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+}
+img{
+    border-radius: 5px;
+}
+
+/*Блок с образованием */
+#education-info {
+    font-size: 0;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 0px;
+}
+
+.graduate-sapr,
+.graduate-another{
+    display: inline-block;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(206, 147, 110);
+    margin-bottom: 10px;
+    width: 100%;
+}
+.graduate-sapr p,
+.graduate-another p{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#education-info input[type="radio"] {
+    display: none;
+}
+
+#education-info-sapr,
+#education-info-another {
+    display: none;
+    font-size: 16px;
+    width: 100%;
+}
+
+#tab-btn-1:checked~#education-info-sapr,
+#tab-btn-2:checked~#education-info-another {
+    display: block;
+}
+
+#education-info label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: rgb(163, 117, 89);
+    padding-top: 4px;
+    padding-bottom: 4px;
+    width: 50%;
+    max-width: 100%;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+}
+
+#education-info label:not(:first-of-type) {
+    border-left: none;
+}
+
+#education-info input[type="radio"]:checked+label {
+    background-color: rgb(206, 147, 110);
+    border-bottom: 1px solid rgb(206, 147, 110);
+}
+
+label[for="tab-btn-1"]{
+    border-radius: 5px 0 0 0;
+}
+label[for="tab-btn-2"]{
+    border-radius: 0 5px 0 0;
+}
+
+/* Про карьеру */
+#prof-info,
+#achive-info,
+#disciplines-info,
+#partners-info,
+#quest-info{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 90%;
+    background-color: rgb(236, 180, 145);
+    margin: 16px;
+    width: 500px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Достижения */
+#achive-info{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+/* Партнёрство */
+#partner-logo{
+    max-width: 150px;
+    max-height: 150px;
+    object-fit: cover;
+    align-self: center;
+}
+
+/* Адаптив */
+@media (max-width:425px){
+    #personal-info{
+        display: block;
+    }
+}

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+    <head>
+        <title>Ошибка</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/images/it.png">
+        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/errorStyles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    </head>
+    <body>
+        {{>base_header}}
+        <div id="msg-head-block">
+            <h1>{{message}} {{status}}</h1>
+        </div>
+        <div id="img-block">
+            <img src="/images/warning.svg">
+        </div>
+        {{>base_footer}}
+    </body>
+</html>

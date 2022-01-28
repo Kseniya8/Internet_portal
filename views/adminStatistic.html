@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+    <head>
+        <title>
+            {{#en}}Alumni statistics{{/en}}
+            {{#ru}}Статистика выпускников{{/ru}}
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/images/it.png">
+        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/pagesStyles.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+        <link rel="stylesheet" href="/stylesheets/adminStatisticStyles.css">
+    </head>
+    <body>
+        {{>base_header}}
+        <section id="charts">
+            <div id="charts-content">
+                <div id="charts-header-block">
+                    <h1 id="charts-header">
+                        Статистика выпускников
+                    </h1>
+                </div>
+                <div id="charts-content-block">
+                    <div id="chart-year-block" class="chart-block" v-if="ShowBlock(year_graduation)">
+                        <div id="chart-year-header" class="chart-header">
+                            <h3>Год окончания СПбГТИ(ТУ)</h3>
+                        </div>
+                        <div id="chart-year">
+                            <line-chart 
+                                :data="year_graduation"
+                                xtitle="Год окончания"
+                                ytitle="Кол-во выпускников">
+                            </line-chart>
+                        </div>
+                    </div>
+                    <div id="chart-educ-form-block" class="chart-block" v-if="ShowBlock(educ_form)">
+                        <div id="chart-educ-form-header" class="chart-header">
+                            <h3>Форма обучения</h3>
+                        </div>
+                        <div id="chart-educ-form">
+                            <pie-chart :data="educ_form"></pie-chart>
+                        </div>
+                    </div>
+                    <div id="chart-qualification-block" class="chart-block" v-if="ShowBlock(qualification)">
+                        <div id="chart-qualification-header" class="chart-header">
+                            <h3>Квалификация</h3>
+                        </div>
+                        <div id="chart-qualification">
+                            <column-chart
+                                :colors="['#32CD32']"
+                                :data="qualification"
+                                xtitle="Квалификация"
+                                ytitle="Кол-во выпускников">
+                            </column-chart>
+                        </div>
+                    </div>
+                    <div id="chart-specialty-block" class="chart-block" v-if="ShowBlock(specialty)">
+                        <div id="chart-specialty-header" class="chart-header">
+                            <h3>Специальность</h3>
+                        </div>
+                        <div id="chart-specialty">
+                            <column-chart
+                                :colors="['#4682B4']"
+                                :data="specialty"
+                                xtitle="Специальность"
+                                ytitle="Кол-во выпускников">
+                            </column-chart>
+                        </div>
+                    </div>
+                    <div id="chart-dir-training-block" class="chart-block" v-if="ShowBlock(dir_training)">
+                        <div id="chart-dir-training-header" class="chart-header">
+                            <h3>Направление подготовки</h3>
+                        </div>
+                        <div id="chart-dir-training">
+                            <column-chart
+                                :colors="['#8B008B']"
+                                :data="dir_training"
+                                xtitle="Направление подготовки"
+                                ytitle="Кол-во выпускников">
+                            </column-chart>
+                        </div>
+                    </div>
+                    <div id="chart-focus-block" class="chart-block" v-if="ShowBlock(focus)">
+                        <div id="chart-focus-header" class="chart-header">
+                            <h3>Направленность</h3>
+                        </div>
+                        <div id="chart-focus">
+                            <column-chart
+                                :colors="['#FF4500']"
+                                :data="focus"
+                                xtitle="Направленность"
+                                ytitle="Кол-во выпускников">
+                            </column-chart>
+                        </div>
+                    </div>
+                    <div id="chart-group-block" class="chart-block" v-if="ShowBlock(group)">
+                        <div id="chart-group-header" class="chart-header">
+                            <h3>Номер группы</h3>
+                        </div>
+                        <div id="chart-group">
+                            <column-chart
+                                :colors="['#FA8072']"
+                                :data="group"
+                                xtitle="Номер группы"
+                                ytitle="Кол-во выпускников">
+                            </column-chart>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div id="modal-msg" style="display: none;">
+            <p style="margin-top: 16px; margin-bottom: 16px;"></p>
+        </div>
+        {{>base_footer}}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+        <script src="https://unpkg.com/chart.js@2.8.0/dist/Chart.bundle.js"></script>
+        <script src="https://unpkg.com/vue-chartkick@0.6.1"></script>
+        <script src="/javascripts/adminStatisticScripts.js"></script>
+    </body>
+</html>

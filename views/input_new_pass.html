@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+    <head>
+        <title>{{#ru}}Сброс пароля{{/ru}}{{#en}}Enter a new password{{/en}}</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="/images/it.png">
+        <link rel="stylesheet" href="/stylesheets/main.css">
+        <link rel="stylesheet" href="/stylesheets/authStyles.css">
+        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+        <link rel="stylesheet" href="/stylesheets/buttonStyle.css">
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    </head>
+<body>
+    {{>base_header}}
+    <section id="news" style="height: 100vh;">
+        <div class="mainContent">
+            <div class="headingText">
+                <p>{{#ru}}Сброс пароля{{/ru}}{{#en}}Enter a new password{{/en}}</p>
+            </div>
+            <p class="pass" style="margin-top:  20px; "><b>Пароль</b><br>
+                <input type="password" placeholder="Введите новый пароль">
+            </p>
+            <div id="modal"> <p style="margin-top: 16px; margin-bottom: 16px;"></p>   </div>
+            <button class="InputPass" style="margin-top: 40px; height: 40px;">{{#ru}}Обновить{{/ru}}{{#en}}Update{{/en}}</button>
+        </div>
+    </section>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script type="module" src="/javascripts/newPassScripts.js"></script>
+    {{>base_footer}}
+</body>
+</html>

@@ -1,0 +1,53 @@
+<header>
+    <div id="headerContent">
+        <div id="headerLeftPart">
+            <a class="header-logo-name" href="/">
+                <img id="uniIcon" src="/images/techSymb.png">
+                <img id="saprIcon" src="/images/saprSymb.png">
+                {{#en}}
+                <p>Saint-Petersburg State<br>Institute of Technology<br>(Technical University)</p>
+                {{/en}}
+                {{#ru}}
+                <p>Санкт-Петербургский государственный<br>технологический институт <br>(технический университет)</p>
+                {{/ru}}
+            </a>
+            <div class="menu-burger">
+                <img src="/images/burger.svg" class="menu-burger-svg">
+            </div>
+        </div>
+        <div id="headerRightPart">
+            <nav class="menu">
+                <ul class="navigation">
+                    <li><a href="/">{{#ru}}Главная{{/ru}} {{#en}}Main{{/en}}</a></li>
+                    <li><a href="/forms/">{{#ru}}Найти выпускников{{/ru}}{{#en}}Find graduates{{/en}}</a></li>
+                    <li><a href="/partners/">{{#ru}}Партнёры{{/ru}}{{#en}}Partners{{/en}}</a></li>
+                    <li><a href="/gallery/">{{#ru}}Галерея{{/ru}}{{#en}}Gallery{{/en}}</a></li>
+                    <li><a href="/news/">{{#ru}}Новости{{/ru}}{{#en}}News{{/en}}</a></li>
+                    {{#isAuth}}
+                    {{#isAdmin}}
+                    <li><a href="/gallery/admin/">{{#ru}}Ред. галереи{{/ru}}{{#en}}Gallery editing{{/en}}</a></li>
+                    <li><a href="/admin/">{{#ru}}Анкеты{{/ru}}{{#en}}Questionnaires{{/en}}</a></li>
+                    <li><a href="/edit_main_page/admin/">{{#ru}}Ред. главной{{/ru}}{{#en}}Edit main page{{/en}}</a></li>
+                    {{/isAdmin}}
+                    {{^isAdmin}}
+                    <li><a href="/account/form/">{{#ru}}Анкета{{/ru}}{{#en}}Questionnaire{{/en}}</a></li>
+                    {{/isAdmin}}
+                    <li><a href="/account/logout/">{{#ru}}Выход{{/ru}}{{#en}}Log out{{/en}}</a></li>
+                    {{/isAuth}}
+                    {{^isAuth}}
+                    <li><a href="#contactInf">{{#ru}}Контакты{{/ru}}{{#en}}Contacts{{/en}}</a></li>
+                    <li><a href="/account/">{{#ru}}Регистрация/Вход{{/ru}}{{#en}}Registration/Log in{{/en}}</a></li>
+                    {{/isAuth}}
+                </ul>
+                <div id="switch-lang">
+                    <div {{#ru}} style="color: white;" {{/ru}} {{#en}} id="not-chose" {{/en}}>RU</div>
+                    <div {{#en}} style="color: white;" {{/en}} {{#ru}} id="not-chose" {{/ru}}>EN</div>
+                </div>
+            </nav>
+            <img src="/images/graduation-4474213%202.png">
+        </div>
+    </div>
+</header>
+<div style="height: 112px;"></div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<script src="/javascripts/headerScripts.js"></script>
