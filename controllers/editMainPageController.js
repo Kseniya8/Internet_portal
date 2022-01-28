@@ -1,5 +1,5 @@
 const editMainPageModel = require("../models/editMainPageModel.js")
-const base64 = require("../other/workWithBS64")
+const bs64 = require("../other/workWithBS64")
 const appConfig = require("../appConfig")
 
 exports.admin = (req, res, next) => res.render("edit_main_page.html", {
@@ -12,20 +12,20 @@ exports.getFormData = (req, res, next) => {
     console.log("getFormData")
 
     editMainPageModel.find({}, {})
-                .then(photos => {
-                    if (!photos) photos = []
-                    else {
-                        photos.forEach((photo, i) => {
-                            photos[i]['_doc']['img'] = bs64.readFile(`${appConfig.editMainPage_path}${photo['img_name']}`)
-                            delete photos[i]['_doc']['img_name']
-                        })
-                    }
-                    form['gallery_files'] = photos
-                    res.json(form)
-                
+        .then(photos => {
+            if (!photos) photos = []
+            else {
+                photos.forEach((photo, i) => {
+                    photos[i]['_doc']['img'] = bs64.readFile(`${appConfig.editMainPage_path}${photo['img_name']}`)
+                    delete photos[i]['_doc']['img_name']
+                })
+            }
+            form['gallery_files'] = photos
+            res.json(form)
+
                 .catch(err => next(err))
-    })
-    .catch(err => next(err))
+        })
+        .catch(err => next(err))
 }
 
 
