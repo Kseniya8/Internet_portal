@@ -158,4 +158,8 @@ function OpenModel(text){
     }
 }
 
+<<<<<<< HEAD
 Vue.createApp(App).mount('#auth-section')
+=======
+Vue.createApp(App).mount('#auth-section')
+>>>>>>> master

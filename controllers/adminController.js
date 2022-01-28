@@ -1,5 +1,6 @@
 const accountModel = require("../models/accountModel.js");
 const formModel = require("../models/formModel.js");
+const homeModel = require("../models/homesModel.js");
 const PDFDocument = require('pdfkit');
 const fs = require('fs');
 const path = require('path');
@@ -88,6 +89,12 @@ exports.updateStatuses = (req, res, next) => {
     })
     res.sendStatus(200)
 
+}
+
+exports.updateHomepage = (req, res, next) => {
+    homeModel.updateOne({ block: 'home' }, req.body, { new: true })
+        .then(() => res.sendStatus(200))
+        .catch(err => next(err))
 }
 
 exports.createReport = (req, res, next) => {

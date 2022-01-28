@@ -14,7 +14,6 @@ exports.admin = (req, res, next) => res.render("gallery_admin.html", {
     isAdmin: Boolean(req.session.role == 'admin')
 })
 
-
 exports.getTruePhotos = (req, res, next) => {
 
     need_fields = {}

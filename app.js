@@ -44,9 +44,9 @@ app.use(morgan('common', {
 }));
 //:remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
 
-app.use(express.json({ extended: false, limit: '2mb' }));
+app.use(express.json({ extended: false, limit: '5mb' }));
 //app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.urlencoded({ extended: false, limit: '2mb' }));
+app.use(express.urlencoded({ extended: false, limit: '5mb' }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // auth
