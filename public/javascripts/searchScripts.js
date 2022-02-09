@@ -77,8 +77,4 @@ window.onload = function () {
         }
     });
     vueInput.searchButtonClick();
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master

@@ -6,13 +6,10 @@ header{
     z-index: 6;
 }
 
-<<<<<<< HEAD
-=======
 .hidden {
     opacity: 0 !important;
 }
 
->>>>>>> master
 .banner{
     background-color: rgba(212, 179, 158, 0.16);
 }
@@ -399,8 +396,4 @@ a{
     #uniPicContent > div > div{
         height: 38px;
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> master

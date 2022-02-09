@@ -94,7 +94,7 @@ exports.updateStatuses = (req, res, next) => {
 exports.updateHomepage = (req, res, next) => {
     homeModel.updateOne({ block: 'home' }, req.body, { new: true })
         .then(() => res.sendStatus(200))
-        .catch(err => next(err))
+        .catch(err => next(err))    
 }
 
 exports.createReport = (req, res, next) => {

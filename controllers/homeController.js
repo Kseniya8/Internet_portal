@@ -17,10 +17,10 @@ const setLang = (req, res) => {
   res.sendStatus(200);
 }
 
-async function getHomepage(req, res, next) {
-  await homesModel.findOne({ block: 'home' })
+ async function getHomepage (req, res, next) {
+    await homesModel.findOne({ block: 'home' })
     .then(data => res.status(200).send(data))
-    .catch(err => next(err))
+    .catch(err => next(err))   
 }
 
-module.exports = { getHomepage, setLang, index }
+module.exports = {getHomepage, setLang, index}
