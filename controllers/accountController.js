@@ -213,7 +213,6 @@ exports.returnForm = (req, res, next) => res.render("form.html", { [req.session.
 
 
 exports.getFormData = (req, res, next) => {
-    console.log("getFormData")
 
     formModel.findOne({ _id: req.session.user_id }, { _id: 0 })
         .then(form => {
@@ -242,7 +241,6 @@ exports.getFormData = (req, res, next) => {
 }
 
 exports.checkRole = (req, res, next) => {
-    console.log("checkRole")
     if (!req.session.user_id) throw new UserError(req.session.lang == 'en' ? "You are not logged in!" : "Вы не вошли в систему!", 'html')
 
     accountModel.Account.findById(req.session.user_id)
@@ -256,7 +254,6 @@ exports.checkRole = (req, res, next) => {
 }
 
 exports.createForm = (req, res, next) => {
-    console.log("createForm")
     form_from_client = req.body
 
     formModel.findOne({ _id: req.session.user_id })
@@ -274,28 +271,22 @@ exports.createForm = (req, res, next) => {
         .then(() => {
             // Работаем с фотками которые пришли с клиента
             new_photos = form_from_client.new_gallery_files
-            console.log("фото создано")
             changed_comment = form_from_client.changed_comment
             deleted_photo = form_from_client.deleted_photo
 
             new_photos.forEach(photo => {
 
                 let filepath = `${appConfig.gallery_path}${Date.now()}.png`
-                console.log("путь " + filepath)
                 bs64.writeFile(filepath, photo['img'].split(',')[1])
-                console.log("прочитано")
 
                 filename = filepath.split('/')
-                console.log("имя файла" + filename)
                 img_name = filename[filename.length - 1]
-                console.log("имя картинки" + img_name)
                 photo = {
                     'user_id': req.session.user_id,
                     'img_name': img_name,
                     'comment': photo['comment'],
                     'status': false,
                 }
-                console.log("photo " + photo)
                 galleryModel(photo).save().then()
                     .catch(err => next(err))
             })
