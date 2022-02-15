@@ -256,6 +256,8 @@ exports.createReport = (req, res, next) => {
 
 exports.statistic = (req, res) => res.render("adminStatistic.html", { [req.session.lang ?? 'ru']: true, isAuth: true, isAdmin: true })
 
+exports.statisticPartners = (req, res) => res.render("adminStatisticPartners.html", { [req.session.lang ?? 'ru']: true, isAuth: true, isAdmin: true })
+
 exports.getStatistic = (req, res) => {
 
     let data_statistic = {
@@ -281,3 +283,30 @@ exports.getStatistic = (req, res) => {
         })
         .catch(err => next(err))
 }
+
+exports.getStatisticPartners = (req, res) => {
+
+    let data_statistic = {
+        'year_graduation': {},
+        'educ_form': {},
+        'qualification': {},
+        'specialty': {},
+        'dir_training': {},
+        'focus': {},
+        'group': {},
+    }
+
+    formModel.find({})
+        .then(forms => {
+            forms.forEach(form => {
+                form['education'].forEach(educ => {
+                    for (key in data_statistic)
+                        if (educ[key])
+                            data_statistic[key][educ[key]] ? data_statistic[key][educ[key]]++ : data_statistic[key][educ[key]] = 1
+                })
+            })
+            res.json(data_statistic)
+        })
+        .catch(err => next(err))
+}
+
