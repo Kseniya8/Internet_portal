@@ -94,7 +94,7 @@ exports.updateStatuses = (req, res, next) => {
 exports.updateHomepage = (req, res, next) => {
     homeModel.updateOne({ block: 'home' }, req.body, { new: true })
         .then(() => res.sendStatus(200))
-        .catch(err => next(err))    
+        .catch(err => next(err))
 }
 
 exports.createReport = (req, res, next) => {
@@ -287,24 +287,41 @@ exports.getStatistic = (req, res) => {
 exports.getStatisticPartners = (req, res) => {
 
     let data_statistic = {
-        'year_graduation': {},
-        'educ_form': {},
-        'qualification': {},
-        'specialty': {},
-        'dir_training': {},
-        'focus': {},
-        'group': {},
+        'count': 0,
+        'count_sapr': 0,
+        'city': [],
+        'field_activety': {},
+        'count_users_company': {}
     }
 
-    formModel.find({})
+    params = { isPartner: true }
+
+    formModel.countDocuments({ isPartner: true }, function (err, count) {
+        if (err) return handleError(err);
+        data_statistic['count'] = count;
+    })
+
+    formModel.countDocuments({ isPartner: true, education: { $exists: true, $ne: [] } }, function (err, count) {
+        if (err) return handleError(err);
+        data_statistic['count_sapr'] = count;
+    })
+
+    formModel.find(params)
         .then(forms => {
+            let arr = [];
             forms.forEach(form => {
-                form['education'].forEach(educ => {
-                    for (key in data_statistic)
-                        if (educ[key])
-                            data_statistic[key][educ[key]] ? data_statistic[key][educ[key]]++ : data_statistic[key][educ[key]] = 1
-                })
+                arr.push({
+                    'name_company': form['partner']['name'],
+                    'city': form['city'],
+                    'years_partnership': new Date().getFullYear() - form['partner']['year']
+                });
+
+                if (form['field_activety'])
+                    data_statistic['field_activety'][form['field_activety']] ? data_statistic['field_activety'][form['field_activety']]++ : data_statistic['field_activety'][form['field_activety']] = 1
+
+                data_statistic['count_users_company'][form['partner']['name']] ? data_statistic['count_users_company'][form['partner']['name']]++ : data_statistic['count_users_company'][form['partner']['name']] = 1
             })
+            data_statistic['city'] = [...new Set(arr)];
             res.json(data_statistic)
         })
         .catch(err => next(err))
