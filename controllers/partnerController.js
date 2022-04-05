@@ -6,6 +6,11 @@ exports.index = (req, res) => res.render("partners.html", {
     isAdmin: Boolean(req.session.role == "admin")
 });
 
+exports.admin = (req, res) => res.render("partners_admin.html", {
+    [req.session.lang ?? 'ru']: true,
+    isAuth: Boolean(req.session.user_id),
+    isAdmin: Boolean(req.session.role == "admin")
+});
 
 exports.searchForms = (req, res, next) => {
 
