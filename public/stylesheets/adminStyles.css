@@ -1,122 +1,140 @@
-body, button{
+body,
+button {
     font-family: 'Montserrat';
     margin: 0;
 }
-p{
+
+p {
     margin: 0;
     display: inline-block;
 }
 
 /*Кнопки переходов по ссылкам */
-#buttons-link-section{
+#buttons-link-section {
     display: flex;
     justify-content: center;
     padding: 20px 0 30px 0;
 }
-#buttons-link-content{
+
+#buttons-link-content {
     display: flex;
-    justify-content: flex-end;
-    width: 1170px;
+    justify-content: space-evenly;
+    max-width: 1170px;
+    width: 100%;
+    flex-wrap: wrap;
 }
-.button-link-block{
+
+.button-link-block {
     display: flex;
     justify-content: flex-end;
     max-width: 100%;
-    margin: 20px;
+    margin: 15px 20px 0;
 }
-#report-button{
+
+#report-button {
     width: 200px;
     height: 40px;
 }
-#statistic-button{
+
+#statistic-button {
     width: 265px;
     height: 40px;
 }
 
 /* Таблица */
-#table-section{
+#table-section {
     margin: 30px;
     margin-top: 0px;
     display: flex;
     justify-content: center;
 }
-#table-block{
+
+#table-block {
     width: 1170px;
     max-width: 100%;
 }
-td{
+
+td {
     text-align: center;
 }
-.red-button{
+
+.red-button {
     background-color: red;
 }
-.red-button:hover{
+
+.red-button:hover {
     background-color: maroon;
 }
-td > button{
+
+td>button {
     font-size: 16px;
     background-color: greenyellow;
     color: black;
 }
-td > button:hover{
+
+td>button:hover {
     background-color: green;
 }
 
 /* Мини-форма выпускника (модал) */
 #partner,
-#form{
+#form {
     display: inline-flex;
     flex-direction: column;
     background-color: rgb(238, 227, 220);
     text-decoration: none;
 }
+
 #partner>div,
-#form>div{
+#form>div {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
+
 #partner>div {
     padding: 25px;
 }
 
-#form>div{
+#form>div {
     padding-left: 100px;
 }
 
-#form p{
+#form p {
     padding-left: 100px;
 }
+
 #form-img {
     padding-left: 80px;
 }
 
 #partner p,
-#form p{
+#form p {
     color: black;
-    padding: 3px; 
+    padding: 3px;
     text-align: center;
 }
 
 #partner-block,
-#form-block{
+#form-block {
     background-color: rgb(238, 227, 220);
     display: none;
 }
 
 /* Сохранение изменений (кнопка)*/
-#save-button-section{
+#save-button-section {
     display: flex;
     justify-content: center;
     margin-bottom: 30px;
 }
-#save-button{
+
+#save-button {
     width: 252px;
     height: 52px;
 }
 
 /* Кнопки */
-button{
+button {
     background: #44392E;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
@@ -129,11 +147,12 @@ button{
     transition-duration: 0.1s;
     cursor: pointer;
 }
-button:active{
+
+button:active {
     background: black;
     transform: translateY(4px);
 }
-button:hover{
+
+button:hover {
     background: black;
 }
-

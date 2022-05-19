@@ -1,4 +1,4 @@
-﻿function User(name, patronymic, email, status){
+﻿function User(name, patronymic, email, status) {
     this.name = name
     this.patronymic = patronymic
     this.email = email
@@ -11,7 +11,7 @@ var table;
 var partnersTable;
 let vueInput;
 let vm;
-window.onload = function(){
+window.onload = function () {
     vm = new Vue({
         el: '#pages-section',
         data: {
@@ -24,7 +24,7 @@ window.onload = function(){
                 return this.inputData.length == 0;
             }
         },
-        methods:{
+        methods: {
             GetPartners: function () {
                 this.address = '/partners/search';
                 var request = new XMLHttpRequest();
@@ -56,16 +56,15 @@ window.onload = function(){
                         description: item.description
                     });
                 });
-                console.log(this.inputData)
-                    CreatePartnersTable(this.inputData)
+                CreatePartnersTable(this.inputData)
             },
-            MoveOnPage: function(page){
+            MoveOnPage: function (page) {
                 var request = new XMLHttpRequest();
-                request.open('GET','/admin/get_forms?page=' + (page - 1), true);
+                request.open('GET', '/admin/get_forms?page=' + (page - 1), true);
                 request.setRequestHeader("Content-Type", "application/json");
-                request.onreadystatechange = function(){
+                request.onreadystatechange = function () {
                     if (request.readyState === 4)
-                        if (request.status === 200){
+                        if (request.status === 200) {
                             var answer = JSON.parse(request.responseText);
                             if (answer.count_pages != undefined) vm.lastPage = answer.count_pages;
                             vm.correntPage = page;
@@ -83,16 +82,16 @@ window.onload = function(){
     vm.MoveOnPage(1);
 }
 
-function GetTableDate(inputData){
-    inputData.forEach(function(item, i){
+function GetTableDate(inputData) {
+    inputData.forEach(function (item, i) {
         item.button_status = GetButtonStatus(item.status_verified, item.update);
     });
     CreateTable(inputData);
 }
 
-function GetButtonStatus(status_verified, update){
+function GetButtonStatus(status_verified, update) {
     var button = '<button onclick="event.stopPropagation()">';
-    if (status_verified){
+    if (status_verified) {
         if (update) button += 'Изменено';
         else button += 'Проверен';
     }
@@ -101,11 +100,11 @@ function GetButtonStatus(status_verified, update){
     return button;
 }
 
-function CreatePartnersTable(inputData){
-    if (partnersTable){
+function CreatePartnersTable(inputData) {
+    if (partnersTable) {
         partnersTable.clear().rows.add(inputData).draw();
     }
-    else partnersTable = $('#partners-table').DataTable( {
+    else partnersTable = $('#partners-table').DataTable({
         language: {
             url: "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
         },
@@ -118,6 +117,11 @@ function CreatePartnersTable(inputData){
             { data: 'year', defaultContent: "" },
             { data: 'endyear', defaultContent: "" },
             { data: 'countrycity', defaultContent: "" },
+            {
+                data: 'delete', render: function () {
+                    return '<button onclick="event.stopPropagation()" class="red-button">Удалить</button>'
+                }
+            },
         ],
         columnDefs: [
             {
@@ -126,34 +130,36 @@ function CreatePartnersTable(inputData){
                 searchable: false
             }
         ]
-    } );
+    });
     partnersTable.draw();
-    
+
+    $('td > button').on('click', DeletePartner);
+
     $('#partners-table tbody').on('click', 'tr', function () {
         ShowPartner(partnersTable.row(this).data());
-    } );
+    });
 }
 
-function ShowPartner(data){
-    $('#partner').attr('href','/admin/edit_partner?id=' + data['id']);
+function ShowPartner(data) {
+    $('#partner').attr('href', '/admin/edit_partner?id=' + data['id']);
     $('#partner-block').modal();
     $("#partner-companyname").text("Компания: " + data['companyfullname']);
     $("#partner-year").text("Год начала партнёрства: " + data['year']);
     $("#partner-endyear").text("Год окончания партнёрства: " + data['endyear']);
-    $("#partner-countrycity").text(data["Месторасположение: " +'countrycity']);
+    $("#partner-countrycity").text(data["Месторасположение: " + 'countrycity']);
     $("#partner-representname").text("Представители: " + data['representname']);
     $("#partner-img").attr('src', data['logo']);
     $("#partner-link").text("Ссылка: " + data['link']);
     $("#partner-about").text("О компании: " + data['about']);
     $("#partner-projects").text("Совместные проекты: " + data['projects']);
-    $("#partner-vac").text("Вакансии: " + data['name']+ " " + data['description']);
+    $("#partner-vac").text("Вакансии: " + data['name'] + " " + data['description']);
 }
 
-function CreateTable(inputData){
-    if (table){
+function CreateTable(inputData) {
+    if (table) {
         table.clear().rows.add(inputData).draw();
     }
-    else table = $('#admin-table').DataTable( {
+    else table = $('#admin-table').DataTable({
         language: {
             url: "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
         },
@@ -162,13 +168,13 @@ function CreateTable(inputData){
         searching: false,
         columns: [
             { data: '_id' },
-            { data: 'name'},
+            { data: 'name' },
             { data: 'surname' },
             { data: 'patronymic' },
             { data: 'city' },
-            { data: 'button_status'}
+            { data: 'button_status' }
         ],
-        order: [[ 5, "asc" ]],
+        order: [[5, "asc"]],
         columnDefs: [
             {
                 targets: [0],
@@ -176,48 +182,48 @@ function CreateTable(inputData){
                 searchable: false
             }
         ]
-    } );
+    });
     table.draw();
 
     $('td > button').on('click', TableButtonClick);
 
     $('#admin-table tbody').on('click', 'tr', function () {
         ShowForm(table.row(this).data());
-    } );
+    });
 }
 
-$('#save-button').on('click', function(){
+$('#save-button').on('click', function () {
     var changesArr = [];
     var changesUpdateArr = [];
-    console.log(changesStatuses)
-    if(!changesStatuses && !changesUpdate.size){
+    if (!changesStatuses && !changesUpdate.size) {
         ShowModal('Изменений не обнаружено');
         return;
     }
     for (key in changesStatuses)
         changesArr.push({
-            _id: key, 
+            _id: key,
             name: changesStatuses[key].name,
             patronymic: changesStatuses[key].patronymic,
             email: changesStatuses[key].email,
             status_verified: changesStatuses[key].status,
         });
 
-    changesUpdate.forEach(function(value, key){
-        changesUpdateArr.push({_id: key, update: value});
+    changesUpdate.forEach(function (value, key) {
+        changesUpdateArr.push({ _id: key, update: value });
     });
 
     let request = new XMLHttpRequest();
-    request.open('POST','/admin/update_statuses',true);
+    request.open('POST', '/admin/update_statuses', true);
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {
-        if (request.readyState === 4){
-            if (request.status === 200){
+        if (request.readyState === 4) {
+            if (request.status === 200) {
                 ShowModal('Изменения сохранены');
                 changesStatuses = {};
                 changesUpdate.clear();
-                $('td > button').each( function(){
-                    this.classList.remove('red-button')});
+                $('td > button').each(function () {
+                    this.classList.remove('red-button')
+                });
             } else {
                 ShowModal('При отправке данных возникла ошибка');
             }
@@ -229,8 +235,8 @@ $('#save-button').on('click', function(){
     }));
 });
 
-function ShowForm(data){
-    $('#form').attr('href','/forms/get_form/' + data['_id']);
+function ShowForm(data) {
+    $('#form').attr('href', '/forms/get_form/' + data['_id']);
     $('#form-block').modal();
     $("#form-email").text(data['email']);
     $("#form-name").text(data['name']);
@@ -241,46 +247,74 @@ function ShowForm(data){
     $("#form-img").attr('src', data['photo']);
 }
 
-function TableButtonClick(){
+function DeletePartner() {
+    let obj = partnersTable.row(this.parentElement.parentElement).data();
+    let id = obj['id'];
+    console.log('удаление ' + obj);
+
+    let request = new XMLHttpRequest();
+    request.open('POST', '/admin/update_statuses', true);
+    request.setRequestHeader("Content-Type", "application/json");
+    request.onreadystatechange = function () {
+        if (request.readyState === 4) {
+            if (request.status === 200) {
+                ShowModal('Изменения сохранены');
+                changesStatuses = {};
+                changesUpdate.clear();
+                $('td > button').each(function () {
+                    this.classList.remove('red-button')
+                });
+            } else {
+                ShowModal('При отправке данных возникла ошибка');
+            }
+        }
+    }
+    request.send(JSON.stringify({
+        statuses_ver: JSON.stringify(changesArr),
+        statuses_upd: JSON.stringify(changesUpdateArr)
+    }));
+}
+
+function TableButtonClick() {
     let obj = table.row(this.parentElement.parentElement).data();
     let update = obj['update'];
-    let id =  obj['_id'];
+    let id = obj['_id'];
     this.classList.toggle('red-button');
-    switch(this.textContent){
+    switch (this.textContent) {
         case "Изменено":
             this.textContent = "Проверен";
             changesUpdate.set(id, false);
             break;
         case "Гость":
             this.textContent = "Проверен";
-            if (!(id in changesStatuses)) 
+            if (!(id in changesStatuses))
                 changesStatuses[id] = new User(
-                                                obj.name,
-                                                obj.patronymic,
-                                                obj.email,
-                                                this.textContent == "Проверен",
+                    obj.name,
+                    obj.patronymic,
+                    obj.email,
+                    this.textContent == "Проверен",
                 );
             else delete changesStatuses[id];
             break;
         case "Проверен":
-            if (update){
+            if (update) {
                 this.textContent = "Изменено";
                 changesUpdate.set(id, true);
             } else {
                 this.textContent = "Гость";
-                if (!(id in changesStatuses)) 
-                changesStatuses[id] = new User(
-                                                obj.name,
-                                                obj.patronymic,
-                                                obj.email,
-                                                this.textContent == "Проверен",
-                );
+                if (!(id in changesStatuses))
+                    changesStatuses[id] = new User(
+                        obj.name,
+                        obj.patronymic,
+                        obj.email,
+                        this.textContent == "Проверен",
+                    );
             }
             break;
     }
 }
 
-function ShowModal(text){
+function ShowModal(text) {
     $('#modal-msg').find('p').text(text);
     $('#modal-msg').modal();
 }

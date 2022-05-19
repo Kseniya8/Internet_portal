@@ -17,6 +17,7 @@ adminRouter.post('/add_news', jsonParser, adminController.updateStatuses)
 adminRouter.post('/edit_news', jsonParser, adminController.updateStatuses)
 adminRouter.post('/update_statuses', jsonParser, adminController.updateStatuses)
 adminRouter.post('/update_homepage', jsonParser, adminController.updateHomepage)
+adminRouter.post('/delete_partner', jsonParser, adminController.deletePartner)
 
 module.exports = adminRouter;
 

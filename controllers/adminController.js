@@ -260,11 +260,11 @@ exports.statistic = (req, res) => res.render("adminStatistic.html", { [req.sessi
 
 exports.AddPartners = (req, res) => res.render("partners_admin.html", { [req.session.lang ?? 'ru']: true, isAuth: true, isAdmin: true })
 
-exports.EditPartners = (req, res) => res.render("partner_edit.html", { 
-        [req.session.lang ?? 'ru']: true,
-        isAuth: true,
-        isAdmin: true, 
-    });
+exports.EditPartners = (req, res) => res.render("partner_edit.html", {
+    [req.session.lang ?? 'ru']: true,
+    isAuth: true,
+    isAdmin: true,
+});
 
 exports.statisticPartners = (req, res) => res.render("adminStatisticPartners.html", { [req.session.lang ?? 'ru']: true, isAuth: true, isAdmin: true })
 
@@ -353,4 +353,7 @@ exports.getStatisticPartners = async (req, res) => {
 
     data_statistic.ended = { sapr, other };
 
+}
+
+exports.deletePartner = async (req, res) => {
 }

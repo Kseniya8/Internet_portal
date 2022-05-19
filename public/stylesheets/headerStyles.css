@@ -1,4 +1,3 @@
-
 header {
     width: 100%;
     padding-bottom: 16px;
@@ -9,61 +8,71 @@ header {
     position: fixed;
     z-index: 1;
 }
+
 header p {
     margin: 16px;
 }
 
-#headerContent{
-    width: 1700px;
+#headerContent {
+    width: 1170px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
 }
-.header-logo-name{
+
+.header-logo-name {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
 }
-.header-logo-name > p{
+
+.header-logo-name>p {
     color: white;
-    
+
     font-size: 13px;
 }
-#saprIcon{
+
+#saprIcon {
     margin-left: 11px;
 }
-#headerRightPart{
-    width: 62%;
+
+#headerRightPart {
+    width: 65%;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
 }
-#headerRightPart > img{
+
+#headerRightPart>img {
     margin-left: 12px;
 }
-header a{
+
+header a {
     text-decoration: none;
     font-size: 14px;
     color: white;
 }
+
 header .navigation {
     margin: 0;
     padding: 0;
 }
-header li{
+
+header li {
     float: left;
     display: inline;
-    padding: 0 10px 0 10px;
+    padding: 0 10px 0 0;
 }
-.navigation li a:hover{
+
+.navigation li a:hover {
     border-bottom: 2px solid #ffffff;
 }
 
 .navigation li.active a {
-	border-bottom: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
 }
 
 .menu {
@@ -75,22 +84,23 @@ header li{
     justify-content: space-between;
 }
 
-.menu-burger{
+.menu-burger {
     display: none;
     width: 64px;
     height: 64px;
 }
-.menu-burger-svg{
-    fill:white;
+
+.menu-burger-svg {
+    fill: white;
 }
 
 
-.closed{
+.closed {
     display: none;
     z-index: 0;
 }
 
-#switch-lang{
+#switch-lang {
     width: 66px;
     display: flex;
     justify-content: space-around;
@@ -101,57 +111,80 @@ header li{
 }
 
 
-@media(max-width:1170px){
-    #headerContent{
+@media(max-width:1170px) {
+    #headerContent {
         width: 100%;
         padding-left: 10px;
         padding-right: 10px;
         display: flex;
         flex-direction: column;
     }
-    .menu-burger{
+
+    .menu-burger {
         display: block;
     }
-    header nav{
+
+    .menu {
+        flex-direction: column;
+    }
+
+    header .navigation {
+        margin: 0;
+        padding: 0;
+    }
+
+    header li {
+        float: unset;
+        display: block;
+        padding: 10px 0 0 0;
+    }
+
+    header nav {
         display: none;
         flex-direction: column;
         justify-content: flex-start;
     }
-    header nav a{
+
+    header nav a {
         padding-top: 10px;
     }
-    #switch-lang{
+
+    #switch-lang {
         margin-top: 10px;
     }
-    #headerLeftPart{
+
+    #headerLeftPart {
         width: 100%;
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
     }
-    #headerRightPart > img{
+
+    #headerRightPart>img {
         display: none;
     }
-    #headerRightPart{
+
+    #headerRightPart {
         width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
     }
-    .open{
+
+    .open {
         display: flex;
     }
 }
-@media(max-width:425px){
-    #uniIcon{
+
+@media(max-width:425px) {
+    #uniIcon {
         display: none;
     }
-    #saprIcon{
+
+    #saprIcon {
         display: none;
     }
-    .header-logo-name > p{
+
+    .header-logo-name>p {
         margin-left: 0px;
     }
 }

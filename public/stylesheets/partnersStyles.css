@@ -1,20 +1,10 @@
-body{
+body {
     margin: 0;
     font-family: 'Montserrat';
 }
+
 .partnerAdmin {
     padding: 0 20px;
-}
-/* .searchResultPartner{
-    display: flex;
-    justify-content: space-around;
-}
-#searchResultPartner {
-    padding-bottom: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
 }
 
 */ .partner {
@@ -26,17 +16,20 @@ body{
     display: block;
     text-align: center;
 }
+
 .partner_col {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
 }
+
 .partner p {
     color: black;
     font-size: 14pt;
     padding-top: 15px;
 }
+
 .representers {
     display: flex;
     flex-direction: row;
@@ -45,40 +38,47 @@ body{
 }
 
 .representer {
-    background-color:rgba(59, 59, 59, 0.445);
+    background-color: rgba(59, 59, 59, 0.445);
     display: flex;
     padding: 20px;
     margin: 30px auto;
     color: #fff;
 }
-.infoLink{
+
+.infoLink {
     margin-top: 5px;
 }
-.infoLink a{
+
+.infoLink a {
     color: black;
     text-decoration: underline;
 }
-.infoLink a:hover{
+
+.infoLink a:hover {
     color: black;
     text-decoration: none;
 }
+
 .partnerPhoto {
     width: 100px;
     height: 100px;
 }
-#TitleSearch{
+
+#TitleSearch {
     padding-top: 30px;
     padding-bottom: 30px;
 }
-hr{
+
+hr {
     margin: 20px 0;
-	padding: 0;
-	height: 1px;
-	border: none;
-	border-top: 2px solid rgb(82, 81, 80);
+    padding: 0;
+    height: 1px;
+    border: none;
+    border-top: 2px solid rgb(82, 81, 80);
     width: 50%;
     align-items: center;
 }
-h1{
+
+h1 {
     text-align: center;
 }
