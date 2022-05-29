@@ -41,6 +41,9 @@ window.onload = function () {
         AddElementToArray: function (array) {
           array.push({});
         },
+        AddChainToArray: function (array) {
+          array.push('');
+        },
         AddAchievFile: function (event) {
           let input = event.target.files[0];
           if (IsImage(input.type)) {
@@ -121,6 +124,7 @@ window.onload = function () {
       }
     }
 
+    console.log(vue.inputData);
     for (let i = 0; i < vue.inputData.forsearch.length; i++) {
       if (!vue.inputData.forsearch[i]) {
         ShowMsg(lang === 'ru' ?

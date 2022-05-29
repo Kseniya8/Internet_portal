@@ -540,56 +540,60 @@
                                     {{#ru}}Являетесь ли вы представителем партнёра кафедры?{{/ru}}</b></label>
                         </div>
 
-                            <div v-show="inputData.isPartner"><b>{{#en}}Name of the company you represent{{/en}}
-                                    {{#ru}}Название компании, представителем которой вы являетесь{{/ru}}</b><br>
-                                <div id="v-model-select" class="companies">
-                                    <select class="comp_style" v-model="inputData.partner">
-                                        <div class="graduate" v-for="partner in inputData">
-                                            <img v-bind:src="partner.logo" width="100%" class="">
-                                            <div class="info">
-                                                <p v-text="partner.representname"></p>
-                                                <p v-text="partner.companyname"></p>
-                                                <p v-if="partner.year"
-                                                    v-text="'{{#en}}Year of start partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + partner.year">
-                                                </p>
-                                                <p v-if="partner.endyear"
-                                                    v-text="'{{#en}}Year of end partnership{{/en}}{{#ru}}Год завершения партнёрства{{/ru}}: ' + partner.endyear">
-                                                </p>
-                                                <p v-if="partner.countrycity" v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity"></p>
-                                            </div>
-                                            </a>
+                        <div v-show="inputData.isPartner"><b>{{#en}}Name of the company you represent{{/en}}
+                                {{#ru}}Название компании, представителем которой вы являетесь{{/ru}}</b><br>
+                            <div id="v-model-select" class="companies">
+                                <select class="comp_style" v-model="inputData.partner">
+                                    <div class="graduate" v-for="partner in inputData">
+                                        <img v-bind:src="partner.logo" width="100%" class="">
+                                        <div class="info">
+                                            <p v-text="partner.representname"></p>
+                                            <p v-text="partner.companyname"></p>
+                                            <p v-if="partner.year"
+                                                v-text="'{{#en}}Year of start partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + partner.year">
+                                            </p>
+                                            <p v-if="partner.endyear"
+                                                v-text="'{{#en}}Year of end partnership{{/en}}{{#ru}}Год завершения партнёрства{{/ru}}: ' + partner.endyear">
+                                            </p>
+                                            <p v-if="partner.countrycity"
+                                                v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity">
+                                            </p>
                                         </div>
-                                      <option disabled value="">
+                                        </a>
+                                    </div>
+                                    <option disabled value="">
                                         {{#en}}Select the company you represent{{/en}}
                                         {{#ru}}Выберите компанию, представителем которой вы являетесь{{/ru}}</option>
-                                    <option v-for="partner in partnersList" v-text="partner.name" v-value="partner._id"></option>
-                                    </select>
-                                  </div>
+                                    <option v-for="partner in partnersList" v-text="partner.name" v-value="partner._id">
+                                    </option>
+                                </select>
                             </div>
                         </div>
+                    </div>
 
-                    </div>
-                    <div id="privacy-checkbox-block">
-                        <input type="checkbox" id="privacy-checkbox-block" onclick="terms_changed(this)" v-model="inputData.Security" style="width: auto; height: auto;" checked required>
-                        <label id="privacy-label" for="privacy-checkbox"><b>
-                            {{#en}}}I agree with the privacy policy{{/en}}
-                            {{#ru}}Я согласен с политикой конфидециальности*{{/ru}}</b></label>
-                    </div>
+                </div>
+                <div id="privacy-checkbox-block">
+                    <input type="checkbox" id="privacy-checkbox-block" onclick="terms_changed(this)"
+                        v-model="inputData.Security" style="width: auto; height: auto;" checked required>
+                    <label id="privacy-label" for="privacy-checkbox"><b>
+                            {{#en}}}I agree to the processing of my personal data{{/en}}
+                            {{#ru}}Соглашаюсь на обработку моих <a href="/politic" style="text-decoration: none;" target="_blank">персональных данных*</a>{{/ru}}</b></label>
                 </div>
             </div>
-            <button class="form-button" id="send-form">{{#en}}Save an application form{{/en}}
-                {{#ru}}Сохранить анкету{{/ru}}</button>
         </div>
-        <script>function terms_changed(termsCheckBox){
-            //If the checkbox has been checked
-            if(termsCheckBox.checked){
-                //Set the disabled property to FALSE and enable the button.
-                document.getElementById("send-form").disabled = false;
-            } else{
-                //Otherwise, disable the submit button.
-                document.getElementById("send-form").disabled = true;
-            }
-        }</script>
+        <button class="form-button" id="send-form">{{#en}}Save an application form{{/en}}
+            {{#ru}}Сохранить анкету{{/ru}}</button>
+        </div>
+        <script>function terms_changed(termsCheckBox) {
+                //If the checkbox has been checked
+                if (termsCheckBox.checked) {
+                    //Set the disabled property to FALSE and enable the button.
+                    document.getElementById("send-form").disabled = false;
+                } else {
+                    //Otherwise, disable the submit button.
+                    document.getElementById("send-form").disabled = true;
+                }
+            }</script>
     </section>
     <div id="modal-add-photo" class="closed">
         <div id="modal-add-photo-block">

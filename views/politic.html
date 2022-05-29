@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+
+<head>
+    {{#ru}} <title>Согласие на обработку</title>{{/ru}}
+    {{#en}} <title>Consent to processing</title>{{/en}}
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/images/it.png">
+    <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/pagesStyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+    <link rel="stylesheet" href="/stylesheets/adminStyles.css">
+</head>
+
+<body>
+    {{>base_header}}
+    <section id="politic-section" style="height:720px">
+        <iframe src="https://drive.google.com/file/d/1fZWhNO_b_eFShh5R6F-dKzTsXKSLCV7n/preview" width="65%" height="720"
+            style="display: block; margin: 0 auto;" allow="autoplay">Ошибка при загрузке документа</iframe>
+    </section>
+    {{>base_footer}}
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+    <script src="/javascripts/vue-select.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script type="module" src="/javascripts/edit_main_page.js"></script>
+    <script src="/javascripts/cropper.min.js"></script>
+</body>
+
+</html>

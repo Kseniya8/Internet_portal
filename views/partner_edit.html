@@ -113,16 +113,15 @@
                                 search{{/en}}
                                 {{#ru}}Введите все названии компании, а также синонимы для удобного поиска (например:
                                 Иван - Иван, Ваня, Ванечка, Ivan, Vanya, Wanya){{/ru}}</b><br>
-                            <div class="soc" v-for="(name, index) in inputData.forsearch">
-                                <div>
-                                    <input v-model="name"></input>
-
-                                    <img class="close-soc cancel" src="/images/cancel.svg"
-                                        v-on:click="DeleteElementFromArray(index, inputData.forsearch)">
-                                </div>
+                            <div class="soc" v-for="(name,index) in inputData.forsearch">
+                                t {{name}}
+                                <input placeholder="{{#en}}Enter a name{{/en}}{{#ru}}Введите имя{{/ru}}" v-model="name">
+                                </input>
+                                <img class="close-soc cancel" src="/images/cancel.svg"
+                                    v-on:click="DeleteElementFromArray(index, inputData.forsearch)">
                             </div>
                             <button class="form-button" id="button-add-social-network"
-                                v-on:click="AddElementToArray(inputData.forsearch)">
+                                v-on:click="AddChainToArray(inputData.forsearch)">
                                 {{#en}}Add new name{{/en}}
                                 {{#ru}}Добавить название{{/ru}}
                             </button>
