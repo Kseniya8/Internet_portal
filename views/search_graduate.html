@@ -111,8 +111,7 @@
             </div>
         </section>
         <section id="searchResult">
-            <a class="graduate" v-for="graduate in inputData" v-bind:href="'/forms/get_form/' + graduate.id"
-                target='_blank'>
+            <a class="graduate" v-for="graduate in inputData" v-bind:href="'/forms/' + graduate.id" target='_blank'>
                 <img v-bind:src="graduate.photo" class="graduatePhoto">
                 <div class="info">
                     <p v-text="graduate.full_name"></p>

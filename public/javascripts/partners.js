@@ -18,6 +18,7 @@ window.onload = function () {
             patronymic: '',
             name: '',
             surname: '',
+            vacancies: [],
         },
         computed: {
             visibleNoResult: function () {
@@ -29,7 +30,7 @@ window.onload = function () {
                 this.address = '/partners/search?companyName=' + this.companyName +
                     '&year=' + this.year + '&end_year=' + this.end_year +
                     '&represent_name=' + this.represent_name;
-                    this.MoveOnPage(1);
+                this.MoveOnPage(1);
             },
             MoveOnPage: function (page) {
                 var request = new XMLHttpRequest();
@@ -51,6 +52,7 @@ window.onload = function () {
                     this.inputData.push({
                         representname: item.represent_name,
                         companyfullname: item.companyFullName,
+                        vacancies: item.vacancies,
                         companyname: item.companyName,
                         id: item._id,
                         logo: item.logo,
@@ -81,11 +83,9 @@ window.onload = function () {
             },
             SetRepresenters: function (representersList) {
                 this.inputData = this.inputData.map((partner) => {
-                    console.log(representersList[partner.companyname])
                     if (representersList[partner.companyname]) return { ...partner, representersList: representersList[partner.companyname] };
                     return partner
                 })
-                console.log(this.inputData)
             }
         }
     });

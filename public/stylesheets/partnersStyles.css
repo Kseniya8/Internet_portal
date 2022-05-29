@@ -17,11 +17,51 @@ body {
     text-align: center;
 }
 
+#searchResultPartner {
+    max-width: 1170px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.data-of-partner {
+    margin-left: 10px;
+}
+
 .partner_col {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-around;
+}
+
+.partner-block {
+    display: flex;
+    border: #d3a4f3 1px solid;
+    border-radius: 5px;
+}
+
+.partner,
+.vacancies {
+    display: block;
+    width: 50%;
+    padding: 15px;
+}
+
+.partner-img {
+    border-radius: 50%;
+}
+
+.logo-img {
+    margin: 0 auto;
+    display: block;
+}
+
+.vacancy {
+    background: linear-gradient(0.25turn, #d3a4f3, #e7eca1, #f1ba9a);
+    border-radius: 20px;
+    width: calc(100% - 50px);
+    padding: 5px 15px 25px 40px;
+    margin-bottom: 8px;
 }
 
 .partner p {
@@ -38,10 +78,13 @@ body {
 }
 
 .representer {
-    background-color: rgba(59, 59, 59, 0.445);
     display: flex;
+    border-radius: 20px;
+    width: 42%;
+    min-width: 450px;
+    background-color: rgba(48, 14, 48, 0.65);
     padding: 20px;
-    margin: 30px auto;
+    margin: 30px 10px;
     color: #fff;
 }
 
@@ -81,4 +124,32 @@ hr {
 
 h1 {
     text-align: center;
+}
+
+@media (max-width:1024px) {
+    .partner-block {
+        flex-direction: column;
+    }
+
+    .partner,
+    .vacancies {
+        width: 95%;
+    }
+
+    .logo-img {
+        width: 25%;
+    }
+
+    .representer {
+        min-width: unset;
+        width: 100%;
+    }
+}
+
+@media (max-width:560px) {
+
+    .partner,
+    .vacancies {
+        width: 90%;
+    }
 }

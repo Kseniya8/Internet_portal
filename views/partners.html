@@ -34,23 +34,23 @@
                 <div id="inputs">
                     <div id="inputs-block">
                         <div><b>
-                            {{#en}}Last name{{/en}}
-                            {{#ru}}Фамилия{{/ru}}
-                        </b><br>
-                        <input class="text-input" v-model="surname">
-                    </div>
-                    <div><b>
-                            {{#en}}First name{{/en}}
-                            {{#ru}}Имя{{/ru}}
-                        </b><br>
-                        <input class="text-input" v-model="name">
-                    </div>
-                    <div><b>
-                            {{#en}}Patronymic{{/en}}
-                            {{#ru}}Отчество{{/ru}}
-                        </b><br>
-                        <input class="text-input" v-model="patronymic">
-                    </div>
+                                {{#en}}Last name{{/en}}
+                                {{#ru}}Фамилия{{/ru}}
+                            </b><br>
+                            <input class="text-input" v-model="surname">
+                        </div>
+                        <div><b>
+                                {{#en}}First name{{/en}}
+                                {{#ru}}Имя{{/ru}}
+                            </b><br>
+                            <input class="text-input" v-model="name">
+                        </div>
+                        <div><b>
+                                {{#en}}Patronymic{{/en}}
+                                {{#ru}}Отчество{{/ru}}
+                            </b><br>
+                            <input class="text-input" v-model="patronymic">
+                        </div>
                         <div><b>
                                 {{#en}}The name of the company{{/en}}
                                 {{#ru}}Название компании{{/ru}}
@@ -64,11 +64,11 @@
                             <input class="text-input" v-model="year">
                         </div>
                         <div><b>
-                            {{#en}}Partnership end year{{/en}}
-                            {{#ru}}Год завершения партнёрства{{/ru}}
-                        </b><br>
-                        <input class="text-input" v-model="end_year">
-                    </div>
+                                {{#en}}Partnership end year{{/en}}
+                                {{#ru}}Год завершения партнёрства{{/ru}}
+                            </b><br>
+                            <input class="text-input" v-model="end_year">
+                        </div>
                     </div>
                 </div>
                 <button id="buttonSearch" v-on:click="searchButtonClick()">
@@ -84,36 +84,53 @@
         </section>
         <section id="searchResultPartner" class="searchResultPartner">
             <div v-for="partner in inputData">
-                <h1 v-text="'{{#en}}Represents{{/en}}{{#ru}}Компания{{/ru}} ' +partner.companyname" ></h1>
-                <div class="partner">
-                <img v-bind:src="partner.logo" width="35%" class="">
-                <div class="info">
-                    <p v-text="partner.companyfullname"></p>
-                    <p v-text="'{{#en}}Represents{{/en}}{{#ru}}Представители{{/ru}}: ' +partner.representname"></p>
-                    <p v-if="partner.year"
-                        v-text="'{{#en}}Year of start partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + partner.year">
-                    </p>
-                    <p v-if="partner.endyear"
-                        v-text="'{{#en}}Year of end partnership{{/en}}{{#ru}}Год завершения партнёрства{{/ru}}: ' + partner.endyear">
-                    </p>
-                    <p v-if="partner.countrycity" v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity"></p>
-                </div>
-                </a>
-                </div>
-                <div class="representers" v-if="partner.representersList" class="partner-representers">
-                    <div class="representer" v-for="representer in partner.representersList">
-                        <div>
-                            <img v-bind:src="representer.img" height="110px" width="110px">
+                <h1 v-text="'{{#en}}Represents{{/en}}{{#ru}}Компания{{/ru}} ' +partner.companyname"></h1>
+                <div class="partner-block">
+                    <div class="partner">
+                        <img class="logo-img" alt="логотип партнера" v-bind:src="partner.logo" width="35%">
+                        <div class="info">
+                            <h2 v-text="partner.companyfullname"></h2>
+                            <p v-text="'{{#en}}Represents{{/en}}{{#ru}}Представители{{/ru}}: ' +partner.representname">
+                            </p>
+                            <p v-if="partner.year"
+                                v-text="'{{#en}}Year of start partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + partner.year">
+                            </p>
+                            <p v-if="partner.endyear"
+                                v-text="'{{#en}}Year of end partnership{{/en}}{{#ru}}Год завершения партнёрства{{/ru}}: ' + partner.endyear">
+                            </p>
+                            <p v-if="partner.countrycity"
+                                v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity"></p>
                         </div>
-                        <div>
-                            <p v-text="'{{#en}}Full name of representer{{/en}}{{#ru}}ФИО{{/ru}}: ' +representer.name"></p>
-                            <p v-text="'{{#en}}Company representer{{/en}}{{#ru}}Компания{{/ru}}: ' +representer.partner"></p>
-                            <p v-text=""></p>
-                            <p v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + representer.city"></p>
+                        </a>
+                    </div>
+
+                    <div class="vacancies" v-if="partner.vacancies">
+                        <h2 v-text="'{{#en}}Vacancies{{/en}}{{#ru}}Вакансии{{/ru}}'"></h2>
+                        <div class="vacancy" v-for="vac in partner.vacancies">
+                            <h3 v-text="vac.name"></h3>
+                            <span v-text="vac.description"></span>
                         </div>
                     </div>
                 </div>
+
+                <div class="representers" v-if="partner.representersList" class="partner-representers">
+                    <a class="representer" v-for="representer in partner.representersList"
+                        v-bind:href="'/forms/' + representer.id" target='_blank'>
+                        <div>
+                            <img class="partner-img" v-bind:src="representer.img" height="120px" width="120px"
+                                alt="фото представителя">
+                        </div>
+                        <div class="data-of-partner">
+                            <p v-text="'{{#en}}Full name of representer{{/en}}{{#ru}}ФИО{{/ru}}: ' +representer.name">
+                            </p>
+                            <p
+                                v-text="'{{#en}}Company representer{{/en}}{{#ru}}Компания{{/ru}}: ' +representer.partner">
+                            </p>
+                            <p v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + representer.city"></p>
+                        </div>
+                    </a>
                 </div>
+            </div>
         </section>
         {{>pages}}
     </div>
