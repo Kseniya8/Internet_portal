@@ -24,7 +24,8 @@ window.onload = function () {
             projects: '',
             about: '',
             link: '',
-            vacancies: [{ name: '', description: ''}],
+            vacancies: [{ name: '', description: '' }],
+            forsearch: [{ value: '' }],
         };
 
         let allYears = [];
@@ -35,7 +36,7 @@ window.onload = function () {
         vue = new Vue({
             el: '#is-partner-block',
             data: { inputData },
-            computed: { },
+            computed: {},
             methods: {
                 DeleteElementFromArray: function (index, array) {
                     array.splice(index, 1);
@@ -108,11 +109,33 @@ window.onload = function () {
 
         $('#back').css('display', 'none');
     }
-    
+
     function sendFormButtonClick() {
-        if (!vue.inputData.companyName) { ShowMsg(lang === 'ru' ? 'Вы не ввели Название компании!' : 'The company name is not entered!'); return; }
+        if (!vue.inputData.companyName) { ShowMsg(lang === 'ru' ? 'Вы не ввели название компании!' : 'The company name is not entered!'); return; }
+        if (!vue.inputData.companyFullName) { ShowMsg(lang === 'ru' ? 'Вы не ввели Название компании!' : 'The company name is not entered!'); return; }
         if (!vue.inputData.represent_name) { ShowMsg(lang == 'ru' ? 'Вы не ввели ФИО представителя компании!' : 'The company represernter is not entered!'); return; }
         if (!vue.inputData.logo) vue.inputData.logo = '/images/sapr.png';
+        if (vue.inputData.end_year && (vue.inputData.year > vue.inputData.end_year)) {
+          ShowMsg(lang === 'ru' ? 'Не верные даты партнерства!' : 'Incorrect partnership dates!');
+          return;
+        }
+    
+        for (let i = 0; i < vue.inputData.vacancies.length; i++) {
+          if (!vue.inputData.vacancies[i].name || !vue.inputData.vacancies[i].description) {
+            ShowMsg(lang === 'ru' ?
+              'В вакансии № ' + (i + 1) + ' заполнены не все поля' : 'In vacancy № ' + (i + 1) + ', not all fields are filled in');
+            return;
+          }
+        }
+    
+        console.log(vue.inputData);
+        for (let i = 0; i < vue.inputData.forsearch.length; i++) {
+          if (!vue.inputData.forsearch[i].value) {
+            ShowMsg(lang === 'ru' ?
+              'Нет названия компании № ' + (i + 1) : 'In company name № ' + (i + 1) + ', not field are filled in');
+            return;
+          }
+        }
         SendForm(vue.inputData);
     }
 
@@ -154,6 +177,4 @@ window.onload = function () {
         return type == "image/jpeg" ||
             type == "image/png";
     }
-
-    
 }

@@ -25,93 +25,118 @@
             <h1 id="form-data-head">
                 {{#en}}Add data about parthner{{/en}}
                 {{#ru}}Добавить данные о партнёре{{/ru}}</h1>
-            <div id="form-data-inputs">   
-            <div id="partner">
-            <div id="is-partner-block" class="partnerAdmin">
-                <div id="input-comp-logo-block"><b>{{#en}}Company logo{{/en}}
-                        {{#ru}}Логотип компании{{/ru}}</b>
-                    <label class="button-label" for="comp-logo-input">{{#en}}Add logo{{/en}}{{#ru}}Добавить
-                        логотип{{/ru}}</label>
-                    <input id="comp-logo-input" hidden type="file" accept="image/jpeg,image/png"
-                        v-on:change="AddCompLogo(event)">
-                </div>
-                <div id="partner-logo-block" v-if="inputData.logo">
-                    <img id="partner-logo" v-bind:src="inputData.logo">
-                    <img class="cancel" src="/images/cancel.svg" style="margin-left: 5px;"
-                        v-on:click="DeleteCompLogo">
-                </div>
-                <div><b>{{#en}}Full name of the company{{/en}}
-                    {{#ru}}Название компании полное{{/ru}}</b><br>
-                <div id="v-model-select">
-                    <input class="comp_style" v-model="inputData.companyFullName">
-                </div>
-            </div>
-            <div><b>{{#en}}Short name of the company{{/en}}
-                    {{#ru}}Название компании короткое{{/ru}}</b><br>
-                    <div id="v-model-select">
-                        <textarea class="comp_style" v-model="inputData.companyName"></textarea>
-                      </div>
-                </div>
-                <div><b>{{#en}}The country and city where the company is located{{/en}}
-                    {{#ru}}Страна и город, в которой располагается компания{{/ru}}</b><br>
-                <div id="v-model-select">
-                    <input class="comp_style" v-model="inputData.country_city">
-                  </div>
-                </div>
-                <div><b>{{#en}}Full name of the company representative{{/en}}
-                    {{#ru}}ФИО представителей компании{{/ru}}</b><br>
-                <div id="v-model-select">
-                    <textarea class="comp_style" v-model="inputData.represent_name"></textarea>
-                  </div>
-                </div>
-                <div><b>{{#en}}Partnership start year{{/en}}
-                        {{#ru}}Год начала партнёрства с компанией{{/ru}}</b><br>
-                    <input id="partner-year" v-model="inputData.year" type="number" placeholder="YYYY" min="1940" max="2100">
-                </div>
-                <div><b>{{#en}}Partnership end year{{/en}}
-                    {{#ru}}Год завершения партнёрства с компанией{{/ru}}</b><br>
-                    <input id="partner-year" v-model="inputData.end_year" type="number" placeholder="YYYY" min="1940" max="2100">
-                </div>
-                <div><b>{{#en}}Joint projects{{/en}}
-                        {{#ru}}Совместные проекты{{/ru}}</b><br>
-                    <textarea v-model="inputData.projects"></textarea>
-                </div>
-                <div><b>{{#en}}About company{{/en}}
-                        {{#ru}}О компании{{/ru}}</b><br>
-                    <textarea v-model="inputData.about"></textarea>
-                </div>
-                <div><b>{{#en}}Link to the company's website{{/en}}
-                        {{#ru}}Ссылка на сайт компании{{/ru}}</b><br>
-                    <input v-model="inputData.link">
-                </div>
+            <div id="form-data-inputs">
+                <div id="partner">
+                    <div id="is-partner-block" class="partnerAdmin">
+                        <div id="input-comp-logo-block"><b>{{#en}}Company logo{{/en}}
+                                {{#ru}}Логотип компании{{/ru}}</b>
+                            <label class="button-label" for="comp-logo-input">{{#en}}Add logo{{/en}}{{#ru}}Добавить
+                                логотип{{/ru}}</label>
+                            <input id="comp-logo-input" hidden type="file" accept="image/jpeg,image/png"
+                                v-on:change="AddCompLogo(event)">
+                        </div>
+                        <div id="partner-logo-block" v-if="inputData.logo">
+                            <img id="partner-logo" v-bind:src="inputData.logo">
+                            <img class="cancel" src="/images/cancel.svg" style="margin-left: 5px;"
+                                v-on:click="DeleteCompLogo">
+                        </div>
+                        <div><b>{{#en}}Full name of the company{{/en}}
+                                {{#ru}}Название компании полное{{/ru}}</b><br>
+                            <div id="v-model-select">
+                                <input class="comp_style" v-model="inputData.companyFullName">
+                            </div>
+                        </div>
+                        <div><b>{{#en}}Short name of the company{{/en}}
+                                {{#ru}}Название компании короткое{{/ru}}</b><br>
+                            <div id="v-model-select">
+                                <textarea class="comp_style" v-model="inputData.companyName"></textarea>
+                            </div>
+                        </div>
+                        <div><b>{{#en}}The country and city where the company is located{{/en}}
+                                {{#ru}}Страна и город, в которой располагается компания{{/ru}}</b><br>
+                            <div id="v-model-select">
+                                <input class="comp_style" v-model="inputData.country_city">
+                            </div>
+                        </div>
+                        <div><b>{{#en}}Full name of the company representative{{/en}}
+                                {{#ru}}ФИО представителей компании{{/ru}}</b><br>
+                            <div id="v-model-select">
+                                <textarea class="comp_style" v-model="inputData.represent_name"></textarea>
+                            </div>
+                        </div>
+                        <div><b>{{#en}}Partnership start year{{/en}}
+                                {{#ru}}Год начала партнёрства с компанией{{/ru}}</b><br>
+                            <input id="partner-year" v-model="inputData.year" type="number" placeholder="YYYY"
+                                min="1940" max="2100">
+                        </div>
+                        <div><b>{{#en}}Partnership end year{{/en}}
+                                {{#ru}}Год завершения партнёрства с компанией{{/ru}}</b><br>
+                            <input id="partner-year" v-model="inputData.end_year" type="number" placeholder="YYYY"
+                                min="1940" max="2100">
+                        </div>
+                        <div><b>{{#en}}Joint projects{{/en}}
+                                {{#ru}}Совместные проекты{{/ru}}</b><br>
+                            <textarea v-model="inputData.projects"></textarea>
+                        </div>
+                        <div><b>{{#en}}About company{{/en}}
+                                {{#ru}}О компании{{/ru}}</b><br>
+                            <textarea v-model="inputData.about"></textarea>
+                        </div>
+                        <div><b>{{#en}}Link to the company's website{{/en}}
+                                {{#ru}}Ссылка на сайт компании{{/ru}}</b><br>
+                            <input v-model="inputData.link">
+                        </div>
 
-                <div class="vacancy"><b>{{#en}}Vacancies offered by you to graduates/students{{/en}}
-                    {{#ru}}Доступные вакансии выпускникам/студентам{{/ru}}</b><br>
-                    <div class="soc" v-for="(vacancy, index) in inputData.vacancies">
-                    <div>
-                        <textarea class="vac_area" placeholder="{{#en}}Enter the name of the proposed position{{/en}}{{#ru}}Введите название предлагаемой должности{{/ru}}"
-                        v-model="vacancy.name"></textarea>
+                        <div class="vacancy"><b>{{#en}}Vacancies offered by you to graduates/students{{/en}}
+                                {{#ru}}Доступные вакансии выпускникам/студентам{{/ru}}</b><br>
+                            <div class="soc" v-for="(vacancy, index) in inputData.vacancies">
+                                <div>
+                                    <textarea class="vac_area"
+                                        placeholder="{{#en}}Enter the name of the proposed position{{/en}}{{#ru}}Введите название предлагаемой должности{{/ru}}"
+                                        v-model="vacancy.name"></textarea>
 
-                        <img class="close-soc cancel" src="/images/cancel.svg"
-                            v-on:click="DeleteElementFromArray(index, inputData.vacancies)">
+                                    <img class="close-soc cancel" src="/images/cancel.svg"
+                                        v-on:click="DeleteElementFromArray(index, inputData.vacancies)">
+                                </div>
+                                <textarea class="vac_area"
+                                    placeholder="{{#en}}Enter a brief description of responsibilities{{/en}}{{#ru}}Введите краткое описание обязанностей{{/ru}}"
+                                    v-model="vacancy.description"></textarea>
+                            </div>
+                            <button class="form-button" id="button-add-social-network"
+                                v-on:click="AddElementToArray(inputData.vacancies)">
+                                {{#en}}Add new vacancy{{/en}}
+                                {{#ru}}Добавить новую вакансию{{/ru}}
+                            </button>
+                        </div>
+                        <div class="for-search"><b>{{#en}}Enter all company names, as well as synonyms for easy
+                                search{{/en}}
+                                {{#ru}}Введите все названии компании, а также синонимы для удобного поиска (например для
+                                "Иван": название№1 - Иван, название№2 - Ваня, название№3 - Ivan, название№4 - Vanya и
+                                тд){{/ru}}</b><br>
+                            <div class="soc" v-for="(name,index) in inputData.forsearch">
+                                <input placeholder="{{#en}}Enter a name{{/en}}{{#ru}}Введите имя{{/ru}}"
+                                    v-model="name.value">
+                                </input>
+                                <img class="close-soc cancel" src="/images/cancel.svg"
+                                    v-on:click="DeleteElementFromArray(index, inputData.forsearch)">
+                            </div>
+                            <button class="form-button" id="button-add-social-network"
+                                v-on:click="AddElementToArray(inputData.forsearch)">
+                                {{#en}}Add new name{{/en}}
+                                {{#ru}}Добавить название{{/ru}}
+                            </button>
+                        </div>
                     </div>
-                    <textarea class="vac_area" placeholder="{{#en}}Enter a brief description of responsibilities{{/en}}{{#ru}}Введите краткое описание обязанностей{{/ru}}"
-                        v-model="vacancy.description"></textarea>
+                    <button class="form-button" id="send-form">
+                        {{#en}}Add new partner{{/en}}
+                        {{#ru}}Добавить партнера{{/ru}}
+                    </button>
                 </div>
-                <button class="form-button" id="button-add-social-network"
-                    v-on:click="AddElementToArray(inputData.vacancies)">
-                    {{#en}}Add new vacancy{{/en}}
-                    {{#ru}}Добавить новую вакансию{{/ru}}
-                </button>
+                <div id="modal-msg" style="display: none">
+                    <p style="margin-top: 16px; margin-bottom: 16px;"></p>
                 </div>
             </div>
-                <button class="form-button" id="send-form">
-                    {{#en}}Add new partner{{/en}}
-                    {{#ru}}Добавить партнера{{/ru}}
-                </button>
-        </div>
-    </div>
-</section>
+    </section>
 
     {{>base_footer}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>

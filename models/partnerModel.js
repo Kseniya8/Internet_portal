@@ -15,7 +15,7 @@ const partnerScheme = new Schema(
         about: { type: String },
         link: { type: String },
         vacancies: [{ name: { type: String }, description: { type: String } }],
-        forsearch: [ { type: String} ],
+        forsearch: [{ value: { type: String } }],
     },
     { versionKey: false }
 );

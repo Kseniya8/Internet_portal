@@ -24,7 +24,7 @@ window.onload = function () {
       about: '',
       link: '',
       vacancies: [{ name: '', description: '' }],
-      forsearch: [''],
+      forsearch: [{value: ''}],
     };
     let allYears = [];
     for (let year = thisYear; year >= 1971; year--) {
@@ -40,9 +40,6 @@ window.onload = function () {
         },
         AddElementToArray: function (array) {
           array.push({});
-        },
-        AddChainToArray: function (array) {
-          array.push('');
         },
         AddAchievFile: function (event) {
           let input = event.target.files[0];
@@ -126,7 +123,7 @@ window.onload = function () {
 
     console.log(vue.inputData);
     for (let i = 0; i < vue.inputData.forsearch.length; i++) {
-      if (!vue.inputData.forsearch[i]) {
+      if (!vue.inputData.forsearch[i].value) {
         ShowMsg(lang === 'ru' ?
           'Нет названия компании № ' + (i + 1) : 'In company name № ' + (i + 1) + ', not field are filled in');
         return;

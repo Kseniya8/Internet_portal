@@ -152,7 +152,6 @@ function ShowPartner(data) {
     $("#partner-link").text("Ссылка: " + data['link']);
     $("#partner-about").text("О компании: " + data['about']);
     $("#partner-projects").text("Совместные проекты: " + data['projects']);
-    $("#partner-vac").text("Вакансии: " + data['name'] + " " + data['description']);
 }
 
 function CreateTable(inputData) {
@@ -250,28 +249,22 @@ function ShowForm(data) {
 function DeletePartner() {
     let obj = partnersTable.row(this.parentElement.parentElement).data();
     let id = obj['id'];
-    console.log('удаление ' + obj);
 
     let request = new XMLHttpRequest();
-    request.open('POST', '/admin/update_statuses', true);
+    request.open('DELETE', '/admin/delete_partner', true);
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {
         if (request.readyState === 4) {
             if (request.status === 200) {
-                ShowModal('Изменения сохранены');
-                changesStatuses = {};
-                changesUpdate.clear();
-                $('td > button').each(function () {
-                    this.classList.remove('red-button')
-                });
+                ShowModal('Удалено');
+                vm.GetPartners();
             } else {
                 ShowModal('При отправке данных возникла ошибка');
             }
         }
     }
     request.send(JSON.stringify({
-        statuses_ver: JSON.stringify(changesArr),
-        statuses_upd: JSON.stringify(changesUpdateArr)
+        id: id
     }));
 }
 

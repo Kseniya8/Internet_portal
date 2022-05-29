@@ -355,5 +355,10 @@ exports.getStatisticPartners = async (req, res) => {
 
 }
 
-exports.deletePartner = async (req, res) => {
+exports.deletePartner = async (req, res, next) => {
+    partnerModel.deleteOne({ _id: req.body.id })
+        .then()
+        .catch(err => next(err));
+
+    res.sendStatus(200);
 }
