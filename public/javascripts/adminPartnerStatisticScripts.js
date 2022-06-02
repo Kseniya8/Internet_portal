@@ -20,6 +20,7 @@ function ShowModal(text) {
 }
 
 function ShowStatistic(inputData) {
+    const map = new Map(inputData);
     var vm = new Vue({
         el: "#charts-content",
         data: inputData,
@@ -29,8 +30,7 @@ function ShowStatistic(inputData) {
             }
         }
     });
-    const map = new Map([]);
-    // console.log(map)
+    map.getMap();
 }
 
 // графики:
