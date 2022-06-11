@@ -560,12 +560,13 @@
                                             </p>
                                         </div>
                                         </a>
+                                        <option disabled value="">
+                                            {{#en}}Select the company you represent{{/en}}
+                                            {{#ru}}Выберите компанию, представителем которой вы являетесь{{/ru}}</option>
+                                        <option v-for="partner in partnersList" v-text="partner.name" v-value="partner._id">
+                                        </option>
                                     </div>
-                                    <option disabled value="">
-                                        {{#en}}Select the company you represent{{/en}}
-                                        {{#ru}}Выберите компанию, представителем которой вы являетесь{{/ru}}</option>
-                                    <option v-for="partner in partnersList" v-text="partner.name" v-value="partner._id">
-                                    </option>
+                                    
                                 </select>
                             </div>
                         </div>
@@ -577,7 +578,7 @@
                         v-model="inputData.Security" style="width: auto; height: auto;" checked required>
                     <label id="privacy-label" for="privacy-checkbox"><b>
                             {{#en}}}I agree to the processing of my personal data{{/en}}
-                            {{#ru}}Соглашаюсь на обработку моих <a href="/politic" style="text-decoration: none;" target="_blank">персональных данных*</a>{{/ru}}</b></label>
+                            {{#ru}}Я согласен на обработку моих <a class="personal_data" href="/politic" style="text-decoration: none;" target="_blank">персональных данных*</a>{{/ru}}</b></label>
                 </div>
             </div>
         </div>
