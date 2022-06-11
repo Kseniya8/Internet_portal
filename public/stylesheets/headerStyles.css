@@ -82,6 +82,7 @@ header li {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    line-height: 1.5;
 }
 
 .menu-burger {
