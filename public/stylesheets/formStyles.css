@@ -262,6 +262,7 @@ textarea {
     transition-duration: 0.1s;
     padding: 8px;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .form-button:active,
@@ -453,6 +454,15 @@ textarea {
 .cancel,
 .ask {
     cursor: pointer;
+}
+
+.personal_data {
+    color:black;
+    text-decoration: underline;
+}
+
+.personal_data:hover {
+    color:rgba(0, 0, 0, 0.63);
 }
 
 @media(max-width:550px) {
