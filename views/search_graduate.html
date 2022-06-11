@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="/stylesheets/pagesStyles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+    <link rel="stylesheet" href="/stylesheets/map.css">
 </head>
 
 <body>
@@ -26,6 +27,7 @@
         </h1>
     </div>
     <div id="mainBlock">
+        {{#isAuth}}
         <section id="inputData">
             <div id="inputDataContent">
                 {{#ru}}<h1>Введите данные для поиска</h1>{{/ru}}
@@ -123,7 +125,41 @@
             </a>
         </section>
         {{>pages}}
+        {{/isAuth}}
     </div>
+    {{^isAuth}} 
+    <div class="content">
+    <h1 style="margin-top:16px;margin-bottom: 16px;text-align: center;">
+        {{#en}}You do not have access to the full profile {{/en}} 
+        {{#ru}}У вас нет доступа к странице выпускников{{/ru}}</h1>
+        <h2 style="margin-top:16px;margin-bottom: 16px;text-align: center;">
+            {{#en}}You need to register to access this page{{/en}} 
+            {{#ru}}Вам необxодимо зарегестрироваться, чтобы получить доступ к этой странице{{/ru}}</h2>
+        </div>
+    <style>
+        .content{
+          width: auto;
+          height: 300px;
+        }
+        h2 {
+         text-align: center;
+         font-size: 25px;
+         color: rgb(129, 129, 129);
+         padding: 80px 0;
+        }
+        #personal-info{
+            width: auto;
+        }
+        #personal-info-group{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #personal-info-block{
+            padding: 10px;
+        }
+    </style>
+    {{/isAuth}}
     {{>base_footer}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
     <script src="/javascripts/vue-select.min.js"></script>
