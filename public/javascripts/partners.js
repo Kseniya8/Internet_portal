@@ -60,6 +60,7 @@ window.onload = function () {
                         year: item.year,
                         endyear: item.end_year,
                         countrycity: item.country_city,
+                        about: item.about,
                         representersList: [],
                     });
                 });
