@@ -117,6 +117,7 @@ h1,h2{
     flex-wrap: wrap;
     justify-content: space-around;
     margin-bottom: 30px;
+    padding: 0 70px;
 }
 .graduatePhoto{
     width: 100px;
@@ -127,7 +128,7 @@ h1,h2{
     flex-direction: row;
     background-color: rgba(212, 179, 158, 0.16);
     padding: 10px;
-    margin: 10px;
+    margin: 20px;
     width: 330px;
     text-decoration: none;
 }
