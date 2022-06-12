@@ -1,22 +1,24 @@
 <!DOCTYPE html>
 <html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
-    <head>
-        <title>
-            {{#en}}Page{{/en}}
-            {{#ru}}Страница{{/ru}}
-        </title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="shortcut icon" href="/images/it.png">
-        <link rel="stylesheet" href="/stylesheets/headerStyles.css">
-        <link rel="stylesheet" href="/stylesheets/footerStyles.css">
-        <link rel="stylesheet" href="/stylesheets/accountStyles.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
-    </head>
-    <body>
-        {{>base_header}}
-        <section id="user-info">
+
+<head>
+    <title>
+        {{#en}}Page{{/en}}
+        {{#ru}}Страница{{/ru}}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/images/it.png">
+    <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/accountStyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+</head>
+
+<body>
+    {{>base_header}}
+    <section id="user-info">
         {{#form}}
         <div id="user-info-content">
             <h1>
@@ -31,42 +33,42 @@
                     <div id="personal-info-block">
                         <div id="name">
                             <p><b>
-                                {{#en}}First name: {{/en}}
-                                {{#ru}}Имя: {{/ru}}</b>{{name}}</p>
+                                    {{#en}}First name: {{/en}}
+                                    {{#ru}}Имя: {{/ru}}</b>{{name}}</p>
                         </div>
                         <div id="surname">
                             <p><b>
-                                {{#en}}Last name: {{/en}} 
-                                {{#ru}}Фамилия: {{/ru}}
-                            </b>{{surname}}</p>
+                                    {{#en}}Last name: {{/en}}
+                                    {{#ru}}Фамилия: {{/ru}}
+                                </b>{{surname}}</p>
                         </div>
                         {{#patronymic}}
                         <div id="patronymic">
                             <p><b>
-                                {{#en}}Patronymic: {{/en}} 
-                                {{#ru}}Отчество: {{/ru}} </b>
+                                    {{#en}}Patronymic: {{/en}}
+                                    {{#ru}}Отчество: {{/ru}} </b>
                                 {{patronymic}}</p>
                         </div>
                         {{/patronymic}}
                         {{#birthday}}
                         <div id="birthday">
-                            <p><b>{{#en}}Date of birth: {{/en}} 
-                                {{#ru}}Дата рождения: {{/ru}}   
-                            </b>{{birthday}}</p>
+                            <p><b>{{#en}}Date of birth: {{/en}}
+                                    {{#ru}}Дата рождения: {{/ru}}
+                                </b>{{birthday}}</p>
                         </div>
                         {{/birthday}}
                         {{#phone_number}}
                         <div id="phone-number">
                             <p><b>
-                                {{#en}}Phone number: {{/en}} 
-                                {{#ru}}Номер телефона: {{/ru}} </b>{{phone_number}}</p>
+                                    {{#en}}Phone number: {{/en}}
+                                    {{#ru}}Номер телефона: {{/ru}} </b>{{phone_number}}</p>
                         </div>
                         {{/phone_number}}
                         {{#city}}
                         <div id="city">
                             <p><b>
-                                {{#en}}City of residence: {{/en}} 
-                                {{#ru}}Город проживания: {{/ru}} </b>{{city}}</p>
+                                    {{#en}}City of residence: {{/en}}
+                                    {{#ru}}Город проживания: {{/ru}} </b>{{city}}</p>
                         </div>
                         {{/city}}
                     </div>
@@ -82,64 +84,64 @@
                 </div>
             </div>
             {{#full}}
-            <h1 id="education-header"> {{#en}}Education {{/en}} 
+            <h1 id="education-header"> {{#en}}Education {{/en}}
                 {{#ru}}Образование {{/ru}}</h1>
             <div id="education-info">
                 <input type="radio" name="tab-btn" id="tab-btn-1" value="" checked>
-                <label for="tab-btn-1"> 
-                    {{#en}}The CAD Department {{/en}} 
+                <label for="tab-btn-1">
+                    {{#en}}The CAD Department {{/en}}
                     {{#ru}}Кафедра САПРиУ {{/ru}}
                 </label>
                 <input type="radio" name="tab-btn" id="tab-btn-2" value="">
                 <label for="tab-btn-2">
-                    {{#en}}Other {{/en}} 
+                    {{#en}}Other {{/en}}
                     {{#ru}}Другое {{/ru}}</label>
                 <div id="education-info-sapr">
-                    {{#education}} 
+                    {{#education}}
                     <div class="graduate-sapr graduate">
                         {{#year_graduation}}
                         <div id="year_graduation">
                             <p><b>
-                                {{#en}}Year of graduation: {{/en}} 
-                                {{#ru}}Год окончания СПбГТИ: {{/ru}}</b>{{year_graduation}}</p>
+                                    {{#en}}Year of graduation: {{/en}}
+                                    {{#ru}}Год окончания СПбГТИ: {{/ru}}</b>{{year_graduation}}</p>
                         </div>
                         {{/year_graduation}}
                         {{#educ_form}}
                         <div id="educ_form">
-                            <p><b> 
-                                {{#en}}Form of study: {{/en}} 
-                                {{#ru}}Форма обучения: {{/ru}} </b>{{educ_form}}</p>
+                            <p><b>
+                                    {{#en}}Form of study: {{/en}}
+                                    {{#ru}}Форма обучения: {{/ru}} </b>{{educ_form}}</p>
                         </div>
                         {{/educ_form}}
                         {{#qualification}}
                         <div id="qualification">
-                            <p><b> 
-                                {{#en}}Qualification: {{/en}} 
-                                {{#ru}}Квалификация: {{/ru}}</b>{{qualification}}</p>
+                            <p><b>
+                                    {{#en}}Qualification: {{/en}}
+                                    {{#ru}}Квалификация: {{/ru}}</b>{{qualification}}</p>
                         </div>
                         {{/qualification}}
                         {{#specialty}}
                         <div id="specialty">
-                            <p><b>{{#en}}Specialty: {{/en}} 
-                                {{#ru}}Специальность: {{/ru}} </b>{{specialty}}</p>
+                            <p><b>{{#en}}Specialty: {{/en}}
+                                    {{#ru}}Специальность: {{/ru}} </b>{{specialty}}</p>
                         </div>
                         {{/specialty}}
                         {{#dir_training}}
                         <div id="dir_training">
-                            <p><b>{{#en}}Field of study: {{/en}} 
-                                {{#ru}}Направление подготовки: {{/ru}} </b>{{dir_training}}</p>
+                            <p><b>{{#en}}Field of study: {{/en}}
+                                    {{#ru}}Направление подготовки: {{/ru}} </b>{{dir_training}}</p>
                         </div>
                         {{/dir_training}}
                         {{#focus}}
                         <div id="focus">
-                            <p><b>{{#en}}Focus: {{/en}} 
-                                {{#ru}}Направленность: {{/ru}}</b>{{focus}}</p>
+                            <p><b>{{#en}}Focus: {{/en}}
+                                    {{#ru}}Направленность: {{/ru}}</b>{{focus}}</p>
                         </div>
                         {{/focus}}
                         {{#group}}
                         <div id="group">
-                            <p><b>{{#en}}Group number: {{/en}} 
-                                {{#ru}}Номер группы: {{/ru}} </b>{{group}}</p>
+                            <p><b>{{#en}}Group number: {{/en}}
+                                    {{#ru}}Номер группы: {{/ru}} </b>{{group}}</p>
                         </div>
                         {{/group}}
                     </div>
@@ -150,50 +152,50 @@
                     <div class="graduate-another graduate">
                         {{#an_city}}
                         <div id="an_city">
-                            <p><b>{{#en}}City: {{/en}} 
-                                {{#ru}}Город: {{/ru}} </b>{{an_city}}</p>
+                            <p><b>{{#en}}City: {{/en}}
+                                    {{#ru}}Город: {{/ru}} </b>{{an_city}}</p>
                         </div>
                         {{/an_city}}
                         {{#an_uni}}
                         <div id="an_uni">
-                            <p><b>{{#en}}University: {{/en}} 
-                                {{#ru}}Вуз: {{/ru}}</b>{{an_uni}}</p>
+                            <p><b>{{#en}}University: {{/en}}
+                                    {{#ru}}Вуз: {{/ru}}</b>{{an_uni}}</p>
                         </div>
                         {{/an_uni}}
                         {{#an_year_graduation}}
                         <div id="an_year_graduation">
-                            <p><b>{{#en}}Year of graduation: {{/en}} 
-                                {{#ru}}Год окончания: {{/ru}} </b>{{an_year_graduation}}</p>
+                            <p><b>{{#en}}Year of graduation: {{/en}}
+                                    {{#ru}}Год окончания: {{/ru}} </b>{{an_year_graduation}}</p>
                         </div>
                         {{/an_year_graduation}}
                         {{#an_qualification}}
                         <div id="an_qualification">
-                            <p><b>{{#en}}Qualification: {{/en}} 
-                                {{#ru}}Квалификация: {{/ru}} </b>{{an_qualification}}</p>
+                            <p><b>{{#en}}Qualification: {{/en}}
+                                    {{#ru}}Квалификация: {{/ru}} </b>{{an_qualification}}</p>
                         </div>
                         {{/an_qualification}}
                         {{#an_specialty}}
                         <div id="an_specialty">
-                            <p><b>{{#en}}Specialty: {{/en}} 
-                                {{#ru}}Специальность: {{/ru}} </b>{{an_specialty}}</p>
+                            <p><b>{{#en}}Specialty: {{/en}}
+                                    {{#ru}}Специальность: {{/ru}} </b>{{an_specialty}}</p>
                         </div>
                         {{/an_specialty}}
                         {{#an_dir_training}}
                         <div id="an_dir_training">
-                            <p><b>{{#en}}Field of study: {{/en}} 
-                                {{#ru}}Направление подготовки: {{/ru}}</b>{{an_dir_training}}</p>
+                            <p><b>{{#en}}Field of study: {{/en}}
+                                    {{#ru}}Направление подготовки: {{/ru}}</b>{{an_dir_training}}</p>
                         </div>
                         {{/an_dir_training}}
                         {{#an_focus}}
                         <div id="an_focus">
-                            <p><b>{{#en}}Focus: {{/en}} 
-                                {{#ru}}Направленность: {{/ru}} </b>{{an_focus}}</p>
+                            <p><b>{{#en}}Focus: {{/en}}
+                                    {{#ru}}Направленность: {{/ru}} </b>{{an_focus}}</p>
                         </div>
                         {{/an_focus}}
                         {{#an_group}}
                         <div id="an_group">
-                            <p><b>{{#en}}Group: {{/en}} 
-                                {{#ru}}Группа: {{/ru}} </b>{{an_group}}</p>
+                            <p><b>{{#en}}Group: {{/en}}
+                                    {{#ru}}Группа: {{/ru}} </b>{{an_group}}</p>
                         </div>
                         {{/an_group}}
                     </div>
@@ -204,44 +206,44 @@
             <div id="prof-info">
                 {{#other_education}}
                 <div id="other_education">
-                    <p><b>{{#en}}Additional education: {{/en}} 
-                        {{#ru}}Дополнительное образование: {{/ru}} </b>{{other_education}}</p>
+                    <p><b>{{#en}}Additional education: {{/en}}
+                            {{#ru}}Дополнительное образование: {{/ru}} </b>{{other_education}}</p>
                 </div>
                 {{/other_education}}
                 {{#academ_degree}}
                 <div id="academ_degree">
-                    <p><b>{{#en}}Academic degree: {{/en}} 
-                        {{#ru}}Ученая степень: {{/ru}} </b>{{academ_degree}}</p>
+                    <p><b>{{#en}}Academic degree: {{/en}}
+                            {{#ru}}Ученая степень: {{/ru}} </b>{{academ_degree}}</p>
                 </div>
                 {{/academ_degree}}
                 {{#academ_rank}}
                 <div id="academ_rank">
-                    <p><b>{{#en}}Academic title: {{/en}} 
-                        {{#ru}}Ученое звание: {{/ru}} </b>{{academ_rank}}</p>
+                    <p><b>{{#en}}Academic title: {{/en}}
+                            {{#ru}}Ученое звание: {{/ru}} </b>{{academ_rank}}</p>
                 </div>
                 {{/academ_rank}}
                 {{#work_place}}
                 <div id="work_place">
-                    <p><b>{{#en}}Current place of work: {{/en}} 
-                        {{#ru}}Место работы в настоящее время: {{/ru}} </b>{{work_place}}</p>
+                    <p><b>{{#en}}Current place of work: {{/en}}
+                            {{#ru}}Место работы в настоящее время: {{/ru}} </b>{{work_place}}</p>
                 </div>
                 {{/work_place}}
                 {{#field_activety}}
                 <div id="field_activety">
-                    <p><b>{{#en}}Field of activity: {{/en}} 
-                        {{#ru}}Сфера деятельности: {{/ru}} </b>{{field_activety}}</p>
+                    <p><b>{{#en}}Field of activity: {{/en}}
+                            {{#ru}}Сфера деятельности: {{/ru}} </b>{{field_activety}}</p>
                 </div>
                 {{/field_activety}}
                 {{#position}}
                 <div id="position">
-                    <p><b>{{#en}}Current position: {{/en}} 
-                        {{#ru}}Занимаемая должность: {{/ru}} </b>{{position}}</p>
+                    <p><b>{{#en}}Current position: {{/en}}
+                            {{#ru}}Занимаемая должность: {{/ru}} </b>{{position}}</p>
                 </div>
                 {{/position}}
                 {{#hobby}}
                 <div id="hobby">
-                    <p><b>{{#en}}Hobby: {{/en}} 
-                        {{#ru}}Хобби: {{/ru}}</b>{{hobby}}</p>
+                    <p><b>{{#en}}Hobby: {{/en}}
+                            {{#ru}}Хобби: {{/ru}}</b>{{hobby}}</p>
                 </div>
                 {{/hobby}}
                 {{#best_practices}}
@@ -250,7 +252,7 @@
                 </div>
                 {{/best_practices}}
             </div>
-            <h1>{{#en}}Achievements {{/en}} 
+            <h1>{{#en}}Achievements {{/en}}
                 {{#ru}}Достижения {{/ru}}</h1>
             <div id="achive-info">
                 {{#achive_files}}
@@ -260,7 +262,7 @@
                 {{/achive_files}}
             </div>
             {{#isLecturer}}
-            <h1>{{#en}}Readable disciplines {{/en}} 
+            <h1>{{#en}}Readable disciplines {{/en}}
                 {{#ru}}Читаемые дисциплины {{/ru}}</h1>
             <div id="disciplines-info">
                 {{#disciplines}}{{#value}}
@@ -270,87 +272,92 @@
             {{/isLecturer}}
 
             {{#isPartner}}
-            <h1>{{#en}}Partnership {{/en}} 
+            <h1>{{#en}}Partnership {{/en}}
                 {{#ru}}Сотрудничество {{/ru}}</h1>
             <div id="partners-info">
                 <img src="{{partner.logo}}" id="partner-logo">
-                <p><b>{{#en}}The name of the company:{{/en}}{{#ru}}Название компании:{{/ru}}</b> {{partner.name}}</p>
-                <p><b>{{#en}}Year of the beginning of cooperation:{{/en}}{{#ru}}Год начала сотрудничества:{{/ru}}</b> {{partner.year}}</p>
-                <p><b>{{#en}}Joint projects:{{/en}}{{#ru}}Совместные проекты:{{/ru}}</b> {{partner.projects}}</p>
-                <p><b>{{#en}}About the company{{/en}}{{#ru}}О компании:{{/ru}}</b> {{partner.about}}</p>
-                <p><b>{{#en}}Link to the company's website{{/en}}{{#ru}}Ссылка на сайт компании:{{/ru}}</b> <a href="{{partner.link}}" target="_blank">{{partner.link}}</a></p>       
+                <p><b>{{#en}}The name of the company:{{/en}}{{#ru}}Название компании:{{/ru}}</b> {{partner}}</p>
             </div>
             {{/isPartner}}
-            
-            <h1>{{#en}}Questionnaire questions {{/en}} 
+
+            <h1>{{#en}}Questionnaire questions {{/en}}
                 {{#ru}}Вопросы анкеты {{/ru}}</h1>
             <div id="quest-info">
                 {{#q1.length}}
                 <div id="q1">
-                    <b>{{#en}}Do you maintain relationships with other SPbSIT(TU) graduates? If so, in what forms? {{/en}} 
-                        {{#ru}}Поддерживаете ли Вы отношения с другими выпускниками СПбГТИ? Если да, то в каких формах? {{/ru}} </b>
-                        <p class="multiple-questions">{{#q1}}{{.}}; {{/q1}}</p>
+                    <b>{{#en}}Do you maintain relationships with other SPbSIT(TU) graduates? If so, in what forms?
+                        {{/en}}
+                        {{#ru}}Поддерживаете ли Вы отношения с другими выпускниками СПбГТИ? Если да, то в каких формах?
+                        {{/ru}} </b>
+                    <p class="multiple-questions">{{#q1}}{{.}}; {{/q1}}</p>
                 </div>
                 {{/q1.length}}
                 {{#q2.length}}
                 <div id="q2">
-                    <b>{{#en}}How can the University be useful for your activities? {{/en}} 
-                        {{#ru}}Чем университет может быть полезен  для Вашей деятельности? {{/ru}}</b>
-                        <p class="multiple-questions">{{#q2}}{{.}}; {{/q2}}</p>
+                    <b>{{#en}}How can the University be useful for your activities? {{/en}}
+                        {{#ru}}Чем университет может быть полезен для Вашей деятельности? {{/ru}}</b>
+                    <p class="multiple-questions">{{#q2}}{{.}}; {{/q2}}</p>
                 </div>
                 {{/q2.length}}
                 {{#q3}}
                 <div id="q3">
-                    <b>{{#en}}What can the Alumni Association do for you? {{/en}} 
+                    <b>{{#en}}What can the Alumni Association do for you? {{/en}}
                         {{#ru}}Чем Ассоциация выпускников может быть Вам полезна? {{/ru}} </b>
-                        <p>{{q3}}</p>
+                    <p>{{q3}}</p>
                 </div>
                 {{/q3}}
                 {{#q4.length}}
                 <div id="q4">
-                    <b>{{#en}}Can you assist in the development of the University? If so, in what form? {{/en}} 
-                        {{#ru}}Можете ли Вы оказать содействие в развитии университета? Если да, то в какой форме? {{/ru}} </b>
-                        <p class="multiple-questions">{{#q4}}{{.}}; {{/q4}}</p>
+                    <b>{{#en}}Can you assist in the development of the University? If so, in what form? {{/en}}
+                        {{#ru}}Можете ли Вы оказать содействие в развитии университета? Если да, то в какой форме?
+                        {{/ru}} </b>
+                    <p class="multiple-questions">{{#q4}}{{.}}; {{/q4}}</p>
                 </div>
                 {{/q4.length}}
                 {{#q5.length}}
                 <div id="q5">
-                    <b>{{#en}}Do you have any materials that can be used in the University history museum? If so, which ones? {{/en}} 
-                        {{#ru}}Есть ли у вас материалы, которые могут быть использованы в музее истории университета? Если да, то какие? {{/ru}} </b>
-                        <p class="multiple-questions">{{#q5}}{{.}}; {{/q5}}</p>
+                    <b>{{#en}}Do you have any materials that can be used in the University history museum? If so, which
+                        ones? {{/en}}
+                        {{#ru}}Есть ли у вас материалы, которые могут быть использованы в музее истории университета?
+                        Если да, то какие? {{/ru}} </b>
+                    <p class="multiple-questions">{{#q5}}{{.}}; {{/q5}}</p>
                 </div>
                 {{/q5.length}}
                 {{#q6}}
                 <div id="q6">
-                    <b>{{#en}}What additional information do you want to provide about yourself? {{/en}} 
+                    <b>{{#en}}What additional information do you want to provide about yourself? {{/en}}
                         {{#ru}}Какие сведения Вы хотите сообщить о себе дополнительно? {{/ru}}</b>
-                        <p>{{q6}}</p>
+                    <p>{{q6}}</p>
                 </div>
                 {{/q6}}
                 {{#q7}}
                 <div id="q7">
-                    <b>{{#en}}Are you ready to take part in the festive celebrations dedicated to the anniversary of the Department? And with what? {{/en}} 
-                        {{#ru}}Готовы ли вы принять участие в праздничном концерте, посвященном юбилею кафедры? И с чем? {{/ru}}</b>
-                        <p>{{q7}}</p>
+                    <b>{{#en}}Are you ready to take part in the festive celebrations dedicated to the anniversary of the
+                        Department? And with what? {{/en}}
+                        {{#ru}}Готовы ли вы принять участие в праздничном концерте, посвященном юбилею кафедры? И с чем?
+                        {{/ru}}</b>
+                    <p>{{q7}}</p>
                 </div>
                 {{/q7}}
             </div>
         </div>
         {{/full}}
-        {{^full}} 
+        {{^full}}
         <h1 style="margin-top:16px;margin-bottom: 16px;text-align: center;">
-            {{#en}}You do not have access to the full profile {{/en}} 
+            {{#en}}You do not have access to the full profile {{/en}}
             {{#ru}}У вас нет доступа к полной анкете {{/ru}}</h1>
         <style>
-            #personal-info{
+            #personal-info {
                 width: auto;
             }
-            #personal-info-group{
+
+            #personal-info-group {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
             }
-            #personal-info-block{
+
+            #personal-info-block {
                 padding: 10px;
             }
         </style>
@@ -359,10 +366,11 @@
         <div style="display: none; padding: 0 0;" id="modal-show-img">
             <img width="100%" height="100%">
         </div>
-        </section>
-        {{>base_footer}}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-        <script src="/javascripts/accountScripts.js"></script>
-    </body>
+    </section>
+    {{>base_footer}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="/javascripts/accountScripts.js"></script>
+</body>
+
 </html>

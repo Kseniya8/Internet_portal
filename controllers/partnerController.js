@@ -12,18 +12,24 @@ exports.searchForms = (req, res, next) => {
   name_fields = [
     'companyName',
     'name',
-    'projects',
     'partner.name',
     'year',
     'end_year',
-    'country_city',
   ]
   params = {}
   let skip = 0
 
   for (key in req.query) {
-    if (name_fields.indexOf(key) != -1 && req.query[key])
-      params[key] = req.query[key]
+    if (name_fields.indexOf(key) != -1 && req.query[key]) {
+      if (key == 'companyName') {
+        params.$or = [
+          { companyName: RegExp(req.query[key], "i") },
+          { "forsearch.value": RegExp(req.query[key], "i") }
+        ]
+      }
+      else
+        params[key] = RegExp(req.query[key], "i")
+    }
     else if (key == 'page')
       skip = parseInt(req.query[key], 10) * 10
   }

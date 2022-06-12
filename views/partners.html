@@ -34,22 +34,10 @@
                 <div id="inputs">
                     <div id="inputs-block">
                         <div><b>
-                                {{#en}}Last name{{/en}}
-                                {{#ru}}Фамилия{{/ru}}
+                                {{#en}}Full name{{/en}}
+                                {{#ru}}ФИО{{/ru}}
                             </b><br>
                             <input class="text-input" v-model="surname" v-on:change="searchButtonClick()">
-                        </div>
-                        <div><b>
-                                {{#en}}First name{{/en}}
-                                {{#ru}}Имя{{/ru}}
-                            </b><br>
-                            <input class="text-input" v-model="name" v-on:change="searchButtonClick()">
-                        </div>
-                        <div><b>
-                                {{#en}}Patronymic{{/en}}
-                                {{#ru}}Отчество{{/ru}}
-                            </b><br>
-                            <input class="text-input" v-model="patronymic" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}The name of the company{{/en}}
@@ -61,13 +49,15 @@
                                 {{#en}}Partnership start year{{/en}}
                                 {{#ru}}Год начала партнёрства{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="year" v-on:change="searchButtonClick()">
+                            <input class="text-input" type="number" placeholder="YYYY" min="1800" max="2300"
+                                v-model="year" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}Partnership end year{{/en}}
                                 {{#ru}}Год завершения партнёрства{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="end_year" v-on:change="searchButtonClick()">
+                            <input class="text-input" placeholder="YYYY" min="1800" max="2300" v-model="end_year"
+                                v-on:change="searchButtonClick()">
                         </div>
                     </div>
                 </div>
@@ -79,25 +69,36 @@
             </div>
         </section>
         <section id="searchResultPartner" class="searchResultPartner">
-            <div v-for="partner in inputData">
+            <div v-for="partner in inputData" v-if="!surname || (surname && partner.representersList.length)">
                 <h1 v-text="'{{#en}}Represents{{/en}}{{#ru}}Компания{{/ru}} ' +partner.companyname"></h1>
                 <div class="partner-block">
                     <div class="partner">
                         <img class="logo-img" alt="логотип партнера" v-bind:src="partner.logo" width="35%">
                         <div class="info">
                             <h2 v-text="partner.companyfullname"></h2>
+                            <b v-if="partner.about" v-text="partner.about">
+                            </b>
+                            <p> <a v-if="partner.link" v-bind:href="partner.link"
+                                    v-text="'{{#en}}Link{{/en}}{{#ru}}Ссылка на сайт компании{{/ru}}: ' + partner.link">
+                                </a></p>
                             <p v-text="'{{#en}}Represents{{/en}}{{#ru}}Представители{{/ru}}: ' +partner.representname">
                             </p>
-                            <p v-if="partner.year"
-                                v-text="'{{#en}}Year of start partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + partner.year">
-                            </p>
-                            <p v-if="partner.endyear"
-                                v-text="'{{#en}}Year of end partnership{{/en}}{{#ru}}Год завершения партнёрства{{/ru}}: ' + partner.endyear">
+                            <p>
+                                <span v-if="partner.year"
+                                    v-text="'{{#en}}Years of partnership:{{/en}}{{#ru}}Годы партнёрства: c {{/ru}}' + partner.year">
+                                </span>
+                                <span v-if=" partner.endyear"
+                                    v-text="'{{#en}} - {{/en}}{{#ru}} - по {{/ru}}' + partner.endyear">
+                                </span>
                             </p>
                             <p v-if="partner.countrycity"
-                                v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity"></p>
+                                v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity">
+                            </p>
+                            <p class="projects" v-if="partner.projects"
+                                v-text="'{{#en}}Joint projects{{/en}}{{#ru}}Совместные проекты{{/ru}}: ' + partner.projects"
+                                v-on:click="ToggleText()">
+                            </p>
                         </div>
-                        </a>
                     </div>
 
                     <div class="vacancies" v-if="partner.vacancies">

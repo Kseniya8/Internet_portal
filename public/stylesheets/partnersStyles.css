@@ -51,6 +51,16 @@ body {
     border-radius: 50%;
 }
 
+.projects {
+    cursor: pointer;
+    text-align: justify;
+    font-style: italic;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
 .logo-img {
     margin: 0 auto;
     display: block;
@@ -90,6 +100,11 @@ body {
 
 .infoLink {
     margin-top: 5px;
+}
+
+.info a {
+    color: rgb(145, 105, 20);
+    text-decoration: none;
 }
 
 .infoLink a {

@@ -28,8 +28,7 @@ window.onload = function () {
         methods: {
             searchButtonClick: function () {
                 this.address = '/partners/search?companyName=' + this.companyName +
-                    '&year=' + this.year + '&end_year=' + this.end_year +
-                    '&represent_name=' + this.represent_name;
+                    '&year=' + this.year + '&end_year=' + this.end_year;
                 this.MoveOnPage(1);
             },
             MoveOnPage: function (page) {
@@ -60,6 +59,8 @@ window.onload = function () {
                         year: item.year,
                         endyear: item.end_year,
                         countrycity: item.country_city,
+                        projects: item.projects,
+                        about: item.about,
                         representersList: [],
                     });
                 });
@@ -83,9 +84,21 @@ window.onload = function () {
             },
             SetRepresenters: function (representersList) {
                 this.inputData = this.inputData.map((partner) => {
-                    if (representersList[partner.companyname]) return { ...partner, representersList: representersList[partner.companyname] };
-                    return partner
+                    let arrSearchedRepresentatives = representersList[partner.companyname];
+                    if (this.surname != '')
+                        arrSearchedRepresentatives = [];
+                    if (representersList[partner.companyname]) {
+                        for (let i = 0; i < representersList[partner.companyname].length; i++) {
+                            if (this.surname != '' && representersList[partner.companyname][i].name.toUpperCase().indexOf(this.surname.toUpperCase()) >= 0)
+                                arrSearchedRepresentatives.push(representersList[partner.companyname][i]);
+                        }
+                        return { ...partner, representersList: arrSearchedRepresentatives };
+                    }
+                    return partner;
                 })
+            },
+            ToggleText: function () {
+                document.querySelector('.projects').style.display = 'block';
             }
         }
     });

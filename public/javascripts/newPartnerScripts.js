@@ -128,7 +128,6 @@ window.onload = function () {
           }
         }
     
-        console.log(vue.inputData);
         for (let i = 0; i < vue.inputData.forsearch.length; i++) {
           if (!vue.inputData.forsearch[i].value) {
             ShowMsg(lang === 'ru' ?
@@ -140,7 +139,6 @@ window.onload = function () {
     }
 
     function SendForm(data) {
-        console.log(data)
         let request = new XMLHttpRequest();
         request.open('POST', '/partners', true);
         request.setRequestHeader("Content-Type", "application/json");
