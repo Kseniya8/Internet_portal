@@ -36,32 +36,32 @@
                                 {{#en}}Last name{{/en}}
                                 {{#ru}}Фамилия{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="surname">
+                            <input class="text-input" v-model="surname" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}First name{{/en}}
                                 {{#ru}}Имя{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="name">
+                            <input class="text-input" v-model="name" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}Patronymic{{/en}}
                                 {{#ru}}Отчество{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="patronymic">
+                            <input class="text-input" v-model="patronymic" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}Group number{{/en}}
                                 {{#ru}}Номер группы{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="group">
+                            <input class="text-input" v-model="group" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}Educational orientation{{/en}}
                                 {{#ru}}Направленность{{/ru}}
                             </b>
                             <v-select class="search-select education-select" label="{{#en}}en{{/en}}{{#ru}}ru{{/ru}}"
-                                :options="focusList" :reduce="focus => focus.ru" v-model="focus">
+                                :options="focusList" :reduce="focus => focus.ru" v-model="focus" @input="searchButtonClick()">
                                 <div slot="no-options">{{#ru}}Ничего не найдено!{{/ru}}{{#en}}Nothing found!{{/en}}
                                 </div>
                             </v-select>
@@ -71,7 +71,7 @@
                                 {{#ru}}Специальность{{/ru}}
                             </b>
                             <v-select class="search-select education-select" label="{{#en}}en{{/en}}{{#ru}}ru{{/ru}}"
-                                :options="specialtyList" :reduce="specialty => specialty.ru" v-model="specialty">
+                                :options="specialtyList" :reduce="specialty => specialty.ru" v-model="specialty" @input="searchButtonClick()">
                                 <div slot="no-options">{{#ru}}Ничего не найдено!{{/ru}}{{#en}}Nothing found!{{/en}}
                                 </div>
                             </v-select>
@@ -81,7 +81,7 @@
                                 {{#ru}}Год выпуска{{/ru}}
                             </b><br>
                             <v-select class="search-select" label="{{#en}}en{{/en}}{{#ru}}ru{{/ru}}"
-                                :options="yearsArray" v-model="year">
+                                :options="yearsArray" v-model="year" @input="searchButtonClick()">
                                 <div slot="no-options">{{#ru}}Ничего не найдено!{{/ru}}{{#en}}Nothing found!{{/en}}
                                 </div>
                             </v-select>
@@ -92,17 +92,13 @@
                                 {{#ru}}Место проживания{{/ru}}
                             </b>
                             <v-select class="search-select" taggable push-tags label="{{#en}}en{{/en}}{{#ru}}ru{{/ru}}"
-                                :options="cities" :reduce="city => city.ru" v-model="city">
+                                :options="cities" :reduce="city => city.ru" v-model="city" @input="searchButtonClick()">
                                 <div slot="no-options">{{#ru}}Ничего не найдено!{{/ru}}{{#en}}Nothing found!{{/en}}
                                 </div>
                             </v-select>
                         </div>
                     </div>
                 </div>
-                <button id="buttonSearch" v-on:click="searchButtonClick()">
-                    {{#en}}Search{{/en}}
-                    {{#ru}}Поиск{{/ru}}
-                </button>
             </div>
             <div id="no-result" v-show="visibleNoResult">
                 <h2>
