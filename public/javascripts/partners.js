@@ -97,8 +97,13 @@ window.onload = function () {
                     return partner;
                 })
             },
-            ToggleText: function () {
-                document.querySelector('.projects').style.display = 'block';
+            ToggleText: function (n) {
+                let elAbout = document.getElementsByClassName('projects');
+                if (elAbout[n].style.display != 'block') {
+                    elAbout[n].style.display = 'block'
+                } else {
+                    elAbout[n].style.display = '-webkit-box'
+                }
             }
         }
     });

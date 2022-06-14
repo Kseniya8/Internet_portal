@@ -69,7 +69,7 @@
             </div>
         </section>
         <section id="searchResultPartner" class="searchResultPartner">
-            <div v-for="partner in inputData" v-if="!surname || (surname && partner.representersList.length)">
+            <div v-for="(partner, i) in inputData" v-if="!surname || (surname && partner.representersList.length)">
                 <h1 v-text="'{{#en}}Represents{{/en}}{{#ru}}Компания{{/ru}} ' +partner.companyname"></h1>
                 <div class="partner-block">
                     <div class="partner">
@@ -96,7 +96,7 @@
                             </p>
                             <p class="projects" v-if="partner.projects"
                                 v-text="'{{#en}}Joint projects{{/en}}{{#ru}}Совместные проекты{{/ru}}: ' + partner.projects"
-                                v-on:click="ToggleText()">
+                                v-on:click="ToggleText(i)">
                             </p>
                         </div>
                     </div>

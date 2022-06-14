@@ -24,7 +24,7 @@ window.onload = function () {
       about: '',
       link: '',
       vacancies: [{ name: '', description: '' }],
-      forsearch: [{value: ''}],
+      forsearch: [{ value: '' }],
     };
     let allYears = [];
     for (let year = thisYear; year >= 1971; year--) {
@@ -108,7 +108,7 @@ window.onload = function () {
     if (!vue.inputData.companyFullName) { ShowMsg(lang === 'ru' ? 'Вы не ввели Название компании!' : 'The company name is not entered!'); return; }
     if (!vue.inputData.represent_name) { ShowMsg(lang == 'ru' ? 'Вы не ввели ФИО представителя компании!' : 'The company represernter is not entered!'); return; }
     if (!vue.inputData.logo) vue.inputData.logo = '/images/sapr.png';
-    if (vue.inputData.year > vue.inputData.end_year) {
+    if (vue.inputData.end_year != "" && (vue.inputData.year > vue.inputData.end_year)) {
       ShowMsg(lang === 'ru' ? 'Не верные даты партнерства!' : 'Incorrect partnership dates!');
       return;
     }
