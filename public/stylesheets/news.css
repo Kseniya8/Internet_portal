@@ -19,26 +19,50 @@ header{
     padding-bottom: 40px;
 }
 
-.news{
+.text{
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.full_text{
     font-size: 18px;
+    line-height: 1.4;
+    white-space: pre-line;
+}
+
+
+.news{
     margin: 0 auto;
     width: 80em;
     padding-top: 40px;
     word-spacing: 1px;
-    background-color: rgba(212, 179, 158, 0.16)
+    background-color: rgba(218, 203, 195, 0.164);
+    border: 3px solid rgb(133, 120, 104);
+    border-radius: 30px;
 }
 
 .newsName{
-    font-size: 30px;
+    font-size: 32px;
     font-weight: 900;
     text-align: left;
     padding-left: 70px;
 }
+
+.images_news{
+    max-width: 1200px;
+  display: flex;
+  align-items: center;
+  -webkit-justify-content: center;
+  /* Safari */
+  justify-content: center;
+}
+
 .img_p{
-    height: 30%;
-    width: 30%;
     padding: 10px;
-    vertical-align: middle;
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
 }
 
 .news_text{
@@ -46,12 +70,9 @@ header{
 }
 .newsDate{
     text-align: right;
-    font-style: italic;
     font-weight: 700;
-    font-size: 15px;
-    padding-top: 20px;
-    padding-bottom: 40px;
-    padding-right: 25px;
+    font-size: 17px;
+    padding: 20px 60px 40px 0;
 }
 
 .images_news{
@@ -61,7 +82,7 @@ header{
 hr {
     border: none;
     height: 3px;
-    margin: 40px 0;
+    margin: 70px 0;
     background-image: linear-gradient(to right, #FFF, #494949, #FFF);
 }
 hr:before,
@@ -129,4 +150,61 @@ button:active{
 }
 button:hover{
     background: black;
+}
+
+@media (max-width:500px) {
+
+    .newsName{
+        font-size: 20px;
+        font-weight: 900;
+        text-align: left;
+        padding-left: 30px;
+    }
+
+    .news{
+        margin: 0 auto;
+        width: 90%;
+        padding-top: 20px;
+        word-spacing: 1px;
+        background-color: rgba(218, 203, 195, 0.164);
+        border: 3px solid rgb(133, 120, 104);
+        border-radius: 30px;
+    }
+
+    .text{
+        font-size: 15px;
+        font-weight: 400;
+    }
+    
+    .full_text{
+        font-size: 13px;
+        line-height: 1.4;
+        text-indent: 2em;
+    }
+
+    .news_text{
+        padding: 0 10px 0 30px ;
+    }
+
+    .images_news{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: stretch;
+        object-fit: cover;
+        padding: 10px;
+    }
+    
+    .img_p{
+        width: 100%;
+        padding: 0 0 5px 0;
+    }
+
+    .newsDate{
+        text-align: right;
+        font-weight: 700;
+        font-size: 15px;
+        padding: 20px 30px 40px 0;
+    }
 }

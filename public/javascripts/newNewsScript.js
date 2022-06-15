@@ -3,35 +3,27 @@ import { errorMsg } from '/javascripts/errorMessage.js'
 window.onload = function () {
   let cropper;
   let vue;
-  const id = document.location.search.split('=')[1];
   let lang = document.querySelector('html').lang;
   let thisYear = new Date().getFullYear();
+
   Vue.component('v-select', VueSelect.VueSelect);
+
   $('#send-form').bind("click", sendFormButtonClick);
-  GetPartner();
+
   CreateVueData();
+
   function CreateVueData() {
-    const date = new Date();
     const inputData = {
-      logo: '',
-      companyFullName: '',
-      companyName: '',
-      country_city: '',
-      represent_name: '',
-      year: date.getFullYear(),
-      end_year: '',
-      projects: '',
-      about: '',
-      link: '',
-      vacancies: [{ name: '', description: '' }],
-      forsearch: [{ value: '' }],
+      heading: '',
+      text: '',
+      full_text: '',
+      date: '',
+      images: [],
+      img_input: '',
     };
-    let allYears = [];
-    for (let year = thisYear; year >= 1971; year--) {
-      allYears.push(year.toString());
-    }
+
     vue = new Vue({
-      el: '#is-partner-block',
+      el: '#is-news-block',
       data: { inputData },
       computed: {},
       methods: {
@@ -57,6 +49,7 @@ window.onload = function () {
           if (this.achivePage == inputData.achive_files.length &&
             inputData.achive_files.length != 0) this.achivePage--;
         },
+
         AddGalleryPhoto(event) {
           let input = event.target.files[0];
           if (input && IsImage(input.type)) {
@@ -81,66 +74,52 @@ window.onload = function () {
         CommentChange(id, comment) {
           if (id) inputData.changed_comment[id] = comment;
         },
+
         ShowPhoto: function (file) {
           $('#modal-show-photo').find('img').attr('src', file);
           $('#modal-show-photo').modal();
         },
-        AddCompLogo(event) {
+        AddNewsImage(event) {
           let input = event.target.files[0];
           if (IsImage(input.type)) {
             let reader = new FileReader();
             reader.onloadend = () => {
-              this.$set(vue.inputData, 'logo', reader.result);
+              vue.inputData.images.push(reader.result);
+              console.log(inputData)
             }
             reader.readAsDataURL(input);
           }
         },
-        DeleteCompLogo() {
-          this.$set(vue.inputData, 'logo', '');
+        DeleteNewsImg(index) {
+          vue.inputData.images.splice(index, 1);
         }
       }
     });
+
     $('#back').css('display', 'none');
   }
 
   function sendFormButtonClick() {
-    if (!vue.inputData.companyName) { ShowMsg(lang === 'ru' ? 'Вы не ввели название компании!' : 'The company name is not entered!'); return; }
-    if (!vue.inputData.companyFullName) { ShowMsg(lang === 'ru' ? 'Вы не ввели Название компании!' : 'The company name is not entered!'); return; }
-    if (!vue.inputData.represent_name) { ShowMsg(lang == 'ru' ? 'Вы не ввели ФИО представителя компании!' : 'The company represernter is not entered!'); return; }
-    if (!vue.inputData.logo) vue.inputData.logo = '/images/sapr.png';
-    if (vue.inputData.end_year != "" && (vue.inputData.year > vue.inputData.end_year)) {
-      ShowMsg(lang === 'ru' ? 'Не верные даты партнерства!' : 'Incorrect partnership dates!');
-      return;
-    }
+    if (!vue.inputData.heading) { ShowMsg(lang === 'ru' ? 'Вы не ввели заголовок!' : 'The header is not entered!'); return; }
+    if (!vue.inputData.text) { ShowMsg(lang === 'ru' ? 'Вы не ввели краткий текст!' : 'The short text is not entered!'); return; }
+    if (!vue.inputData.full_text) { ShowMsg(lang == 'ru' ? 'Вы не ввели полный текст!' : 'The full text is not entered!'); return; }
+    if (!vue.inputData.date) { ShowMsg(lang == 'ru' ? 'Вы не выбрали дату!' : 'The date is not selected!'); return; }
+    if (!vue.inputData.images) { ShowMsg(lang == 'ru' ? 'Вы не выбрали фотографии!' : 'The photo is not present!'); return; }
 
-    for (let i = 0; i < vue.inputData.vacancies.length; i++) {
-      if (!vue.inputData.vacancies[i].name || !vue.inputData.vacancies[i].description) {
-        ShowMsg(lang === 'ru' ?
-          'В вакансии № ' + (i + 1) + ' заполнены не все поля' : 'In vacancy № ' + (i + 1) + ', not all fields are filled in');
-        return;
-      }
-    }
-
-    console.log(vue.inputData);
-    for (let i = 0; i < vue.inputData.forsearch.length; i++) {
-      if (!vue.inputData.forsearch[i].value) {
-        ShowMsg(lang === 'ru' ?
-          'Нет названия компании № ' + (i + 1) : 'In company name № ' + (i + 1) + ', not field are filled in');
-        return;
-      }
-    }
     SendForm(vue.inputData);
   }
 
   function SendForm(data) {
+    console.log(data)
     let request = new XMLHttpRequest();
-    request.open('PUT', `/partners/${id}`, true);
+    request.open('POST', '/news', true);
     request.setRequestHeader("Content-Type", "application/json");
     request.onreadystatechange = function () {
       if (request.readyState == 4)
-        if (request.status === 200) {
+        if (request.status === 201) {
           $('#back').css('display', 'none');
-          ShowMsg('Данные партнера обновлены');
+          ShowMsg(lang == 'ru' ? 'Новость добавлена.'
+            : "News have been created.");
         } else {
           ShowMsg(errorMsg);
           $('#back').css('display', 'none');
@@ -150,26 +129,9 @@ window.onload = function () {
     request.send(JSON.stringify(data));
   }
 
-  function GetPartner() {
-    let request = new XMLHttpRequest();
-    request.open('GET', `/partners/${id}`, true);
-    request.setRequestHeader("Content-Type", "application/json");
-    request.onreadystatechange = function () {
-      if (request.readyState == 4)
-        if (request.status === 200) {
-          const newData = JSON.parse(request.response);
-          vue.inputData = { ...newData }
-        } else {
-          ShowMsg(lang == 'ru' ? 'Партнер не найден.'
-            : "Partner not found.");
-          $('#back').css('display', 'none');
-        }
-    }
-    request.send();
+  function CloseModel() {
+    $.modal.close();
   }
-
-
-  function CloseModel() { $.modal.close(); }
 
   function ShowMsg(text) {
     $('#modal-msg').find('p').text(text);

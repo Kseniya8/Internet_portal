@@ -2,8 +2,8 @@
 <html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
 
     <head>
-        {{#ru}} <title>Начальная страница</title>{{/ru}}
-        {{#en}} <title>Start page</title>{{/en}}
+        {{#ru}} <title>Интернет-портал выпускников кафедры САПРиУ</title>{{/ru}}
+        {{#en}} <title>Internet portal of graduates of the SAPRiU department</title>{{/en}}
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -100,137 +100,35 @@
             </div>
             <!-- If we need pagination -->
             <div class="swiper-pagination"></div>
-          </div>
-
-
-
-          
-        {{#news}}
-        <section id="news">
-            <div id="newsContent">
-                <div id="newsHeader">{{#ru}}Главные новости{{/ru}}{{#en}}Main news{{/en}}</div>
-                <div id="newsList">
-                    <!-- Начало шаблона -->
-                    {{#news}}
-                    <div class="news">
-                        <img src="{{image}}" height="171px" width="348px">
-                        <p class="newsName">{{title}}</p>
-                        <p class="newsText">{{text}}</p>
-                        <div>
-                            <p class="newsDate">{{date}}</p>
-                            <a class="newsLink" href="{{newsLink}}">{{#ru}}Узнать подробнее{{/ru}} {{#en}}learn
-                                more{{/en}}</a>
-                        </div>
-                    </div>
-                    {{/news}}
-                    <!-- Конец шаблона -->
-                </div>
-            </div>
-        </section>
-        {{/news}}
+        </div>
         <div id="NewsHeader">
             {{#ru}}<p>Главные новости</p>{{/ru}}
             {{#en}}<p>Main news</p>{{/en}}
         </div>
         <div class="test-page-wrapper">
-            <div class="carousel-wrapper">
+            <div class="carousel-wrapper" id="news_section">
                 <div class="owl-carousel news-carousel">
-                    <div class="slide">
+                    <div class="slide" v-for="newsItem in inputData">
                         <div class="thumb">
-                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Корея/vizit4-740x506.jpg"
-                                alt="" />
+                            <img v-bind:src="newsItem.images[0]" class="img_p" height="180px" width="348px" />
                         </div>
                         <div class="infos">
-                            <h4><a href="#">20 ЛЕТ СОТРУДНИЧЕСТВА</a></h4>
+                            <h4 v-text="newsItem.heading"></h4>
                             <div class="text-wrapper">
-                                <p>Более 20 лет продолжается взаимовыгодное научно-инновационное партнерство между
-                                    СПбГТИ(ТУ) и предприятиями промышленности пластмасс Германии. Доброй традицией стали
-                                    рабочие визиты...</p>
-                                <a href="http://technolog.edu.ru/component/k2/item/4343-20-let-sotrudnichestva.html"
-                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="thumb">
-                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Неделя%20науки/eh51-359x250.jpg"
-                                alt="" />
-                        </div>
-                        <div class="infos">
-                            <h4><a href="#">ВИЗИТ А.Д. БЕГЛОВА В ТЕХНОЛОГИЧЕСКИЙ ИНСТИТУТ</a></h4>
-                            <div class="text-wrapper">
-                                <p>28 октября Технологический институт принимал резидентов технологической долины
-                                    «Энерготехнохаб», были представлены новые проекты – «Центр инжиниринга» и
-                                    «Мультикорпоративный акселератор»...</p>
-                                <a href="http://technolog.edu.ru/news/news/item/4340-energotekhnokhab-v-spbgti.html"
-                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="thumb">
-                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/КП_ЭЦ/5-740x339.JPG"
-                                alt="" />
-                        </div>
-                        <div class="infos">
-                            <h4><a href="#">НАЦИОНАЛЬНАЯ СИСТЕМА КВАЛИФИКАЦИЙ ДЛЯ ПРОФЕССИЙ БУДУЩЕГО</a></h4>
-                            <div class="text-wrapper">
-                                <p>21 октября на площадке СПбГЭТУ «ЛЭТИ» прошел Форум «Национальная система квалификаций
-                                    для профессий будущего»...</p>
-                                <a href="http://technolog.edu.ru/component/k2/item/4333-natsionalnaya-sistema-kvalifikatsij-dlya-professij-budushchego.html"
-                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="thumb">
-                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/Совет/EK1-730x487.jpg"
-                                alt="" />
-                        </div>
-                        <div class="infos">
-                            <h4><a href="#">ENERGY CLUB TI. CТАРТ НОВОГО СЕЗОНА</a></h4>
-                            <div class="text-wrapper">
-                                <p>Энергетический клуб СПбГТИ провёл ярмарку проектов EnergyNight– мероприятие,
-                                    помогающее студентам начать карьеру в энергетике...</p>
-                                <a href="http://technolog.edu.ru/component/k2/item/4331-energy-club-ti-ctart-novogo-sezona.html"
-                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="thumb">
-                            <img src="http://technolog.edu.ru/images/thumbnails/images/112/АААААААА/окт/DSC_6789_-_-450x300.jpg"
-                                alt="" />
-                        </div>
-                        <div class="infos">
-                            <h4><a href="#">К 190-ЛЕТИЮ ФУНДАМЕНТАЛЬНОЙ БИБЛИОТЕКИ</a></h4>
-                            <div class="text-wrapper">
-                                <p>11 октября 2021 исполнилось 190 лет со дня открытия Фундаментальной библиотеки
-                                    Технологического института. Она была создана заботами министра финансов графа Е.Ф.
-                                    Канкрина...</p>
-                                <a href="http://technolog.edu.ru/component/k2/item/4316-k-190-letiyu-fundamentalnoj-biblioteki.html"
-                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slide">
-                        <div class="thumb">
-                            <img src="http://technolog.edu.ru/images/thumbnails/images/163/КП_ЭЦ/1if-750x494.JPG"
-                                alt="" />
-                        </div>
-                        <div class="infos">
-                            <h4><a href="#">В ФОКУСЕ ВНИМАНИЯ - ПОДГОТОВКА КАДРОВ</a></h4>
-                            <div class="text-wrapper">
-                                <p>16 сентября в Интерфаксе состоялся круглый стол по теме «Новые инструменты
-                                    профессионального развития и подготовки кадров»...</p>
-                                <a href="http://technolog.edu.ru/component/k2/item/4289-v-fokuse-vnimaniya-podgotovka-kadrov.html"
-                                    target="_blank" class="btn btn-sm btn-solid btn-red read-more-btn">Читать ></a>
+                                <p v-text="newsItem.text"></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <section id="aboutUs">
+            <div id="aboutUsContent">
+                <a href="/news/">
+                    <button id="toNews">{{#ru}}Перейти к новостям{{/ru}}{{#en}}Go to the news page{{/en}}</button>
+                </a>
+            </div>
+        </section>
         <div></div>
         {{#en}}
         <style>
@@ -258,7 +156,7 @@
         <script
             src='https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js'></script>
         <script src="/javascripts/home.js"></script>
-        <script src="/javascripts/news.js"></script>
+        <script src="/javascripts/mainNews.js" type="module"></script>
         <script>
             setTimeout(() => {
                 const swiper = new Swiper('.swiper_banner', {
@@ -301,6 +199,30 @@
           });
             }, 500);
           </script>
+        <script>
+            setTimeout(() => {
+                $('.news-carousel').owlCarousel({
+                    loop: true,
+                    margin: 40,
+                    responsiveClass: true,
+                    responsive: {
+                        0: {
+                            items: 1,
+                            nav: true
+                        },
+                        600: {
+                            items: 2,
+                            nav: true
+                        },
+                        1000: {
+                            items: 3,
+                            nav: true,
+                            loop: true
+                        }
+                    }
+                });
+            }, 1500);
+        </script>
     </body>
 
 </html>

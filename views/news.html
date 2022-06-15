@@ -25,7 +25,7 @@
         <section id="buttons-link-section">
             <div id="buttons-link-content">
                 <div id="statistic-block" class="button-link-block">
-                    <a href="" target="_blank">
+                    <a href="/news/edit_section">
                         <button id="statistic-button" class="button-link">
                             Редактировать раздел 
                         </button>
@@ -34,57 +34,29 @@
             </div>
         </section>
         {{/isAdmin}}
-        <div class="news_section">
+        <div class="news_section" id="news_section">
             <div id="NewsHeader">{{#ru}}Последние новости{{/ru}}{{#en}}Latest news{{/en}}</div>
-            <div id="newsList">
+            <div id="newsList" v-for="newsItem in inputData">
                 <!-- Начало шаблона -->
                 <div class="news">
-                    <p class="newsName">Встреча с потенциальным работодателем</p>
+                    <p class="newsName" v-text="newsItem.heading"></p>
                     <div class="images_news">
-                    <img class="img_p" src="https://technolog.edu.ru/public/userfiles/news/петербургцемент/IMG_6398.JPG" height="180px" width="348px">
-                    <img class="img_p" src="https://technolog.edu.ru/public/userfiles/news/петербургцемент/IMG_6399.JPG" height="180px" width="348px">
-                    <img class="img_p" src="https://technolog.edu.ru/public/userfiles/news/петербургцемент/IMG_6432.JPG" height="180px" width="348px">
+                    <ol v-for="img in newsItem.images">
+                        <img v-bind:src="img" class="img_p"/>
+                    </ol>
                 </div>
                     <div class="news_text">
-                    <p>
-                        14 апреля Технологический институт с рабочим визитом посетила делегация из компании «Петербургцемент» (г. Сланцы), входящей в состав современного промышленного Холдинга «ЕВРОЦЕМЕНТ груп».
-
-                        <p>«Петербургцемент» – высокотехнологичное цементное предприятие нового поколения, его запуск состоялся в ноябре 2010 года. Завод «Петербургцемент» применяет наиболее эффективную сухую технологию производства клинкера и выпускает популярные марки цемента навалом и в мешках.</p>
-                    Завод оснащен современным оборудованием ведущих европейских производителей.
-                    <p>Директор Управления персоналом Юлия Румянцева и менеджер по персоналу Дарья Фендрикова встретились с  руководителями интересующих их направлений подготовки, сотрудниками Центра карьеры и трудоустройства СПбГТИ(ТУ) и студентами кафедр  автоматизации процессов химической промышленности, систем автоматизированного проектирования и управления и химической технологии тугоплавких неметаллических и силикатных материалов.  </p>
-                    <p>В ходе беседы представители компании пригласили студентов Техноложки на оплачиваемые практику и стажировку с последующим трудоустройством, а также рассказали об условиях работы, оплате труда, перспективе карьерного роста, социальных преимуществах и т.д.</p>
-                    </div>
-                    <div>
-                        <p class="newsDate">15 апреля 2022 года</p>
-                    </div>
+                        <p class="text" v-text="newsItem.text"></p>
+                        <p class="full_text" v-text="newsItem.full_text"></p>
+                        </div>
+                        <div>
+                            <p class="newsDate" v-text="newsItem.date"></p>
+                        </div>
                 </div>
                 <hr>
                 <!-- Конец шаблона -->
             </div>
 
-            <div id="newsList">
-                <!-- Начало шаблона -->
-                <div class="news">
-                    <p class="newsName">Открылся сайт Лаборатории мирового уровня (ЛМУ). На портале размещена информация о ЛМУ и новости проекта. </p>
-                    <div class="images_news">
-                    <img class="img_p" src="https://technolog.edu.ru/public/userfiles/images/163/Конф1/Labsait.JPG">
-                </div>
-                    <div class="news_text">
-                    <p>
-                        14 апреля Технологический институт с рабочим визитом посетила делегация из компании «Петербургцемент» (г. Сланцы), входящей в состав современного промышленного Холдинга «ЕВРОЦЕМЕНТ груп».
-
-                        <p>«Петербургцемент» – высокотехнологичное цементное предприятие нового поколения, его запуск состоялся в ноябре 2010 года. Завод «Петербургцемент» применяет наиболее эффективную сухую технологию производства клинкера и выпускает популярные марки цемента навалом и в мешках.</p>
-                    Завод оснащен современным оборудованием ведущих европейских производителей.
-                    <p>Директор Управления персоналом Юлия Румянцева и менеджер по персоналу Дарья Фендрикова встретились с  руководителями интересующих их направлений подготовки, сотрудниками Центра карьеры и трудоустройства СПбГТИ(ТУ) и студентами кафедр  автоматизации процессов химической промышленности, систем автоматизированного проектирования и управления и химической технологии тугоплавких неметаллических и силикатных материалов.  </p>
-                    <p>В ходе беседы представители компании пригласили студентов Техноложки на оплачиваемые практику и стажировку с последующим трудоустройством, а также рассказали об условиях работы, оплате труда, перспективе карьерного роста, социальных преимуществах и т.д.</p>
-                    </div>
-                    <div>
-                        <p class="newsDate">15 апреля 2022 года</p>
-                    </div>
-                </div>
-                <hr>
-                <!-- Конец шаблона -->
-            </div>
         </div>
         {{#news}}
         <section id="news">
@@ -130,12 +102,11 @@
         <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
         <script src="/javascripts/jquery.spincrement.min.js"></script>
-        <script src="/javascripts/custom.js"></script>
         <script src='https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.3/owl.carousel.js'></script>
         <script
             src='https://cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.2/jquery.matchHeight-min.js'></script>
-        <script src="/javascripts/home.js"></script>
-        <script src="/javascripts/news.js"></script>
+        <!-- <script src="/javascripts/home.js" type="module"></script> -->
+        <script src="/javascripts/news.js" type="module"></script>
     </body>
 
 </html>

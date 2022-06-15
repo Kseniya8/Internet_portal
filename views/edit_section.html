@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
+
+<head>
+    <title>
+        {{#en}}Admin interface{{/en}}
+        {{#ru}}Новости для редактирования{{/ru}}
+    </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/images/it.png">
+    <link rel="stylesheet" href="/stylesheets/headerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/footerStyles.css">
+    <link rel="stylesheet" href="/stylesheets/pagesStyles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css">
+    <link rel="stylesheet" href="/stylesheets/adminStyles.css">
+</head>
+
+<body>
+    {{>base_header}}
+    <section id="buttons-link-section">
+        <div id="buttons-link-content">
+            <div id="statistic-block" class="button-link-block">
+                <a href="/news/add_news" target="_blank">
+                    <button id="statistic-button" class="button-link">
+                        Добавить новость
+                    </button>
+                </a>
+            </div>
+        </div>
+    </section>
+    <section id="table-section">
+        <div id="table-block">
+            <table id="news-table" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>id</th>
+                        <th>Название новости</th>
+                        <th>Краткое содержание</th>
+                        <th>Дата</th>
+                        <th>Удалить</th>
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                        <th>id</th>
+                        <th>Название новости</th>
+                        <th>Краткое содержание</th>
+                        <th>Дата</th>
+                        <th>Удалить</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </section>
+    <div id="modal-msg" style="display: none;">
+        <p style="margin-top: 16px; margin-bottom: 16px;"></p>
+    </div>
+    {{>base_footer}}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
+    <script src="/javascripts/news_section.js" type="module">
+    </script>
+</body>
+
+</html>

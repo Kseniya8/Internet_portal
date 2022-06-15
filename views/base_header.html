@@ -20,13 +20,14 @@
                 <div class="menu">
                     <ul class="navigation">
                         <li><a href="/">{{#ru}}Главная{{/ru}} {{#en}}Main{{/en}}</a></li>
-                        <li><a href="/forms/">{{#ru}}Найти выпускников{{/ru}}{{#en}}Find graduates{{/en}}</a></li>
+                        <li><a href="/forms/">{{#ru}}Выпускники кафедры{{/ru}}{{#en}}Find graduates{{/en}}</a></li>
                         <li><a href="/partners/">{{#ru}}Партнёры{{/ru}}{{#en}}Partners{{/en}}</a></li>
                         <li><a href="/gallery/">{{#ru}}Галерея{{/ru}}{{#en}}Gallery{{/en}}</a></li>
                         <li><a href="/news/">{{#ru}}Новости{{/ru}}{{#en}}News{{/en}}</a></li>
                         {{#isAuth}}
                         {{#isAdmin}}
                         <li><a href="/gallery/admin/">{{#ru}}Ред. галереи{{/ru}}{{#en}}Gallery editing{{/en}}</a></li>
+                        <li><a href="/news/edit_section/">{{#ru}}Ред. новостей{{/ru}}{{#en}}Edit news{{/en}}</a></li>
                         <li><a href="/admin/">{{#ru}}Анкеты{{/ru}}{{#en}}Questionnaires{{/en}}</a></li>
                         <li><a href="/edit_main_page/admin/">{{#ru}}Ред. главной{{/ru}}{{#en}}Edit main page{{/en}}</a></li>
                         {{/isAdmin}}
@@ -36,7 +37,6 @@
                         <li><a href="/account/logout/">{{#ru}}Выход{{/ru}}{{#en}}Log out{{/en}}</a></li>
                         {{/isAuth}}
                         {{^isAuth}}
-                        <li><a href="#contactInf">{{#ru}}Контакты{{/ru}}{{#en}}Contacts{{/en}}</a></li>
                         <li><a href="/account/">{{#ru}}Регистрация/Вход{{/ru}}{{#en}}Registration/Log in{{/en}}</a></li>
                         {{/isAuth}}
                     </ul>

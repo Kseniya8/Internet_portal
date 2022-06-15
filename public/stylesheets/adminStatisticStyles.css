@@ -8,6 +8,7 @@ body{
 .chart-header{
     display: flex;
     justify-content: center;
+    padding-top: 20px;
 }
 #charts-content{
     width: 1170px;
@@ -18,6 +19,6 @@ body{
     justify-content: space-around;
 }
 .chart-block{
-    margin: 25px;
+    margin: 30px;
     width: 500px;
 }

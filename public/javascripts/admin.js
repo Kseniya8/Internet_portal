@@ -235,7 +235,7 @@ $('#save-button').on('click', function () {
 });
 
 function ShowForm(data) {
-    $('#form').attr('href', '/forms/get_form/' + data['_id']);
+    $('#form').attr('href', '/forms/' + data['_id']);
     $('#form-block').modal();
     $("#form-email").text(data['email']);
     $("#form-name").text(data['name']);

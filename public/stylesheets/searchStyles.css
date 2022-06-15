@@ -18,6 +18,12 @@ h1,h2{
     text-align: center;
 }
 
+h1 {
+    text-align: center;
+    padding: 10px 0 5px 0;
+    font-size: 30px;
+}
+
 
 #inputDataContent{
     display: flex;
@@ -30,7 +36,7 @@ h1,h2{
     max-width: 100%;
     display: flex;
     margin-top: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 40px;
     background: rgba(212, 179, 158, 0.16);
     justify-content: space-around;
     align-items: center;
@@ -82,32 +88,6 @@ h1,h2{
 .education-select .vs__dropdown-option{
     padding-top: 5px;
     padding-bottom: 5px;
-}
-
-/* Кнопка (поиск) */
-#buttonSearch{
-    width: 252px;
-    height: 52px;
-    background: #44392E;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    outline: none;
-    border: 0px;
-    font-size: 18px;
-    font-family: 'Montserrat';
-    color: white;
-    font-weight: 600;
-    margin-top: 25px;
-    margin-bottom: 45px;
-    transition-duration: 0.1s;
-    cursor: pointer;
-}
-#buttonSearch:active{
-    background: black;
-    transform: translateY(4px);
-}
-#buttonSearch:hover{
-    background: black;
 }
 
 /* Блок с выпускниками */

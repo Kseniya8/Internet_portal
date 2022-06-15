@@ -9,7 +9,8 @@
   -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
   grid-template-areas: "map";
-  margin-bottom: 20px;
+  margin-bottom: 60px;
+  padding-top: 10px;
 }
 
 #map {
@@ -21,6 +22,7 @@
   -ms-grid-column: 2;
   grid-area: map;
   border-radius: 20px;
+  z-index: 0;
 }
 
 .leaflet-tile-pane {

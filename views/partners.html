@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="/stylesheets/pagesStyles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
     <link rel="stylesheet" href="https://unpkg.com/vue-select@3.0.0/dist/vue-select.css">
+    <link rel="stylesheet" href="/stylesheets/map.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
 </head>
 
 <body>
@@ -27,7 +29,6 @@
         </h1>
     </div>
     <div id="mainBlock">
-        {{#isAuth}}
         <section id="inputData">
             <div id="inputDataContent">
                 {{#ru}}<h1>Введите данные для поиска</h1>{{/ru}}
@@ -35,47 +36,33 @@
                 <div id="inputs">
                     <div id="inputs-block">
                         <div><b>
-                                {{#en}}Last name{{/en}}
-                                {{#ru}}Фамилия{{/ru}}
+                                {{#en}}Full name{{/en}}
+                                {{#ru}}ФИО{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="surname">
-                        </div>
-                        <div><b>
-                                {{#en}}First name{{/en}}
-                                {{#ru}}Имя{{/ru}}
-                            </b><br>
-                            <input class="text-input" v-model="name">
-                        </div>
-                        <div><b>
-                                {{#en}}Patronymic{{/en}}
-                                {{#ru}}Отчество{{/ru}}
-                            </b><br>
-                            <input class="text-input" v-model="patronymic">
+                            <input class="text-input" v-model="surname" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}The name of the company{{/en}}
                                 {{#ru}}Название компании{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="companyName">
+                            <input class="text-input" v-model="companyName" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}Partnership start year{{/en}}
                                 {{#ru}}Год начала партнёрства{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="year">
+                            <input class="text-input" type="number" placeholder="YYYY" min="1800" max="2300"
+                                v-model="year" v-on:change="searchButtonClick()">
                         </div>
                         <div><b>
                                 {{#en}}Partnership end year{{/en}}
                                 {{#ru}}Год завершения партнёрства{{/ru}}
                             </b><br>
-                            <input class="text-input" v-model="end_year">
+                            <input class="text-input" type="number" placeholder="YYYY" min="1800" max="2300" v-model="end_year"
+                                v-on:change="searchButtonClick()">
                         </div>
                     </div>
                 </div>
-                <button id="buttonSearch" v-on:click="searchButtonClick()">
-                    {{#en}}Search{{/en}}
-                    {{#ru}}Поиск{{/ru}}
-                </button>
             </div>
             <div id="no-result" v-show="visibleNoResult">
                 <h2>
@@ -84,31 +71,37 @@
             </div>
         </section>
         <section id="searchResultPartner" class="searchResultPartner">
-            <div v-for="partner in inputData">
+            <div v-for="(partner, i) in inputData" v-if="!surname || (surname && partner.representersList.length)">
                 <h1 v-text="'{{#en}}Represents{{/en}}{{#ru}}Компания{{/ru}} ' +partner.companyname"></h1>
                 <div class="partner-block">
                     <div class="partner">
                         <img class="logo-img" alt="логотип партнера" v-bind:src="partner.logo" width="35%">
                         <div class="info">
                             <h2 v-text="partner.companyfullname"></h2>
+                            <b class="about_comp" v-if="partner.about" v-text="partner.about">
+                            </b>
+                            <p> <a v-if="partner.link" v-bind:href="partner.link"
+                                    v-text="'{{#en}}Link{{/en}}{{#ru}}Ссылка на сайт компании{{/ru}}: ' + partner.link">
+                                </a></p>
                             <p v-text="'{{#en}}Represents{{/en}}{{#ru}}Представители{{/ru}}: ' +partner.representname">
                             </p>
-                            <p v-if="partner.year"
-                                v-text="'{{#en}}Year of start partnership{{/en}}{{#ru}}Год начала партнёрства{{/ru}}: ' + partner.year">
-                            </p>
-                            <p v-if="partner.endyear"
-                                v-text="'{{#en}}Year of end partnership{{/en}}{{#ru}}Год завершения партнёрства{{/ru}}: ' + partner.endyear">
+                            <p>
+                                <span v-if="partner.year"
+                                    v-text="'{{#en}}Years of partnership:{{/en}}{{#ru}}Годы партнёрства: c {{/ru}}' + partner.year">
+                                </span>
+                                <span v-if=" partner.endyear"
+                                    v-text="'{{#en}} - {{/en}}{{#ru}} - по {{/ru}}' + partner.endyear">
+                                </span>
                             </p>
                             <p v-if="partner.countrycity"
-                                v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity"></p>
-                            <p v-if="partner.about"
-                                v-text="'{{#en}}About{{/en}}{{#ru}}О компании{{/ru}}: ' + partner.about"></p>
-                            <a :href="partner.link" target='_blank'>
-                                <p v-if="partner.link" v-text="'{{#en}}Link{{/en}}{{#ru}}Ссылка на сайт компании{{/ru}}: ' + partner.link"></p></a>
+                                v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + partner.countrycity">
+                            </p>
+                            <p class="projects" v-if="partner.projects"
+                                v-text="'{{#en}}Joint projects{{/en}}{{#ru}}Совместные проекты{{/ru}}: ' + partner.projects"
+                                v-on:click="ToggleText(i)">
+                            </p>
                         </div>
-                        </a>
                     </div>
-
                     <div class="vacancies" v-if="partner.vacancies">
                         <h2 v-text="'{{#en}}Vacancies{{/en}}{{#ru}}Вакансии{{/ru}}'"></h2>
                         <div class="vacancy" v-for="vac in partner.vacancies">
@@ -117,8 +110,8 @@
                         </div>
                     </div>
                 </div>
-
                 <div class="representers" v-if="partner.representersList" class="partner-representers">
+                    {{#isAuth}}
                     <a class="representer" v-for="representer in partner.representersList"
                         v-bind:href="'/forms/' + representer.id" target='_blank'>
                         <div>
@@ -133,35 +126,43 @@
                             </p>
                             <p v-text="'{{#en}}City{{/en}}{{#ru}}Город{{/ru}}: ' + representer.city"></p>
                         </div>
+                        {{/isAuth}}
                     </a>
                 </div>
             </div>
-            <div class="grid-wrapper">
-                <div id="map"></div>
-            </div>
+            {{#isAuth}}
+            {{#ru}}<h1>Карта представителей партнёров кафедры</h1>{{/ru}}
+            {{#en}}<h1>Map of the Department's partner representatives</h1>{{/en}}
+            {{/isAuth}}
         </section>
         {{>pages}}
-        {{/isAuth}}
     </div>
     {{^isAuth}} 
     <div class="content">
     <h1 style="margin-top:16px;margin-bottom: 16px;text-align: center;">
-        {{#en}}You do not have access to the full profile {{/en}} 
-        {{#ru}}У вас нет доступа к поиску партнёров{{/ru}}</h1>
-        <h2 style="margin-top:16px;margin-bottom: 16px;text-align: center;">
+        {{#en}}You do not have access to the full information provided on this page{{/en}} 
+        {{#ru}}У вас нет доступа к полной информации, представленной на этой странице{{/ru}}</h1>
+        <h2 class="foracess" style="margin-top:16px;margin-bottom: 16px;text-align: center;">
             {{#en}}You need to register to access this page{{/en}} 
-            {{#ru}}Вам необxодимо зарегестрироваться, чтобы получить доступ к этой странице{{/ru}}</h2>
+            {{#ru}}Вам необxодимо зарегестрироваться, чтобы получить доступ ко всему функционалу{{/ru}}</h2>
         </div>
     <style>
-        .content{
-          width: auto;
-          height: 300px;
-        }
-        h2 {
+        h1 {
+         text-align: center;
+         padding: 10px 0 5px 0;
+         font-size: 30px;
+        }   
+        
+        .foracess {
          text-align: center;
          font-size: 25px;
          color: rgb(129, 129, 129);
          padding: 80px 0;
+        }
+
+        .content{
+          width: auto;
+          height: 300px;
         }
         #personal-info{
             width: auto;
@@ -176,9 +177,17 @@
         }
     </style>
     {{/isAuth}}
+    {{#isAuth}}
+    <section id="searchResultPartner" class="searchResultPartner">
+    <div class="grid-wrapper">
+        <div id="map"></div>
+    </div>
+    </section>
+    {{/isAuth}}
     {{>base_footer}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
     <script src="/javascripts/vue-select.min.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script type="module" src="/javascripts/partners.js"></script>
     <script src="/javascripts/adminPartnerStatisticScripts.js" type="module"></script>
 </body>

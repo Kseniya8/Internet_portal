@@ -1,3 +1,5 @@
+import Map from "./map.js";
+
 var request = new XMLHttpRequest();
 request.open('GET','/admin/statistic/get_statistic', true);
 request.setRequestHeader("Content-Type", "application/json");
@@ -17,15 +19,16 @@ function ShowModal(text){
     $('#modal-msg').modal();
 }
 
-function ShowStatistic(inputData){
-    console.log(inputData)
+function ShowStatistic(inputData) {
+    const map = new Map(inputData);
     var vm = new Vue({
         el: "#charts-content",
         data: inputData,
-        methods:{
-            ShowBlock(obj){
+        methods: {
+            ShowBlock(obj) {
                 return !$.isEmptyObject(obj);
             }
         }
     });
+    map.getMap();
 }

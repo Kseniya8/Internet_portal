@@ -13,11 +13,10 @@ adminRouter.get('/statistic_partners/', jsonParser, adminController.statisticPar
 adminRouter.get('/add_partners/', jsonParser, adminController.AddPartners)
 adminRouter.get('/edit_partner/', jsonParser, adminController.EditPartners)
 adminRouter.get('/statistic_partners/get_statistic', jsonParser, adminController.getStatisticPartners)
-adminRouter.post('/add_news', jsonParser, adminController.updateStatuses)
-adminRouter.post('/edit_news', jsonParser, adminController.updateStatuses)
 adminRouter.post('/update_statuses', jsonParser, adminController.updateStatuses)
 adminRouter.delete('/delete_partner', jsonParser, adminController.deletePartner)
 adminRouter.post('/update_homepage', jsonParser, adminController.updateHomepage)
+
 
 module.exports = adminRouter;
 

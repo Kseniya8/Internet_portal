@@ -266,6 +266,8 @@ exports.EditPartners = (req, res) => res.render("partner_edit.html", {
     isAdmin: true,
 });
 
+
+
 exports.statisticPartners = (req, res) => res.render("adminStatisticPartners.html", { [req.session.lang ?? 'ru']: true, isAuth: true, isAdmin: true })
 
 exports.getStatistic = (req, res) => {
@@ -278,7 +280,10 @@ exports.getStatistic = (req, res) => {
         'dir_training': {},
         'focus': {},
         'group': {},
+        'city': {},
     }
+
+    const cities = [];
 
     formModel.find({})
         .then(forms => {

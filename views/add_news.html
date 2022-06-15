@@ -2,8 +2,8 @@
 <html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
 
 <head>
-    {{#ru}} <title>Редактирование партнёра</title>{{/ru}}
-    {{#en}} <title>Edit partner</title>{{/en}}
+    {{#ru}} <title>Добавить новость</title>{{/ru}}
+    {{#en}} <title>Add news</title>{{/en}}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/stylesheets/headerStyles.css">
     <link rel="stylesheet" href="/stylesheets/footerStyles.css">
     <link rel="stylesheet" href="/stylesheets/formStyles.css">
+    <link rel="stylesheet" href="/stylesheets/news.css">
     <link rel="stylesheet" href="/stylesheets/cropper.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -23,23 +24,22 @@
     <section id="form-data">
         <div id="form-data-content">
             <h1 id="form-data-head">
-                {{#en}}Edit data about news{{/en}}
-                {{#ru}}Редактировать данные о новости{{/ru}}</h1>
+                {{#en}}Add data about news{{/en}}
+                {{#ru}}Добавить данные о новости{{/ru}}</h1>
             <div id="form-data-inputs">
-                <div id="partner">
-                    <div id="is-partner-block" class="partnerAdmin">
-                        <div id="input-comp-logo-block"><b>{{#en}}Photos{{/en}}
-                                {{#ru}}Фотографии, относящиеся к новости{{/ru}}</b> 
-                                <!--Тут надо добавить возможность добавления несколько фотографий -->
-                            <label class="button-label" for="comp-logo-input">{{#en}}Add photo{{/en}}
+                <div id="news">
+                    <div id="is-news-block" class="newsAdmin">
+                        <div id="img-block"><b>{{#en}}Photos{{/en}}
+                                {{#ru}}Фотографии, относящиеся к новости{{/ru}}</b> <!--Тут надо добавить возможность добавления несколько фотографий -->
+                            <label class="button-label" for="img-input">{{#en}}Add photo{{/en}}
                                 {{#ru}}Добавить фото{{/ru}}</label>
-                            <input id="comp-logo-input" hidden type="file" accept="image/jpeg,image/png"
-                                v-on:change="AddCompLogo(event)">
+                            <input id="img-input" hidden type="file" accept="image/jpeg,image/png" v-on:change="AddNewsImage(event)">
                         </div>
-                        <div id="partner-logo-block" v-if="inputData.logo">
-                            <img id="partner-logo" v-bind:src="inputData.logo">
-                            <img class="cancel" src="/images/cancel.svg" style="margin-left: 5px;"
-                                v-on:click="DeleteCompLogo">
+                        <div id="news-img-block">
+                            <ol v-for="(img, index) in inputData.images">
+                                <img v-bind:src="img" class="img_p" height="180px" width="348px" />
+                                <img class="cancel" src="/images/cancel.svg" style="margin-left: 5px;" v-on:click="DeleteNewsImg(index)">
+                            </ol>
                         </div>
                         <div><b>{{#en}}Full name of the news{{/en}}
                                 {{#ru}}Название новости{{/ru}}</b><br>
@@ -56,19 +56,19 @@
                         <div><b>{{#en}}Full description of the news{{/en}}
                                 {{#ru}}Полное описание новости{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <textarea class="comp_style" v-model="inputData.country_city"></textarea>
+                                <textarea class="comp_style" v-model="inputData.full_text"></textarea>
                             </div>
                         </div>
                         <div><b>{{#en}}Date{{/en}}
                                 {{#ru}}Дата{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <input type="date" class="comp_style" v-model="inputData.вфеу">
+                                <input type="date" class="comp_style" v-model="inputData.date">
                             </div>
                         </div>
                     </div>
                     <button class="form-button" id="send-form">
                         {{#en}}Add news{{/en}}
-                        {{#ru}}Соxранить отредактированную новость{{/ru}}
+                        {{#ru}}Добавить новость{{/ru}}
                     </button>
                 </div>
                 <div id="modal-msg" style="display: none">
@@ -77,12 +77,13 @@
             </div>
             </div>
     </section>
+
     {{>base_footer}}
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js"></script>
     <script src="/javascripts/vue-select.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <script src="/javascripts/edit_news.js" type="module"></script>
+    <script src="/javascripts/newNewsScript.js" type="module"></script>
     <script src="/javascripts/cropper.min.js"></script>
 </body>
 

@@ -30,7 +30,7 @@ window.onload = function () {
                 request.send();
             },
             SetInputData: function (news) {
-                this.inputData = news.map(item => ({ ...item, date: new Date(item.date).toLocaleDateString() }));
+                this.inputData = news.map(item => ({ ...item, date: new Date(item.date).toLocaleDateString() })).splice(0, 6);
             },
         }
     });
