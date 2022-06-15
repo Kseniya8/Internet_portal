@@ -21,6 +21,7 @@ body {
 .swiper_banner {
     max-width: 1170px;
     position: relative;
+    align-items: center;
     height: 605px;
     width: 100%;
     margin: 0 auto;
@@ -114,7 +115,7 @@ body {
 .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background-color: #ebe6df;
+    background-color: #fffefb;
     opacity: 1;
     z-index: 1;
 }

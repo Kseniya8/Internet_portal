@@ -9,10 +9,10 @@ newsRouter.get('/', newsController.index);
 // CRUD routes
 newsRouter.post('/', jsonParser, newsController.create);
 newsRouter.get('/get', jsonParser, newsController.read);
-newsRouter.put('/', jsonParser, newsController.update);
+newsRouter.put('/:_id', jsonParser, newsController.update);
 
 newsRouter.get('/add_news', jsonParser, newsController.AddNews)
-newsRouter.get('/edit_news/:id', jsonParser, newsController.EditNews)
+newsRouter.get('/edit_news', jsonParser, newsController.EditNews)
 newsRouter.get('/edit_section', jsonParser, newsController.EditSection)
 newsRouter.delete('/:id', jsonParser, newsController.deleteNews);
 newsRouter.get('/search', jsonParser, newsController.searchForms);

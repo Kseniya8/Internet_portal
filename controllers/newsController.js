@@ -20,14 +20,14 @@ exports.EditSection = (req, res) => res.render("edit_section.html", {
     isAdmin: true,
 });
 
-exports.deleteNews = async (req, res) => {
+exports.deleteNews = async (req, res, next) => {
   const { params: { id: _id } } = req;
   newsModel.deleteOne({ _id })
     .then((data) => { res.sendStatus(204); })
-    .catch(err => (err));
+    .catch(err => next(err));
 }
 
-exports.searchForms = (req, res) => {
+exports.searchForms = (req, res, next) => {
 
     name_fields = [
       'heading',
@@ -41,9 +41,9 @@ exports.searchForms = (req, res) => {
   
     for (key in req.query) {
       if (name_fields.indexOf(key) != -1 && req.query[key]) {
-        if (key == 'companyName') {
+        if (key == 'heading') {
           params.$or = [
-            { companyName: RegExp(req.query[key], "i") },
+            { heading: RegExp(req.query[key], "i") },
             { "forsearch.value": RegExp(req.query[key], "i") }
           ]
         }
@@ -62,31 +62,33 @@ exports.searchForms = (req, res) => {
       'date': 1,
     }
   
-    formModelPartner.find(params, need_fields, { skip: skip, limit: 10 })
-      .then(forms => {
-        if (forms) {
+  newsModel.find(params, need_fields, { skip: skip, limit: 10 })
+    .then(news => {
+      if (news) {
           formModelPartner.find(params).countDocuments()
-            .then(count => res.json({ partners: forms, count: count }))
+            .then(count => res.json({ news, count }))
         }
-        else res.json({ partners: {} })
+      else res.json({ news: {} })
       })
-    .catch(err => (err))
+    .catch(err => next(err))
 }
 
-exports.create = (req, res) => {
+exports.create = (req, res, next) => {
   newsModel.create(req.body)
     .then((data) => { res.sendStatus(201); })
-    .catch(err => (err));
+    .catch(err => next(err));
 }
 
-exports.read = (req, res) => {
+exports.read = (req, res, next) => {
   newsModel.find().sort({ date: -1 })
     .then((news) => { res.json({ news }); })
     .catch((err) => { res.sendStatus(400); console.log(err); });
 }
 
-exports.update = (req, res) => {
-  console.log(req.params, req.body)
-  res.sendStatus(200)
+exports.update = (req, res, next) => {
+  const { params: { _id } } = req;
+  newsModel.updateOne({ _id }, req.body)
+    .then((data) => { res.sendStatus(200); })
+    .catch(err => next(err));
 }
 

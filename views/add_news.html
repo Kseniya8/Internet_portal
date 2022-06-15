@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="/stylesheets/headerStyles.css">
     <link rel="stylesheet" href="/stylesheets/footerStyles.css">
     <link rel="stylesheet" href="/stylesheets/formStyles.css">
-    <link rel="stylesheet" href="/stylesheets/news.css">
     <link rel="stylesheet" href="/stylesheets/cropper.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -37,26 +36,26 @@
                         </div>
                         <div id="news-img-block">
                             <ol v-for="(img, index) in inputData.images">
-                                <img v-bind:src="img" class="img_p" height="180px" width="348px" />
                                 <img class="cancel" src="/images/cancel.svg" style="margin-left: 5px;" v-on:click="DeleteNewsImg(index)">
+                                <img v-bind:src="img" class="img_p"/>
                             </ol>
                         </div>
                         <div><b>{{#en}}Full name of the news{{/en}}
                                 {{#ru}}Название новости{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <textarea class="comp_style" v-model="inputData.heading"></textarea>
+                                <textarea class="comp_style" v-model="inputData.heading" style="width: 490px; height: 30px;"></textarea>
                             </div>
                         </div>
                         <div><b>{{#en}}Brief description of the news{{/en}}
                                 {{#ru}}Краткое описание новости{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <textarea class="comp_style" v-model="inputData.text"></textarea>
+                                <textarea class="comp_style" v-model="inputData.text" style="width: 490px; height: 150px;"></textarea>
                             </div>
                         </div>
                         <div><b>{{#en}}Full description of the news{{/en}}
                                 {{#ru}}Полное описание новости{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <textarea class="comp_style" v-model="inputData.full_text"></textarea>
+                                <textarea class="comp_style" v-model="inputData.full_text" style="width: 490px; height: 500px;"></textarea>
                             </div>
                         </div>
                         <div><b>{{#en}}Date{{/en}}

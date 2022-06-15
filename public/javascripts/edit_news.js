@@ -1,90 +1,103 @@
-import Vue from 'https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.esm.browser.js';
-
-var newsTable;
 window.onload = function () {
-  const vm = new Vue({
-    el: '#newsList',
-    data: {
-      lastPage: 0,
-      correntPage: 0,
-      inputData: [],
-    },
-    paging: false,
-    computed: {
-      visibleNoResult: function () {
-        return this.inputData.length == 0;
-      }
-    },
-    methods: {
-      GetNews: function () {
-        this.address = '/news/get';
-        var request = new XMLHttpRequest();
-        request.open('GET', this.address, true);
-        request.setRequestHeader("Content-Type", "application/json");
-        request.onreadystatechange = function () {
-          console.log(request)
-          if (request.readyState === 4 && request.status === 200) {
-            var answer = JSON.parse(request.responseText);
-            console.log(answer)
-            vm.ShowResult(answer.news);
+  let vue;
+
+  CreateVueData();
+
+  let lang = document.querySelector('html').lang;
+  const id = document.location.search.split('').splice(1).join('');
+  function CreateVueData() {
+
+    vue = new Vue({
+      el: '#is-news-block',
+      data: {
+        inputData: {
+          heading: '',
+          text: '',
+          full_text: '',
+          date: '',
+          images: [],
+          img_input: '',
+        }
+      },
+      paging: false,
+      computed: {
+        visibleNoResult: function () {
+          return Object.keys(this.inputData).length > 0;
+        }
+      },
+      methods: {
+        GetNews: function () {
+          const address = '/news/get';
+          const request = new XMLHttpRequest();
+          request.open('GET', address, true);
+          request.setRequestHeader("Content-Type", "application/json");
+          request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
+              const answer = JSON.parse(request.responseText);
+              vue.SaveResult(answer.news);
+            }
           }
-        }
-        request.send();
-      },
-      ShowResult: function (answer) {
-        this.inputData = [];
-        answer.forEach(item => {
-          this.inputData.push({
-            heading: item.heading,
-            date: item.date,
-            text: item.text,
-            id: item._id,
-            fulltext: item.full_text,
-            images: item.images,
-          });
-        });
-        CreateNewsTable(this.inputData)
-      },
-    }
-  });
-  vm.GetNews();
-}
-
-function CreateNewsTable(inputData) {
-  if (newsTable) {
-    newsTable.clear().rows.add(inputData).draw();
-  }
-  else newsTable = $('#news-table').DataTable({
-    language: {
-      url: "https://cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Russian.json"
-    },
-    data: inputData,
-    paging: false,
-    searching: false,
-    columns: [
-      { data: 'id', defaultContent: "" },
-      { data: 'heading', defaultContent: "" },
-      { data: 'text', defaultContent: "" },
-      { data: 'date', defaultContent: "" },
-      {
-        data: 'delete', render: function () {
-          return '<button onclick="event.stopPropagation()" class="red-button">Удалить</button>'
-        }
-      },
-    ],
-    columnDefs: [
-      {
-        targets: [0],
-        visible: false,
-        searchable: false
+          request.send();
+        },
+        SaveResult: function (answer) {
+          const news = answer.find(item => item._id === id);
+          this.inputData = { ...news, date: new Date(news.date).toISOString().split('T')[0] };
+        },
+        PutNews: function (data) {
+          const address = `/news/${id}`;
+          const request = new XMLHttpRequest();
+          request.open('PUT', address, true);
+          request.setRequestHeader("Content-Type", "application/json");
+          request.onreadystatechange = function () {
+            if (request.readyState === 4 && request.status === 200) {
+              $('#back').css('display', 'none');
+              ShowMsg(lang == 'ru' ? 'Новость обновлена.'
+                : "News have been updated.");
+            } else {
+              $('#back').css('display', 'none');
+              ShowMsg(lang == 'ru' ? 'Новость не обновлена, что-то пошло не так.'
+                : "News not updated.");
+            }
+          }
+          request.send(JSON.stringify(data));
+        },
+        AddNewsImg(event) {
+          let input = event.target.files[0];
+          if (IsImage(input.type)) {
+            let reader = new FileReader();
+            reader.onloadend = () => {
+              this.inputData.images.push(reader.result);
+            }
+            reader.readAsDataURL(input);
+          }
+        },
+        DeleteNewsImg(index) { this.inputData.images.splice(index, 1); },
       }
-    ]
-  });
-  newsTable.draw();
+    })
 
-  $('td > button').on('click', DeleteNews);
+    $('#back').css('display', 'none');
+  }
 
-  $('#news-table tbody').on('click', 'tr', function () {
-    ShowNews(newsTable.row(this).data());
-  });
+  function sendFormButtonClick() {
+    if (!vue.inputData.heading) { ShowMsg(lang === 'ru' ? 'Вы не ввели заголовок!' : 'The header is not entered!'); return; }
+    if (!vue.inputData.text) { ShowMsg(lang === 'ru' ? 'Вы не ввели краткий текст!' : 'The short text is not entered!'); return; }
+    if (!vue.inputData.full_text) { ShowMsg(lang == 'ru' ? 'Вы не ввели полный текст!' : 'The full text is not entered!'); return; }
+    if (!vue.inputData.date) { ShowMsg(lang == 'ru' ? 'Вы не выбрали дату!' : 'The date is not selected!'); return; }
+    if (!vue.inputData.images) { ShowMsg(lang == 'ru' ? 'Вы не выбрали фотографии!' : 'The photo is not present!'); return; }
+
+    vue.PutNews(vue.inputData);
+  }
+
+  function ShowMsg(text) {
+    $('#modal-msg').find('p').text(text);
+    $('#modal-msg').modal();
+  }
+
+  function IsImage(type) {
+    return type == "image/jpeg" ||
+      type == "image/png";
+  }
+
+  vue.GetNews();
+  $('#send-form').bind("click", sendFormButtonClick);
 }

@@ -39,7 +39,7 @@ window.onload = function () {
     vm.GetNews();
 }
 
-function ShowNews(news) { window.location.href = `./edit_news/${news.id}`; }
+function ShowNews(news) { window.location.href = `/news/edit_news?${news.id}`; }
 
 function DeleteNews(e) {
     const id = e.target.id
@@ -49,7 +49,6 @@ function DeleteNews(e) {
         request.open('DELETE', address, true);
         request.setRequestHeader("Content-Type", "application/json");
         request.onreadystatechange = function () {
-            console.log(request)
             if (request.readyState === 4 && request.status === 204) {
                 vm.GetNews();
             }

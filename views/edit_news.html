@@ -2,8 +2,8 @@
 <html lang="{{#en}}en{{/en}}{{^en}}ru{{/en}}">
 
 <head>
-    {{#ru}} <title>Редактирование партнёра</title>{{/ru}}
-    {{#en}} <title>Edit partner</title>{{/en}}
+    {{#ru}} <title>Редактирование новости</title>{{/ru}}
+    {{#en}} <title>Edit news</title>{{/en}}
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/stylesheets/headerStyles.css">
     <link rel="stylesheet" href="/stylesheets/footerStyles.css">
     <link rel="stylesheet" href="/stylesheets/formStyles.css">
+    <link rel="stylesheet" href="/stylesheets/news.css">
     <link rel="stylesheet" href="/stylesheets/cropper.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
@@ -26,49 +27,47 @@
                 {{#en}}Edit data about news{{/en}}
                 {{#ru}}Редактировать данные о новости{{/ru}}</h1>
             <div id="form-data-inputs">
-                <div id="partner">
-                    <div id="is-partner-block" class="partnerAdmin">
+                <div id="news">
+                    <div id="is-news-block" class="newsAdmin">
                         <div id="input-comp-logo-block"><b>{{#en}}Photos{{/en}}
                                 {{#ru}}Фотографии, относящиеся к новости{{/ru}}</b> 
                                 <!--Тут надо добавить возможность добавления несколько фотографий -->
                             <label class="button-label" for="comp-logo-input">{{#en}}Add photo{{/en}}
                                 {{#ru}}Добавить фото{{/ru}}</label>
-                            <input id="comp-logo-input" hidden type="file" accept="image/jpeg,image/png"
-                                v-on:change="AddCompLogo(event)">
+                            <input id="comp-logo-input" hidden type="file" accept="image/jpeg,image/png" v-on:change="AddNewsImg(event)">
                         </div>
-                        <div id="partner-logo-block" v-if="inputData.logo">
-                            <img id="partner-logo" v-bind:src="inputData.logo">
-                            <img class="cancel" src="/images/cancel.svg" style="margin-left: 5px;"
-                                v-on:click="DeleteCompLogo">
+                        <div id="news-logo-block" v-if="inputData.images">
+                            <ol v-for="(img, index) in inputData.images">
+                                <img class="cancel" src="/images/cancel.svg" style="margin-left: 5px;" v-on:click="DeleteNewsImg(index)">
+                                <img id="news-logo" v-bind:src="img" class="img_p">
+                            </ol>
                         </div>
                         <div><b>{{#en}}Full name of the news{{/en}}
                                 {{#ru}}Название новости{{/ru}}</b><br>
-                            <div id="v-model-select">
-                                <textarea class="comp_style" v-model="inputData.heading"></textarea>
-                            </div>
+                            <textarea class="comp_style" v-model="inputData.heading" style="width: 490px; height: 30px;"></textarea>
                         </div>
                         <div><b>{{#en}}Brief description of the news{{/en}}
                                 {{#ru}}Краткое описание новости{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <textarea class="comp_style" v-model="inputData.text"></textarea>
+                                <textarea class="comp_style" v-model="inputData.text" style="width: 490px; height: 150px;"></textarea>
                             </div>
                         </div>
                         <div><b>{{#en}}Full description of the news{{/en}}
                                 {{#ru}}Полное описание новости{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <textarea class="comp_style" v-model="inputData.country_city"></textarea>
+                                <textarea class="comp_style" v-model="inputData.full_text" style="width: 490px; height: 500px;"></textarea>
                             </div>
                         </div>
                         <div><b>{{#en}}Date{{/en}}
                                 {{#ru}}Дата{{/ru}}</b><br>
                             <div id="v-model-select">
-                                <input type="date" class="comp_style" v-model="inputData.вфеу">
+                                <input type="date" class="comp_style" v-model="inputData.date">
                             </div>
                         </div>
                     </div>
                     <button class="form-button" id="send-form">
                         {{#en}}Add news{{/en}}
-                        {{#ru}}Соxранить отредактированную новость{{/ru}}
+                        {{#ru}}Соxранить{{/ru}}
                     </button>
                 </div>
                 <div id="modal-msg" style="display: none">
