@@ -190,4 +190,8 @@ a:hover {
     .vacancies {
         width: 90%;
     }
+
+.vacancies {
+    padding: 15px;
+}
 }

@@ -115,7 +115,7 @@ body {
 .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background-color: #fffefb;
+    background-color: #e9b568;
     opacity: 1;
     z-index: 1;
 }
@@ -123,7 +123,7 @@ body {
 .swiper-pagination-bullet-active {
     width: 13px;
     height: 13px;
-    background-color: #c0bab4;
+    background-color: #dddddd;
 }
 
 /* Фото универа */
@@ -256,7 +256,7 @@ hr {
     color: white;
     font-weight: 600;
     transition-duration: 0.1s;
-    margin-bottom: 20px;
+    margin-bottom: 50px;
     cursor: pointer;
 }
 
@@ -602,6 +602,26 @@ a {
 }
 
 @media (max-width:500px) {
+    
+    .owl-carousel {
+        display: none;
+        width: 100%;
+        -webkit-tap-highlight-color: transparent;
+        position: relative;
+        z-index: 1;
+        margin-bottom: -85px;
+    }
+    .banner_text>div {
+        z-index: 3;
+        width: 289px;
+        height: 44px;
+        background: #a0866e00;
+        border-radius: 0px 5px 5px 0px;
+        position: relative;
+        top: 39px;
+        display: flex;
+        justify-content: center;
+    }
 
     .swiper-button-next,
     .swiper-button-prev {
@@ -678,8 +698,8 @@ a {
     }
 
     .banner_text {
-        width: 320px;
-        height: 150px;
+        width: 324px;
+        height: 167px;
     }
 
     .banner_text div {
@@ -689,6 +709,7 @@ a {
 
     .banner_text p {
         font-size: 16px;
+        font-weight: 600;
     }
 }
 
