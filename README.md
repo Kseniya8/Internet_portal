@@ -5,8 +5,6 @@ Internet portal for graduates and partners of the CAD Department at the St. Pete
 
   - clone repository
 
-    `git clone https://github.com/CADdep-SPIT-portal/internet-portal.git`
-
   - install dependencies
 
     `npm install`
@@ -22,3 +20,4 @@ Internet portal for graduates and partners of the CAD Department at the St. Pete
 
     `npm run serve`
 
+![image](https://user-images.githubusercontent.com/53310434/225984941-ffd3b845-7d29-484d-8c2e-d3b03316fc25.png)
